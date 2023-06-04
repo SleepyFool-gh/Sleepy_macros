@@ -1,6 +1,6 @@
 # SELECT Macro
 
-A replacement for the native `<<choice>>` macro which runs code and appends content instead of navigating to passages.
+A replacement for the native `<<choice>>` macro which runs code and appends content instead of navigating to passages. `<<select>>` creates a link which removes all other links in its group when selected.
 
 &nbsp;
 
