@@ -11,11 +11,14 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 ### Usage:
 ```html
-<<select 'link text' 'group_id'>>
-    ...content that replaces link when clicked
+<<select 'link text' 'optional_group_id'>>
+    ...content that replaces this link when clicked
 <<replacement>>
-    ...optional content that replaces link when OTHER links in the group are clicked
+    ...optional content that replaces this link when OTHER links in the same group are clicked
 <</select>>
+<!--    group_id defaults to 'default' when not specified
+        group_id MUST only be one word, no spaces
+        group_id MUST only include CSS valid characters -->
 ```
 
 &nbsp;
@@ -23,7 +26,8 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 ### Examples:
 ```html
 :: Example_1
-<!-- selecting any one of these will remove the rest -->
+<!-- basic usage:
+        selecting any one of these will remove the rest -->
 
 <<select 'Take the left path.'>>
     You turned left.
@@ -38,8 +42,9 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 
 :: Example_2
-<!-- selecting the 1st or 2nd link will remove ONLY the first two links,
-     selecting the 3rd or 4th link will remove ONLY the latter two links -->
+<!-- multiple simultaneous groups:
+        selecting the 1st or 2nd link will remove ONLY the first two links,
+        selecting the 3rd or 4th link will remove ONLY the latter two links -->
 
 <!-- entree selection -->
 <<select 'Order a burger.' 'entree'>>
@@ -55,6 +60,26 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <</select>>
 <<select 'Order ice cream.' 'dessert'>>
     Creamy ice cream. It's never a bad time for ice cream.
+<</select>>
+
+
+:: Example_3
+<!-- links with replacement content:
+        selecting link 2 will replace link 2 with link 2 contents
+        link 1 will replace with its REPLACEMENT content
+        link 3 will be removed as it has no replacement content -->
+
+<!-- maidens in distress! -->
+<<select 'Save Yor'>>
+    Yor stutters a thanks while holding your hand.
+<<replacement>>
+    Yor backflips into position, she didn't need your help anyway.
+<</select>>
+<<select 'Save Anya'>>
+    You catch Anya just before she flops to the floor.
+<</select>>
+<<select 'Save Bond'>>
+    Woof woof!
 <</select>>
 
 ```
