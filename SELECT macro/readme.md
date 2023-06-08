@@ -27,7 +27,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 ```html
 :: Example_1
 <!-- basic usage:
-        selecting any one of these will remove the rest -->
+        -> selecting any one of these will remove the others -->
 
 <<select 'Take the left path.'>>
     You turned left.
@@ -43,8 +43,8 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 :: Example_2
 <!-- multiple simultaneous groups:
-        selecting the 1st or 2nd link will remove ONLY the first two links,
-        selecting the 3rd or 4th link will remove ONLY the latter two links -->
+        -> selecting the 1st or 2nd link (entree selection) will remove ONLY the first two links,
+        -> selecting the 3rd or 4th link (dessert selection) will remove ONLY the latter two links -->
 
 <!-- entree selection -->
 <<select 'Order a burger.' 'entree'>>
@@ -65,18 +65,20 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 :: Example_3
 <!-- links with replacement content:
-        selecting link 2 will replace link 2 with link 2 contents
-        link 1 will replace with its REPLACEMENT content
-        link 3 will be removed as it has no replacement content -->
+        -> selecting the 1st link (Save Anya) will replace it with its contents
+           then, the 2nd link will replace with its REPLACEMENT content
+           and, the 3rd link will then be removed as it has no replacement content 
+        -> selecting the 2nd link (Save Yor) will replace it with its DEFAULT contents, the replacement content WILL NOT BE USED
+           then, the 1st and 3rd link will be removed -->
 
 <!-- maidens in distress! -->
+<<select 'Save Anya'>>
+    You catch Anya just before she flops to the floor.
+<</select>>
 <<select 'Save Yor'>>
     Yor stutters a thanks while holding your hand.
 <<replacement>>
     Yor backflips into position, she didn't need your help anyway.
-<</select>>
-<<select 'Save Anya'>>
-    You catch Anya just before she flops to the floor.
 <</select>>
 <<select 'Save Bond'>>
     Woof woof!
