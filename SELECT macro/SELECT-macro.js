@@ -1,6 +1,6 @@
 Macro.add('select', {
     isAsync :   true,
-    tags    :   ["replacement"],
+    tags    :   ["alternate"],
     handler() {
 
         // if no arguments, return error
