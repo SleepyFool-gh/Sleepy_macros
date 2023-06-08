@@ -68,7 +68,8 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
         -> selecting the 1st link (Save Anya) will replace it with its contents
            then, the 2nd link will replace with its ALTERNATE content
            and, the 3rd link will then be removed as it has no alternate content 
-        -> selecting the 2nd link (Save Yor) will replace it with its DEFAULT contents, the alternate content WILL NOT BE USED
+        -> selecting the 2nd link (Save Yor) will replace it with its DEFAULT contents,
+           the alternate content WILL NOT BE USED
            then, the 1st and 3rd link will be removed -->
 
 <!-- maidens in distress! -->
