@@ -9,6 +9,17 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
     
 &nbsp;    
 
+### Usage:
+```html
+<<select 'link text' 'group_id'>>
+    ...content that replaces link when clicked
+<<replacement>>
+    ...optional content that replaces link when OTHER links in the group are clicked
+<</select>>
+```
+
+&nbsp;
+
 ### Examples:
 ```html
 :: Example_1
