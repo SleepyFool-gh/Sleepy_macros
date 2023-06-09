@@ -11,7 +11,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 ### Usage:
 ```html
-<!-- basic usage -->
+:: basic_usage
 <<select 'link text' 'optional_group_id'>>
     ...content that replaces this link when clicked
 <<alternate>>
@@ -21,10 +21,13 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
         a group_id MUST be only one word
         a group_id MUST only include CSS valid characters -->
 
+
 <<removeSelect 'group_id1 optional_group_id2'>>
 <!--    removes all links associated with a group group -->
 
-<!-- advanced usage -->
+
+
+:: advanced_usage
 <<select 'link text' 'group_id1 group_id2 group_id3'>>
     ...content that replaces this link when clicked
 <<alternate 'group_id2'>>
@@ -45,6 +48,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <!-- basic usage:
         -> selecting any one of these will remove the others -->
 
+<!-- a fork in the road -->
 <<select 'Take the left path.'>>
     You turned left.
 <</select>>
@@ -79,6 +83,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <</select>>
 
 
+
 :: Example_3
 <!-- links with alternate content:
         -> selecting the 1st link (Save Anya) will replace it with its contents
@@ -102,7 +107,27 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <</select>>
 
 
+
 :: Example_4
+<!-- manually removing groups:
+        -> selecting 1st link (high five) removes the handshake option
+        -> selecting 2nd link (handshake) removes both high five and right hand options -->
+
+<!-- a social encounter! -->
+<<select 'Give a high five with your left hand' 'lh'>>
+    He returns your greeting, the slap is resounding.
+<</select>>
+<<select 'Give a handshake with your left' 'lh'>>
+    He frowns and grabs your right hand instead, "Handshakes are down with the right, my friend."
+    <<selectRemove 'rh'>>
+<</select>>
+<<select 'Give a thumbs up with your right hand' 'rh'>>
+    You give a him a solid thumbs up.
+<</select>>
+
+
+
+:: Example_5
 <!-- putting everything together, with code:
         -> trying to open the box triggers the trap and removes the option for the player to leave
         -> smashing the box causes removes the option to open it or to take it with you
