@@ -121,7 +121,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <</select>>
 <<select 'Give a handshake with your left' 'lh'>>
     He frowns and grabs your right hand instead, "Handshakes are down with the right, my friend."
-    <<selectRemove 'rh'>>
+    <<selectremove 'rh'>>
 <</select>>
 <<select 'Give a thumbs up with your right hand' 'rh'>>
     You give a him a solid thumbs up.
@@ -155,7 +155,7 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Smash the box' 'mechanism cavein'>>
     The box screams and the cave rumbles!
-    <<selectRemove 'unbroken'>>
+    <<selectremove 'unbroken'>>
 <</select>>
 <<select 'Free the box and take it with you' 'mechanism'>>
     You pocket the small box, it whispers ominously.
@@ -163,9 +163,9 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Go further in' 'cavein route'>>
     You venture forth.
-    <<selectRemove 'mechanism'>>
+    <<selectremove 'mechanism'>>
     <<if ! $tookBox>>
-        <<selectRemove 'unbroken'>>
+        <<selectremove 'unbroken'>>
     <</if>>
 <<alternate>>
     You need to leave NOW!
@@ -177,8 +177,8 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
     <<else>>
         You decide this is enough adventuring for today.
     <</if>>
-    <<selectRemove 'mechanism'>>
-    <<selectRemove 'route'>>
+    <<selectremove 'mechanism'>>
+    <<selectremove 'route'>>
 <</select>>
 
 

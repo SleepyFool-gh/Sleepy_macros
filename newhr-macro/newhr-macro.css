@@ -1,0 +1,7 @@
+hr.macro-newhr {
+    margin: 1.15em auto;
+    width: 80%;
+    border-top-width: 0.1em;
+    border-top-style: solid;
+    border-top-color: white;
+}

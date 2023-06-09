@@ -125,6 +125,8 @@ Macro.add('select', {
 
                     }
                 ))
+
+                // adds link text to output
                 .appendTo(this.output);
                 
 
@@ -133,7 +135,7 @@ Macro.add('select', {
 
 
 // aux macro, removes select links of given argument
-Macro.add('selectRemove', {
+Macro.add('selectremove', {
     handler() {
 
         // if no arguments, error
