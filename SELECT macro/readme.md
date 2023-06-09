@@ -112,8 +112,8 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 :: Example_4
 <!-- manually removing groups:
-        -> selecting 1st link (high five) removes the handshake option
-        -> selecting 2nd link (handshake) removes both high five and right hand options -->
+        -> selecting the 1st link (high five) removes the handshake option
+        -> selecting the 2nd link (handshake) removes both high five and right hand options -->
 
 <!-- a social encounter! -->
 <<select 'Give a high five with your left hand' 'lh'>>
