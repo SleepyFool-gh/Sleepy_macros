@@ -16,14 +16,14 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <<select 'link text' 'optional_group_id'>>
     ...content that replaces this link when clicked
 <<alternate>>
-    ...optional content that replaces this link when ANOTHER link in 'optional_group_id
+    ...optional content that replaces this link when ANOTHER link in 'optional_group_id' is clicked 
 <</select>>
 <!--    group_id defaults to 'default' when not specified
-        a group_id MUST be only one word
+        a group_id MUST only be one word
         a group_id MUST only include CSS valid characters -->
 
 
-<<removeSelect 'group_id'>>
+<<selectRemove 'group_id'>>
 <!--    removes all <<select>> links associated with the provided group_id -->
 
 
@@ -35,10 +35,10 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <<alternate 'group_id2'>>
     ...optional content that replaces this link when ANOTHER link in 'group_id2' is clicked
 <<alternate>>
-    ...optional default content that replaces this link when ANY LINK in ANY of its other groups is clicked ('group_id1' or 'group_id3')
+    ...default optional content used as alternate replacement for the groups that DON'T have SPECIFIC alternate defined above (here, 'group_id1' or 'group_id3')
 <</select>>
 <!--    when using multiple group_id's, they MUST be a space separated list
-        default alternate replacement text MUST come last, AFTER any specific group_id replacements
+        default alternate replacement text MUST come last, AFTER any specific group_id alternate replacements
         when a select link is clicked, it triggers remove or alternate replacements in ALL groups it belongs to-->
 ```
 
@@ -89,10 +89,10 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 :: Example_3
 <!-- links with alternate content:
         -> selecting the 1st link (Save Anya) will replace it with its contents
-           then, the 2nd link will replace with its ALTERNATE content
-           and, the 3rd link will then be removed as it has no alternate content 
-        -> selecting the 2nd link (Save Yor) will replace it with its DEFAULT contents,
-           the alternate content WILL NOT BE USED
+           then, the 2nd link will be replaced with its ALTERNATE content
+           and, the 3rd link will be removed (no alternate content)
+        -> selecting the 2nd link (Save Yor) will replace it with its normal replace contents,
+           the alternate replacement WILL NOT BE USED
            then, the 1st and 3rd link will be removed -->
 
 <!-- maidens in distress! -->
@@ -145,7 +145,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <!-- adventure! -->
 An intricate mechanism of twin mallets stands before you. A small box is precariously balanced in the middle. If you just tipped one side a little bit...
 
-<<select 'Open the box' 'trap unbroken'>>
+<<select 'Open the box' 'trap box'>>
     The box remains locked despite your attempts. You've triggered a trap!
     <<set $trapTriggered = true>>
 <<alternate 'trap'>>
@@ -155,17 +155,21 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Smash the box' 'mechanism cavein'>>
     The box screams and the cave rumbles!
-    <<selectremove 'unbroken'>>
+    <<selectRemove 'box'>>
 <</select>>
 <<select 'Free the box and take it with you' 'mechanism'>>
     You pocket the small box, it whispers ominously.
     <<set $tookBox = true>>
 <</select>>
 <<select 'Go further in' 'cavein route'>>
-    You venture forth.
-    <<selectremove 'mechanism'>>
+    <<if $trapTriggered>>
+      The way back is blocked, your only option is forward.
+    <<else>>
+      You venture forth.
+    <</if>>
+    <<selectRemove 'mechanism'>>
     <<if ! $tookBox>>
-        <<selectremove 'unbroken'>>
+        <<selectRemove 'box'>>
     <</if>>
 <<alternate>>
     You need to leave NOW!
