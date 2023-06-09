@@ -5,7 +5,7 @@ A replacement for the native `<<choice>>` macro which runs code and appends cont
 &nbsp;
 
 ### Default behavior:
-Clicking a link produced by the `<<select>>` macro replaces the link with its contents. It then removes all other links in the same group (or replaces them with their optional alternate content). A `<<select>>` link, when clicked, only removes other links in the same group as itself, but remove all links in all groups it belongs to. `<<selectremove>>` removes all `<<select>>` links for the provided group_id. It does NOT trigger replacement OR alternate replacement.
+Clicking a link produced by the `<<select>>` macro replaces the link with its contents. It then removes all other links in the same group (or replaces them with their optional alternate replacement). A `<<select>>` link, when clicked, only removes other links in the same group as itself, but remove all links in all groups it belongs to. `<<selectremove>>` removes all `<<select>>` links for the provided group_id. It does NOT trigger replacement OR alternate replacement.
     
 &nbsp;    
 
@@ -23,7 +23,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
         a group_id MUST only include CSS valid characters -->
 
 
-<<selectRemove 'group_id'>>
+<<selectremove 'group_id'>>
 <!--    removes all <<select>> links associated with the provided group_id -->
 
 
@@ -155,7 +155,7 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Smash the box' 'mechanism cavein'>>
     The box screams and the cave rumbles!
-    <<selectRemove 'box'>>
+    <<selectremove 'box'>>
 <</select>>
 <<select 'Free the box and take it with you' 'mechanism'>>
     You pocket the small box, it whispers ominously.
@@ -167,9 +167,9 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
     <<else>>
       You venture forth.
     <</if>>
-    <<selectRemove 'mechanism'>>
+    <<selectremove 'mechanism'>>
     <<if ! $tookBox>>
-        <<selectRemove 'box'>>
+        <<selectremove 'box'>>
     <</if>>
 <<alternate>>
     You need to leave NOW!
