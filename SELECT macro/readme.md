@@ -159,6 +159,7 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Free the box and take it with you' 'mechanism'>>
     You pocket the small box, it whispers ominously.
+    <<set $tookBox = true>>
 <</select>>
 <<select 'Go further in' 'cavein route'>>
     <<if $trapTriggered>>
