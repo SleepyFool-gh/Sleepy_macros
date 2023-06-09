@@ -6,7 +6,7 @@ Macro.add('select', {
 
         // if no arguments, return error
         if (this.args.length === 0) {
-            return this.error('no select link text specified');
+            return this.error('no <<select>> link text specified');
         }
 
         // create link
@@ -140,7 +140,7 @@ Macro.add('selectremove', {
 
         // if no arguments, error
         if (this.args.length === 0) {
-            return this.error('no select link text specified');
+            return this.error('no <<selectremove>> group_id specified');
         }
 
         // find all links with selected group and delete them
