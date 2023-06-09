@@ -162,7 +162,11 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
     <<set $tookBox = true>>
 <</select>>
 <<select 'Go further in' 'cavein route'>>
-    You venture forth.
+    <<if $trapTriggered>>
+      The way back is blocked, your only option is forward.
+    <<else>>
+      You venture forth.
+    <</if>>
     <<selectRemove 'mechanism'>>
     <<if ! $tookBox>>
         <<selectRemove 'unbroken'>>
