@@ -23,7 +23,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
         a group_id MUST only include CSS valid characters -->
 
 
-<<removeSelect 'group_id'>>
+<<selectRemove 'group_id'>>
 <!--    removes all <<select>> links associated with the provided group_id -->
 
 
