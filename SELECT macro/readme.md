@@ -16,10 +16,10 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <<select 'link text' 'optional_group_id'>>
     ...content that replaces this link when clicked
 <<alternate>>
-    ...optional content that replaces this link when ANOTHER link in 'optional_group_id
+    ...optional content that replaces this link when ANOTHER link in 'optional_group_id' is clicked 
 <</select>>
 <!--    group_id defaults to 'default' when not specified
-        a group_id MUST be only one word
+        a group_id MUST only be one word
         a group_id MUST only include CSS valid characters -->
 
 
@@ -38,7 +38,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
     ...optional default content that replaces this link when ANY LINK in ANY of its other groups is clicked ('group_id1' or 'group_id3')
 <</select>>
 <!--    when using multiple group_id's, they MUST be a space separated list
-        default alternate replacement text MUST come last, AFTER any specific group_id replacements
+        default alternate replacement text MUST come last, AFTER any specific group_id alternate replacements
         when a select link is clicked, it triggers remove or alternate replacements in ALL groups it belongs to-->
 ```
 
