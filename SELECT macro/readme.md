@@ -145,7 +145,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <!-- adventure! -->
 An intricate mechanism of twin mallets stands before you. A small box is precariously balanced in the middle. If you just tipped one side a little bit...
 
-<<select 'Open the box' 'trap unbroken'>>
+<<select 'Open the box' 'trap box'>>
     The box remains locked despite your attempts. You've triggered a trap!
     <<set $trapTriggered = true>>
 <<alternate 'trap'>>
@@ -155,7 +155,7 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
 <</select>>
 <<select 'Smash the box' 'mechanism cavein'>>
     The box screams and the cave rumbles!
-    <<selectRemove 'unbroken'>>
+    <<selectRemove 'box'>>
 <</select>>
 <<select 'Free the box and take it with you' 'mechanism'>>
     You pocket the small box, it whispers ominously.
@@ -169,7 +169,7 @@ An intricate mechanism of twin mallets stands before you. A small box is precari
     <</if>>
     <<selectRemove 'mechanism'>>
     <<if ! $tookBox>>
-        <<selectRemove 'unbroken'>>
+        <<selectRemove 'box'>>
     <</if>>
 <<alternate>>
     You need to leave NOW!
