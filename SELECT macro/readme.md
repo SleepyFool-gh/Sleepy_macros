@@ -11,14 +11,30 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 ### Usage:
 ```html
+<!-- basic usage -->
 <<select 'link text' 'optional_group_id'>>
     ...content that replaces this link when clicked
 <<alternate>>
-    ...optional content that replaces this link when OTHER links in the same group are clicked
+    ...optional content that replaces this link when ANOTHER link in 'optional_group_id
 <</select>>
 <!--    group_id defaults to 'default' when not specified
-        group_id MUST only be one word, no spaces
-        group_id MUST only include CSS valid characters -->
+        a group_id MUST be only one word
+        a group_id MUST only include CSS valid characters -->
+
+<<removeSelect 'group_id1 optional_group_id2'>>
+<!--    removes all links associated with a group group -->
+
+<!-- advanced usage -->
+<<select 'link text' 'group_id1 group_id2 group_id3'>>
+    ...content that replaces this link when clicked
+<<alternate 'group_id2'>>
+    ...optional content that replaces this link when ANOTHER link in 'group_id2' is clicked
+<<alternate>>
+    ...optional default content that replaces this link when ANY LINK in ANY of its other groups is clicked ('group_id1' or 'group_id3')
+
+<</select>>
+<!--    when using multiple group_id's, they MUST be a space separated list
+        default alternate replacement text MUST come last, AFTER any specific group_id replacements -->
 ```
 
 &nbsp;
@@ -84,5 +100,60 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <<select 'Save Bond'>>
     Woof woof!
 <</select>>
+
+
+:: Example_4
+<!-- putting everything together, with code:
+        -> trying to open the box triggers the trap and removes the option for the player to leave
+        -> smashing the box causes removes the option to open it or to take it with you
+           it also causes a cave in and removes the option to go further in
+        -> taking the box removes the option to smash it, 
+           but they can still try to open it, which will triggers the trap as before
+        -> going further in removes the options to interact with the mechanism IF you did not take it with you
+           you CANNOT go further in and then pocket the box
+           but you CAN pocket the box first and then go further in
+        -> leaving the cave removes the option interact with the mechanism and the option to go further in
+           but if you took the box with you, you can now open it -->
+
+<!-- adventure! -->
+An intricate mechanism of twin mallets stands before you. A small box is precariously balanced in the middle. If you just tipped one side a little bit...
+
+<<select 'Open the box' 'trap unbroken'>>
+    The box remains locked despite your attempts. You've triggered a trap!
+    <<set $trapTriggered = true>>
+<<alternate 'trap'>>
+    <<linkreplace 'Open the box'>>
+        The box opens! Inside you find a small jewel.
+    <</linkreplace>>
+<</select>>
+<<select 'Smash the box' 'mechanism cavein'>>
+    The box screams and the cave rumbles!
+    <<selectRemove 'unbroken'>>
+<</select>>
+<<select 'Free the box and take it with you' 'mechanism'>>
+    You pocket the small box, it whispers ominously.
+    <<set $tookBox = true>>
+<</select>>
+<<select 'Go further in' 'cavein route'>>
+    You venture forth.
+    <<selectRemove 'mechanism'>>
+    <<if ! $tookBox>>
+        <<selectRemove 'unbroken'>>
+    <</if>>
+<<alternate>>
+    You need to leave NOW!
+    <<set $cavein = true>>
+<</select>>
+<<select 'Turn around and leave the cave' 'trap'>>
+    <<if $cavein>>
+        You run out with boulders at your heel.
+    <<else>>
+        You decide this is enough adventuring for today.
+    <</if>>
+    <<selectRemove 'mechanism'>>
+    <<selectRemove 'route'>>
+<</select>>
+
+
 
 ```

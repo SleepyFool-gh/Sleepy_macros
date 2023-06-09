@@ -1,3 +1,4 @@
+// main macro, select link
 Macro.add('select', {
     isAsync :   true,
     tags    :   ["alternate"],
@@ -10,82 +11,140 @@ Macro.add('select', {
 
         // create link
         const $link     = $(document.createElement('a'));
-        const $insert   = $(document.createElement('span'));
+        
 
-        let _group = 'default';
+        let _groups = ['default'];
         let _keywords = [':end',':persist'];
         // let _end = this.args.includes(':end');
         // let _persist = this.args.includes(':persist');
 
         // if more than 1 argument && the 2nd argument isn't a keyword
         if ((this.args.length > 1) && (!  _keywords.includes(this.args[1]))) {
-            _group = this.args[1];
+            _groups = this.args[1].split(' ');
         }
 
         // create namespace for select macro
         setup.SS ??= {};
         setup.SS.select ??= {};
 
-        // create object to store macro payloads
-        setup.SS.select[_group] ??= {};
-        let _g = setup.SS.select[_group];
+        // for each group, _g
+        for (let _i = 0; _i < _groups.length; _i++) {
 
-        // create id, this being the n-1'th item in _group
-        // assign payload to this id
-        let _id = _group + Object.keys(_g).length;
-        _g[_id] = this.payload;
+            // create group object & number identifier
+            let _g = _groups[_i];
+            setup.SS.select[_g] ??= [];
+            let _num = Object.keys(setup.SS.select[_g]).length;
+
+            // if no replacement data, push null
+            if (this.payload.length === 1) {
+                setup.SS.select[_g].push(null);
+            }
+            else {
+                // for each payload
+                for (let _j = 1; _j < this.payload.length; _j++) {
+                    // check if payload arguments is blank or that the argument matches the current group, _g
+                    // blank arguments === default replacement, must be last
+                    if (! this.payload[_j].args.length || this.payload[_j].args[0].split(' ').includes(_g)) {
+                        setup.SS.select[_g][_num] = clone(this.payload[_j]);
+                        break
+                    }
+                }
+            }
+
+            // add group identifiers to each link
+            $link
+                    .addClass(`select-${_g}`)
+                    .attr(`data-select-${_g}-n`,_num)
+        }
         
         // displays link text
         $link.wiki(this.args[0]);
 
+
+
         $link
                 // add appropriate classes & id
-                .addClass(`link-internal macro-${this.name} select-${_group}`)
-                .attr('id',`select-${_id}`)
+                .addClass(`link-internal macro-${this.name}`)
                 .ariaClick({
                     one :   true
                 }, this.createShadowWrapper (
                     () => {
 
-                        // remove this link
-                        $link.remove();
 
-                        // if this link has content to replace in its 1st payload
+                        
+
+                        // if this link has content to replace in its 1st payload,
+                        // wiki it into a span after link
                         if (this.payload[0].contents !== '') {
                             const frag = document.createDocumentFragment();
                             new Wikifier(frag, this.payload[0].contents.trim());
-                            $insert.append(frag);
+                            const $insert   = $(document.createElement('span'));
+                            $insert
+                                    .append(frag)
+                                    .addClass(`macro-select-in`)
+                                    .insertAfter($link);
                         }
 
-                        // search all other links in group
-                        $(`.select-${_group}`).each( function() {
-                            let _id = $(this).attr('id').replace('select-','');
+                        
+                        // remove this link
+                        $link.remove();
 
-                            // if stored payload data contains replacement data
-                            if (_g[_id].length > 1) {
-                                const frag = document.createDocumentFragment();
-                                new Wikifier(frag, _g[_id][1].contents.trim());
-                                $(`#select-${_id}-in`)
-                                    .append(frag)
-                            }
+                        // for each group this link is a part of
+                        for (let _i = 0; _i < _groups.length; _i++) {
+                            
+                            let _g = _groups[_i];
 
-                            // remove link
-                            this.remove();
-                        });
+                            // search all other links in this group
+                            $(`.select-${_g}`).each( function() {
 
-                        // clear up data, delete group after operation finish
-                        delete setup.SS.select[_group];
+                                // find num of this link
+                                let _num = $(this).attr(`data-select-${_g}-n`);
+
+                                // if stored payload data contains replacement data,
+                                // wiki it into a span after link
+                                if (setup.SS.select[_g][_num]) {
+                                    const frag = document.createDocumentFragment();
+                                    new Wikifier(frag, setup.SS.select[_g][_num].contents.trim());
+                                    const $insert   = $(document.createElement('span'));
+                                    $insert
+                                            .append(frag)
+                                            .addClass(`macro-select-in`)
+                                            .insertAfter(this);
+
+                                }
+
+                                // remove link
+                                this.remove();
+                            });
+
+                            
+                            // clear up data, delete group after operation finish
+                            delete setup.SS.select[_g];
+                        }
+
 
                     }
                 ))
                 .appendTo(this.output);
+                
 
-        // container to hold append content, add appropriate class & ids
-        // insert directly after link
-        $insert
-                .addClass(`macro-${this.name}-in`)
-                .attr('id',`select-${_id}-in`)
-                .insertAfter($link);
+    }
+});
+
+
+// aux macro, removes select links of given argument
+Macro.add('selectRemove', {
+    handler() {
+
+        // if no arguments, error
+        if (this.args.length === 0) {
+            return this.error('no select link text specified');
+        }
+
+        // find all links with selected group and delete them
+        let _g = this.args[0];
+        $(`.select-${_g}`).remove();
+
 
     }
 });
