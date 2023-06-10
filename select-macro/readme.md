@@ -50,7 +50,7 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 <!-- basic usage:
         -> selecting any one of these will remove the others -->
 
-<!-- a fork in the road -->
+<!-- a fork in the road! -->
 <<select 'Take the left path.'>>
     You turned left.
 <</select>>
@@ -131,16 +131,16 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
 
 :: Example_5
 <!-- putting everything together, with code:
-        -> trying to open the box triggers the trap and removes the option for the player to leave
-        -> smashing the box causes removes the option to open it or to take it with you
-           it also causes a cave in and removes the option to go further in
-        -> freeing the box and taking it removes the option to smash it, 
-           but you can still try to open it, which will triggers the trap as before
+        -> trying to open the box triggers the trap & removes the option to leave
+        -> smashing the box removes the option to open it & the option to take it with you
+           it also causes a cave in & removes the option to go further in
+        -> freeing & taking the box with you removes the option to smash it, 
+           but you can still try to open it, which will still trigger the trap as before
         -> going further in removes the options to interact with the mechanism (left it behind),
            but you can still try to open the box IF you took it with you
            you CANNOT go further in and then take the box,
            but you CAN take the box first and then go further in (as long as you don't try to open it)
-        -> leaving the cave removes the option interact with the mechanism and the option to go further in,
+        -> leaving the cave removes the option to interact with the mechanism & the option to go further in,
            but if you took the box with you, you can now open it -->
 
 <!-- adventure! -->
