@@ -1,5 +1,5 @@
-# Macros by SleepyFool
-A soon-to-be-filled library of SugarCube macros of dubious value
+# Twine SugarCube Macros by SleepyFool
+A soon-to-be-filled library of macros of dubious value
 
 &nbsp;
 
@@ -14,4 +14,4 @@ ___
 
 #### WIP:
 
-  - P - wrap blocks of unformatted text into their own separated `<p>` elements
+  - p - wrap blocks of unformatted text into their own separated `<p>` elements
