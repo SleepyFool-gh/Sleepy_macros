@@ -1,6 +1,6 @@
 # `<<newhr>>` Macro
 
-A macro which generates an `<hr>` divider while removing old `<hr>`'s created this way. Useful for showing a clear divider before new content.
+A macro which generates an `<hr>` divider while hiding old `<hr>`'s created this way. Useful for showing a clear divider before new content.
 
 &nbsp;
 

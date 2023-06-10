@@ -5,7 +5,7 @@ A soon-to-be-filled library of macros of dubious value
 
 ### Macro list:
 
-  - [newhr](https://github.com/SleepyFool-gh/Sleepy-macros/tree/main/newhr-macro) - creates an `<hr>` while simultaneously removing old `<hr>`'s created this way
+  - [newhr](https://github.com/SleepyFool-gh/Sleepy-macros/tree/main/newhr-macro) - creates an `<hr>` while simultaneously hiding old `<hr>`'s created this way
   - [select](https://github.com/SleepyFool-gh/Sleepy-macros/tree/main/select-macro) - creates a link which removes all other links in its group when clicked
 
 &nbsp;
