@@ -135,9 +135,9 @@ Clicking a link produced by the `<<select>>` macro replaces the link with its co
         -> smashing the box causes removes the option to open it or to take it with you
            it also causes a cave in and removes the option to go further in
         -> freeing the box and taking it removes the option to smash it, 
-           but they can still try to open it, which will triggers the trap as before
+           but you can still try to open it, which will triggers the trap as before
         -> going further in removes the options to interact with the mechanism (left it behind),
-           but you can still try to open it IF you took it with you
+           but you can still try to open the box IF you took it with you
            you CANNOT go further in and then take the box,
            but you CAN take the box first and then go further in (as long as you don't try to open it)
         -> leaving the cave removes the option interact with the mechanism and the option to go further in,
