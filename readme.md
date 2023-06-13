@@ -14,5 +14,4 @@ ___
 
 #### WIP:
 
-  - 
   - [p](https://github.com/SleepyFool-gh/Sleepy-macros/tree/main/p-macro) - automatically wrap enclosed chunks of text into `<p>` elements
