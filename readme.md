@@ -14,4 +14,5 @@ ___
 
 #### WIP:
 
-  - p - wrap blocks of unformatted text into their own separated `<p>` elements
+  - 
+  - [p](https://github.com/SleepyFool-gh/Sleepy-macros/tree/main/p-macro) - automatically wrap enclosed chunks of text into `<p>` elements
