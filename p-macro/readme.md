@@ -1,4 +1,4 @@
-# `<<p>` Macro
+# `<<p>>` Macro
 
 A container macro that attempts to automatically wrap any unprocessed raw text enclosed into individual `<p>` elements so you don't have to.
 
