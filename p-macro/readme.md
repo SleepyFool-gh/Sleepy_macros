@@ -5,7 +5,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. By default, it ignores lines with broken (unclosed) macros or HTML elements, but you can have the macro attempt to process these lines as well by supplying `true` as an argument.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. By default, it ignores lines with broken (unclosed) macros or HTML elements, but you can have the macro attempt to process these lines as well by supplying `true` as an argument. Whether you have `nobr` turned on or not does not affect the default behavior.
     
 &nbsp;    
 
