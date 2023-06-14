@@ -5,7 +5,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. By default, it ignores lines with broken (unclosed) macros or HTML elements, but you can have the macro attempt to process these lines as well by supplying `true` as an argument. Whether you have `nobr` turned on or not does not affect the default behavior.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. By default, it attempt to process lines with unclosed elements or macros after they get added to the page, but you can optionally turn this off by supplying `false` if you're seeing odd behavior. Pre-wrapped lines are ignored.
     
 &nbsp;    
 
@@ -14,21 +14,25 @@ Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` e
 :: Basic_Usage
 <<p>>
 
-    1st block of raw text to be wrapped
+    p1: raw text
 
-    2nd block of raw text
+    p2: text with <span>span</span>
+
+    <div>div that will be ignored</div>
 
     etc.
 
 <</p>>
 
-<<p true>>
+<<p false>>
 
-    Post processing turned on
+    Post processing turned off
+    
+    Affects processing of lines like <<if true>> this
 
-    Attempts to process broken <<if true>> lines like this one
+    and this <</if>>
 
-    <</if>> and this one. 
+    as well as <div style='display: inline'>this</div>
 
 <</p>>
 ```
