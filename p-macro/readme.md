@@ -1,5 +1,7 @@
 # `<<p>>` Macro
 
+## THIS MACRO IS A WORK IN PROGRESS. EXPECT THINGS TO BREAK.
+
 A container macro that attempts to automatically wrap any unprocessed raw text enclosed into individual `<p>` elements so you don't have to.
 
 &nbsp;
