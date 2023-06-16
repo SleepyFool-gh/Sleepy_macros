@@ -7,7 +7,8 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. By default, the `<p>` block delimiter is set to line breaks or 3 spaces (a tab is sufficient on most interfaces) using the RegExp `[\r\n]+|[ ]{3,}`, but you may supply your own expression as an optional argument. This does mean if you have the `nobr` setting enabled, the tab or your own delimiter is mandatory.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. All `<br>` elements are removed during the process and therefore they cannot be used for formatting inside the macro.
+By default, the `<p>` block delimiter is set to line breaks or 3 spaces (a tab is sufficient on most interfaces) using the RegExp `[\r\n]+|[ ]{3,}`, but you may supply your own expression as an optional argument. This does mean if you have the `nobr` setting enabled, the tab or your own delimiter is mandatory.
     
 &nbsp;    
 
@@ -20,9 +21,11 @@ Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` e
 
     p2: text with <span>span</span>
 
-    <div>div that will be ignored</div>
+    p3: text with <div style='display:inline'>inline div</div>
 
-    etc.
+    <p>p4: pre-wrapped p that will be ignored</p>
+
+    <div>div block element that will also be ignored</div>
 
 <</p>>
 

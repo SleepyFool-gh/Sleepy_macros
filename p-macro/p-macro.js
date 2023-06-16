@@ -1,126 +1,85 @@
 setup.SS ??= {};
 
 Macro.add('p', {
-    tags    :   null,
+    tags: null,
     handler() {
-
         
-        // pre-processing removed, all wrapping is done in post-process now
+
+        // check if custom p delimiter, set to default if no
+        const re = typeof this.args[0] !== 'undefined' ? new RegExp(this.args[0],'g') : new RegExp('[\\r\\n]+|[ ]{3,}','g');
+
+        const frag = document.createDocumentFragment();
+        const contents = this.payload[0].contents.trim();
+
+        // count macro instance, set id
+        setup.SS.p_macro_count = (setup.SS.p_macro_count || 0) + 1;
+        const pId = setup.SS.p_macro_count;
+
+        // split by delimiter, add br, join, wrap
+        let output = contents
+            .split(re)
+            .map((el) => `${el.trim()}<br>`)
+            .join('');
+
+        output = `<div id='p-macro-output-${pId}' style='display:none'>${output}</div>`;
         
-        // optional custom p delimiter
-        // default is line break or 3 spaces
-        let re;
-        if (typeof this.args[0] !== 'undefined') {
-            re = new RegExp(this.args[0],'g');
-        }
-        else {
-            re = /[\r\n]+|[ ]{3,}/g;
-        }
 
-        // remove line breaks from raw content input
-        const _frag = document.createDocumentFragment();
-        let _contents = this.payload[0].contents.trim();
+        // wiki, normalize, output, run post process
+        $(frag).wiki(output);
 
-        
-        // count <<p>> macro instance to account for multiple instances
-        setup.SS.p_macro_count ? setup.SS.p_macro_count++ : setup.SS.p_macro_count = 1;
-        let _p_id = setup.SS.p_macro_count;
+        frag.normalize();
 
-        // convert p delimiter into br to use as post-process delimiter
-        let _output = _contents
-                            .split(re)
-                            .map( (el) => el.trim() + '<br>' )
-                            .join("");
+        $(this.output).append(frag);
 
+        setTimeout(() => setup.SS.p_macro_post(pId), 40);
 
-        // if post processing, wrap in special container
-        _output = `<div id='p-macro-output-${_p_id}' style='display:none'>${_output}</div>`;
-
-        // wiki output into document fragment
-        $(_frag).wiki(_output);
-
-        _frag.normalize();
-
-        // output macro
-        $(this.output).append(_frag);
-
-        // run post processing
-        setTimeout(() => setup.SS.p_macro_post(_p_id), 40);
-
-
-    }
+    },
 });
 
-// post processing, wraps adjacent inline elements
-setup.SS.p_macro_post = function(_p_id) {
+// post process
+setup.SS.p_macro_post = function(pId) {
+    const wout = $(`#p-macro-output-${pId}`).contents();
+    const toWrap = [];
 
-    let _wout = $(`#p-macro-output-${_p_id}`).contents();
-    let _toWrap = [];
-
-    // traverse nodes of p macro output
-    for (let _i = 0; _i < _wout.length-1; _i++) {
-        
-        // if current node is a text node, initiate wrap queuer
-        if (_wout[_i].nodeType === Node.TEXT_NODE) {
-            let _j = setup.SS.wrapUntil(_i,_p_id);
-            _toWrap.push([_i,_j]);
-            _i = _j;
-            continue
-        }
-        // if current node is a br, skip
-        else if (_wout[_i].nodeName === 'BR') {
-            continue
-        }
-        // if current node is an element, check if it's inline, initiate wrap queuer
-        else if (_wout[_i].nodeType === Node.ELEMENT_NODE) {
-
-            if (window.getComputedStyle(_wout[_i]).display.includes('inline')) {
-                let _j = setup.SS.wrapUntil(_i,_p_id);
-                _toWrap.push([_i,_j]);
-                _i = _j;
-                continue
-            }
+    // if current node is a text node or inline element, initiate wrap queuer
+    for (let i = 0; i < wout.length - 1; i++) {
+        const currentNode = wout[i];
+        if (currentNode.nodeType === Node.TEXT_NODE || (currentNode.nodeType === Node.ELEMENT_NODE && window.getComputedStyle(currentNode).display.includes('inline'))) {
+            const endIndex = setup.SS.wrapUntil(i, pId);
+            toWrap.push([i, endIndex]);
+            i = endIndex;
         }
     }
 
-    // wrap procedure
-    // offset because the length gets smaller as nodes get wrapped
-    let _offset = 0;
-    for (let _k = 0; _k < _toWrap.length; _k++) {
-        _wout.slice(_toWrap[_k][0] - _offset,_toWrap[_k][1]+1 - _offset).wrapAll('<p class="p-macro p-macro-post"></p>');
-        _offset += _toWrap[_k][1] - _toWrap[_k][1];
+    // wrap nodes with queue, starting from end, backwards
+    for (let k = toWrap.length - 1; k >= 0; k--) {
+        const [startIdx, endIdx] = toWrap[k];
+        wout.slice(startIdx, endIdx + 1).wrapAll('<p class="p-macro"></p>');
     }
 
-    // remove br's & unwrap
-    $(`#p-macro-output-${_p_id}`).find('*').filter('br').remove();
-    $(`#p-macro-output-${_p_id}`).contents().unwrap();
+    // remove br's and unwrap
+    $(`#p-macro-output-${pId}`).find('br').remove();
+    $(`#p-macro-output-${pId}`).contents().unwrap();
+};
 
-}
+// wrap queuer
+setup.SS.wrapUntil = function(startIndex, pId) {
+    const wout = $(`#p-macro-output-${pId}`).contents();
+    let endIndex = startIndex;
 
-// wrap queuer, checks subsequent nodes whether they are inline
-setup.SS.wrapUntil = function(_i,_p_id) {
+    // checks next nodes until it finds either a br or something not a text node and not an inline element
+    while (endIndex + 1 <= wout.length - 1) {
+        const nextNode = wout[endIndex + 1];
 
-    let _wout = $(`#p-macro-output-${_p_id}`).contents();
-
-    // to catch going over length errors
-    if (_i+1 > _wout.length-1) {
-        return _i
+        if (nextNode.nodeName === 'BR') {
+            endIndex += 1;
+            break;
+        } else if (nextNode.nodeType === Node.TEXT_NODE || window.getComputedStyle(nextNode).display.includes('inline')) {
+            endIndex += 1;
+        } else {
+            break;
+        }
     }
 
-    // if next node is a br, include it & end wrap group
-    if (_wout[_i+1].nodeName === 'BR') {
-        return _i+1
-    }
-    // if next node is text node, include in wrap group
-    else if (_wout[_i+1].nodeType === Node.TEXT_NODE) {
-        return setup.SS.wrapUntil(_i+1,_p_id);
-    }
-    // if next node is an inline element, include in wrap group
-    else if (window.getComputedStyle(_wout[_i+1]).display.includes('inline')) {
-        return setup.SS.wrapUntil(_i+1);
-    }
-    // else end wrap group
-    else {
-        return _i
-    }
+    return endIndex;
 };
