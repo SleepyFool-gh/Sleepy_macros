@@ -7,7 +7,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. By default, it attempt to process lines with unclosed elements or macros after they get added to the page, but you can optionally turn this off by supplying `false` if you're seeing odd behavior. Pre-wrapped lines are ignored.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. By default, the `<p>` block delimiter is set to line breaks or 3 spaces (a tab is sufficient on most interfaces) using the RegExp `[\r\n]+|[ ]{3,}`, but you may supply your own expression as an optional argument. This does mean if you have the `nobr` setting enabled, the tab or your own delimiter is mandatory.
     
 &nbsp;    
 
@@ -26,15 +26,13 @@ Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` e
 
 <</p>>
 
-<<p false>>
+<<p '-->'>>
 
-    Post processing turned off
-    
-    Affects processing of lines like <<if true>> this
+--> custom delimiter enabled
 
-    and this <</if>>
+--> line breaks will no longer count as separate blocks
 
-    as well as <div style='display: inline'>this</div>
+    and this line will be combined with the one above it
 
 <</p>>
 ```
