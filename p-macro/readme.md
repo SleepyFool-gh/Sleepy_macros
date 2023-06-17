@@ -1,15 +1,13 @@
 # `<<p>>` Macro
 
-## THIS MACRO IS A WORK IN PROGRESS. EXPECT THINGS TO BREAK.
-
 A container macro that attempts to automatically wrap any unprocessed raw text enclosed into individual `<p>` elements so you don't have to.
 
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. All `<br>` elements are removed during the process and therefore they cannot be used for formatting inside the macro.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored.
 
-By default, the `<p>` block separator is a line break or 3 consecutive spaces (or a tab on most interfaces) using the RegExp `[\r\n]+|[ ]{3,}`, but you can supply your own expression to act as a custom delimiter using an optional argument. This does mean if you have the `nobr` setting enabled, the tab or your own delimiter is mandatory.
+By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `[\\r\\n]+|[ ]{3,}`, but you can supply your own expression to act as a custom delimiter using an optional argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
     
 &nbsp;    
 
@@ -30,11 +28,12 @@ By default, the `<p>` block separator is a line break or 3 consecutive spaces (o
 
 <</p>>
 
+
 <<p '-->'>>
 
---> custom delimiter enabled
+--> p1: custom delimiter enabled
 
---> line breaks will no longer count as separate blocks
+--> p2: line breaks will no longer count as separate blocks
 
     and this line will be combined with the one above it
 
@@ -48,12 +47,30 @@ By default, the `<p>` block separator is a line break or 3 consecutive spaces (o
 :: Example_1
 <<p>>
 
-    This is a paragraph.
+    p1: This is a p block
 
-    This is another paragraph.
+    p2: This will be on the same line <<if true>> as this
 
-    Each of these will get wrapped into their own p blocks and now this is a <<link 'text'>><</link>>
+    p3: but this will be its own p
+
+    p4: this will be another p <</if>> though this is also on p4
+
+    p5: This p has a link <<link 'click me'>><<append '#new'>>
+
+            beware this will NOT be wrapped
+
+            <<p>> 
+                
+                p6: but this will be wrapped
+                
+                p7: and this too
+                
+            <</p>>
+
+    <</append>><</link>> and this text will still be on p5
 
 <</p>>
+
+<div id='new'></div>
 
 ```
