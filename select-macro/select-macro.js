@@ -24,20 +24,20 @@ Macro.add('select', {
         }
 
         // create namespace for select macro
-        setup.SS ??= {};
-        setup.SS.select ??= {};
+        setup['#Sleepy-macros'] ??= {};
+        setup['#Sleepy-macros'].select ??= {};
 
         // for each group, _g
         for (let _i = 0; _i < _groups.length; _i++) {
 
             // create group object & number identifier
             let _g = _groups[_i];
-            setup.SS.select[_g] ??= [];
-            let _num = Object.keys(setup.SS.select[_g]).length;
+            setup['#Sleepy-macros'].select[_g] ??= [];
+            let _num = Object.keys(setup['#Sleepy-macros'].select[_g]).length;
 
             // if no replacement data, push null
             if (this.payload.length === 1) {
-                setup.SS.select[_g].push(null);
+                setup['#Sleepy-macros'].select[_g].push(null);
             }
             else {
                 // for each payload
@@ -45,7 +45,7 @@ Macro.add('select', {
                     // check if payload arguments is blank or that the argument matches the current group, _g
                     // blank arguments === default replacement, must be last
                     if (! this.payload[_j].args.length || this.payload[_j].args[0].split(' ').includes(_g)) {
-                        setup.SS.select[_g][_num] = clone(this.payload[_j]);
+                        setup['#Sleepy-macros'].select[_g][_num] = clone(this.payload[_j]);
                         break
                     }
                 }
@@ -102,9 +102,9 @@ Macro.add('select', {
 
                                 // if stored payload data contains replacement data,
                                 // wiki it into a span after link
-                                if (setup.SS.select[_g][_num]) {
+                                if (setup['#Sleepy-macros'].select[_g][_num]) {
                                     const frag = document.createDocumentFragment();
-                                    new Wikifier(frag, setup.SS.select[_g][_num].contents.trim());
+                                    new Wikifier(frag, setup['#Sleepy-macros'].select[_g][_num].contents.trim());
                                     const $insert   = $(document.createElement('span'));
                                     $insert
                                             .append(frag)
@@ -119,7 +119,7 @@ Macro.add('select', {
 
                             
                             // clear up data, delete group after operation finish
-                            delete setup.SS.select[_g];
+                            delete setup['#Sleepy-macros'].select[_g];
                         }
 
 
