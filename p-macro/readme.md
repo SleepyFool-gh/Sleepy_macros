@@ -5,7 +5,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. The `.p-macro` class gets added to each `<p>` block generated with the macro.
 
 By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `'[\\r\\n]+|[ ]{3,}'`, but you can supply your own expression to act as a custom delimiter using an optional string argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
     
@@ -18,11 +18,9 @@ By default, the macro separates `<p>` block by line break or a line indent consi
 
     p1: raw text
 
-    p2: text with <span>span</span>
+    p2: text with an <span style='display:inline-flex'>inline flex</span>
 
-    p3: text with <div style='display:inline'>inline div</div>
-
-    <p>p4: pre-wrapped p that will be ignored</p>
+    <p>p3: pre-wrapped p that will be ignored</p>
 
     <div>div block element that will also be ignored</div>
 

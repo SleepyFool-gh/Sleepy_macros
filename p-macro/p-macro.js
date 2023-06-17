@@ -1,19 +1,19 @@
-setup.SS ??= {};
+setup['#Sleepy-macros'] ??= {};
 
 Macro.add('p', {
     tags: null,
     handler() {
         
-
+        // with the help of Sjoerd and Hituro
         // check if custom p delimiter, set to default if no
-        const re = typeof this.args[0] !== 'undefined' ? new RegExp(this.args[0],'g') : new RegExp('[\\r\\n]+|[ ]{3,}','g');
+        const re = typeof this.args[0] !== 'undefined' ? new RegExp(this.args[0],'g') : new RegExp('[\\n]+|[ ]{3,}','g');
 
         const frag = document.createDocumentFragment();
         const contents = this.payload[0].contents.trim();
 
         // count macro instance, set id
-        setup.SS.p_macro_count = (setup.SS.p_macro_count || 0) + 1;
-        const pId = setup.SS.p_macro_count;
+        setup['#Sleepy-macros'].p_macro_count = (setup['#Sleepy-macros'].p_macro_count || 0) + 1;
+        const pId = setup['#Sleepy-macros'].p_macro_count;
 
         // split by delimiter, add break, join, wrap
         let output = contents
@@ -31,14 +31,14 @@ Macro.add('p', {
 
         $(this.output).append(frag);
 
-        setTimeout(() => setup.SS.p_macro_post(pId), 0);
+        setTimeout(() => setup['#Sleepy-macros'].p_macro_post(pId), 0);
         
 
     },
 });
 
 // post process
-setup.SS.p_macro_post = function(pId) {
+setup['#Sleepy-macros'].p_macro_post = function(pId) {
     const wout = $(`#p-macro-output-${pId}`).contents();
     const toWrap = [];
 
@@ -46,7 +46,7 @@ setup.SS.p_macro_post = function(pId) {
     for (let i = 0; i < wout.length - 1; i++) {
         const currentNode = wout[i];
         if (currentNode.nodeType === Node.TEXT_NODE || (currentNode.nodeType === Node.ELEMENT_NODE && !['BR','P-MACRO-BREAK'].includes(currentNode.nodeName) && window.getComputedStyle(currentNode).display.includes('inline'))) {
-            const endIndex = setup.SS.wrapUntil(i, pId);
+            const endIndex = setup['#Sleepy-macros'].wrapUntil(i, pId);
             toWrap.push([i, endIndex]);
             i = endIndex;
         }
@@ -64,7 +64,7 @@ setup.SS.p_macro_post = function(pId) {
 };
 
 // wrap queuer
-setup.SS.wrapUntil = function(startIndex, pId) {
+setup['#Sleepy-macros'].wrapUntil = function(startIndex, pId) {
     const wout = $(`#p-macro-output-${pId}`).contents();
     let endIndex = startIndex;
 
