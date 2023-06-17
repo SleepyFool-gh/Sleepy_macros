@@ -5,7 +5,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 &nbsp;
 
 ### Default behavior:
-Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. The `.p-macro` class gets added to each `<p>` block generated with the macro.
+Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. The `.p-macro` class gets added to each `<p>` block generated with the macro. `<br>` elements are skipped in the wrap process, but you can put them inside `<p>` blocks.
 
 By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `'\\n+|[ ]{3,}'`, but you can supply your own expression to act as a custom delimiter using an optional string argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
     
@@ -34,6 +34,8 @@ By default, the macro separates `<p>` block by line break or a line indent consi
 --> p2: line breaks will no longer count as separate blocks
 
     and this line will be combined with the one above it
+
+--> p3: the delimiter itself gets removed on process
 
 <</p>>
 ```
