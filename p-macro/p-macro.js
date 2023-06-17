@@ -6,7 +6,7 @@ Macro.add('p', {
         
         // with the help of Sjoerd and Hituro
         // check if custom p delimiter, set to default if no
-        const re = typeof this.args[0] !== 'undefined' ? new RegExp(this.args[0],'g') : new RegExp('[\\n]+|[ ]{3,}','g');
+        const re = typeof this.args[0] !== 'undefined' ? new RegExp(this.args[0],'g') : new RegExp('\\n+|[ ]{3,}','g');
 
         const frag = document.createDocumentFragment();
         const contents = this.payload[0].contents.trim();
