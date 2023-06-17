@@ -2,7 +2,6 @@ Macro.add('p', {
     tags: null,
     handler() {
         
-        console.log(this.self);
         
         // much thanks to Hituro & Sjoerd who helped clean, improve & troubleshoot
 
