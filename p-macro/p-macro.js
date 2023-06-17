@@ -1,5 +1,6 @@
 Macro.add('p', {
     tags: null,
+    count: 0,
     handler() {
         
         // much thanks to Hituro & Sjoerd who helped clean, improve & troubleshoot
@@ -13,7 +14,7 @@ Macro.add('p', {
 
 
         // count macro instance, set id
-        this.self.count = (this.self.count || 0) + 1;
+        this.self.count++;
         const pId = this.self.count;
 
         // split by delimiter, add break, join, wrap
