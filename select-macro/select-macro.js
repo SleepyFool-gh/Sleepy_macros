@@ -1,51 +1,44 @@
 // main macro, select link
 Macro.add('select', {
-    isAsync :   true,
-    tags    :   ["alternate"],
+    isAsync       :   true,
+    tags          :   ["alternate"],
+    groupContent  :   {},
     handler() {
+
 
         // if no arguments, return error
         if (this.args.length === 0) {
             return this.error('no <<select>> link text specified');
         }
 
-        // create link
+        
+        let groupContent = this.self.groupContent;
         const $link     = $(document.createElement('a'));
         
+        // if more than 1 argument, assign groups
+        const groups = this.args.length > 1  ?  this.args[1].split(' ')  :  ['default'];
+        
 
-        let _groups = ['default'];
-        let _keywords = [':end',':persist'];
-        // let _end = this.args.includes(':end');
-        // let _persist = this.args.includes(':persist');
-
-        // if more than 1 argument && the 2nd argument isn't a keyword
-        if ((this.args.length > 1) && (!  _keywords.includes(this.args[1]))) {
-            _groups = this.args[1].split(' ');
-        }
-
-        // create namespace for select macro
-        setup['#Sleepy-macros'] ??= {};
-        setup['#Sleepy-macros'].select ??= {};
 
         // for each group, _g
-        for (let _i = 0; _i < _groups.length; _i++) {
+        for (let i = 0; i < groups.length; i++) {
 
-            // create group object & number identifier
-            let _g = _groups[_i];
-            setup['#Sleepy-macros'].select[_g] ??= [];
-            let _num = Object.keys(setup['#Sleepy-macros'].select[_g]).length;
+            // create group content array & link identifier
+            let g = groups[i];
+            groupContent[g] ??= [];
+            let linkNum = Object.keys(groupContent[g]).length;
 
             // if no replacement data, push null
             if (this.payload.length === 1) {
-                setup['#Sleepy-macros'].select[_g].push(null);
+                groupContent[g][linkNum] = null;
             }
             else {
                 // for each payload
-                for (let _j = 1; _j < this.payload.length; _j++) {
+                for (let j = 1; j < this.payload.length; j++) {
                     // check if payload arguments is blank or that the argument matches the current group, _g
                     // blank arguments === default replacement, must be last
-                    if (! this.payload[_j].args.length || this.payload[_j].args[0].split(' ').includes(_g)) {
-                        setup['#Sleepy-macros'].select[_g][_num] = clone(this.payload[_j]);
+                    if (! this.payload[j].args.length || this.payload[j].args[0].split(' ').includes(g)) {
+                        groupContent[g][linkNum] = clone(this.payload[j]);
                         break
                     }
                 }
@@ -53,8 +46,8 @@ Macro.add('select', {
 
             // add group identifiers to each link
             $link
-                    .addClass(`select-${_g}`)
-                    .attr(`data-select-${_g}-n`,_num)
+                    .addClass(`select-${g}`)
+                    .attr(`data-select-${g}-n`,linkNum)
         }
         
         // displays link text
@@ -71,8 +64,6 @@ Macro.add('select', {
                     () => {
 
 
-                        
-
                         // if this link has content to replace in its 1st payload,
                         // wiki it into a span after link
                         if (this.payload[0].contents !== '') {
@@ -85,32 +76,31 @@ Macro.add('select', {
                                     .insertAfter($link);
                         }
 
-                        
                         // remove this link
                         $link.remove();
 
+
                         // for each group this link is a part of
-                        for (let _i = 0; _i < _groups.length; _i++) {
+                        for (let i = 0; i < groups.length; i++) {
                             
-                            let _g = _groups[_i];
+                            let g = groups[i];
 
                             // search all other links in this group
-                            $(`.select-${_g}`).each( function() {
+                            $(`.select-${g}`).each( function() {
 
                                 // find num of this link
-                                let _num = $(this).attr(`data-select-${_g}-n`);
+                                let linkNum = $(this).attr(`data-select-${g}-n`);
 
                                 // if stored payload data contains replacement data,
                                 // wiki it into a span after link
-                                if (setup['#Sleepy-macros'].select[_g][_num]) {
+                                if (groupContent[g][linkNum]) {
                                     const frag = document.createDocumentFragment();
-                                    new Wikifier(frag, setup['#Sleepy-macros'].select[_g][_num].contents.trim());
+                                    new Wikifier(frag, groupContent[g][linkNum].contents.trim());
                                     const $insert   = $(document.createElement('span'));
                                     $insert
                                             .append(frag)
                                             .addClass(`macro-select-in`)
                                             .insertAfter(this);
-
                                 }
 
                                 // remove link
@@ -119,7 +109,7 @@ Macro.add('select', {
 
                             
                             // clear up data, delete group after operation finish
-                            delete setup['#Sleepy-macros'].select[_g];
+                            delete groupContent[g];
                         }
 
 
@@ -129,7 +119,6 @@ Macro.add('select', {
                 // adds link text to output
                 .appendTo(this.output);
                 
-
     }
 });
 
@@ -143,10 +132,11 @@ Macro.add('selectremove', {
             return this.error('no <<selectremove>> group_id specified');
         }
 
-        // find all links with selected group and delete them
-        let _g = this.args[0];
-        $(`.select-${_g}`).remove();
+        // find all links with selected group and delete them, then delete group content data
+        let g = this.args[0];
+        $(`.select-${g}`).remove();
 
+        delete Macro.get('select').groupContent[g];
 
     }
 });
