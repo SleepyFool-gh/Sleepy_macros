@@ -7,7 +7,7 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 ### Default behavior:
 Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored.
 
-By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `[\\r\\n]+|[ ]{3,}`, but you can supply your own expression to act as a custom delimiter using an optional argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
+By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `'[\\r\\n]+|[ ]{3,}'`, but you can supply your own expression to act as a custom delimiter using an optional string argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
     
 &nbsp;    
 
@@ -75,4 +75,6 @@ By default, the macro separates `<p>` block by line break or a line indent consi
 
 ```
 
-Thank you SjoerdHekking & Hituro for helping me clean, troubleshoot, & improve the macro.
+&nbsp;
+
+Many thanks to SjoerdHekking & Hituro for helping me clean, troubleshoot, & improve this macro.
