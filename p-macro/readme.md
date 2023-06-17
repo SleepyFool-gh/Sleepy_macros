@@ -74,3 +74,5 @@ By default, the macro separates `<p>` block by line break or a line indent consi
 <div id='new'></div>
 
 ```
+
+Thank you SjoerdHekking & Hituro for helping me clean, troubleshoot, & improve the macro.
