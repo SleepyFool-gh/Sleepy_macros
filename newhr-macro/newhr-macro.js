@@ -27,7 +27,7 @@ Macro.add('newhr', {
                 .animate({opacity: 1});
 
             setTimeout( function() {
-                $('hr.macro-oldhr').remove();
+                // $('hr.macro-oldhr').remove();
                 $hr.addClass('macro-oldhr');
             }, 510);
             
