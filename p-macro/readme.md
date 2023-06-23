@@ -9,7 +9,7 @@ Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` e
 
 By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `'\\n+|[ ]{3,}'`, but you can supply your own expression to act as a custom delimiter using an optional string argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
 
-Notice: `<<include>>` (or similar which pulls content from another passage) does NOT work INSIDE the macro at the moment. The macro will wrap the entirety of the included content, and block elements inside the included content will result in empty `<p>` blocks. But you *can* `<<include>>` a passage with a `<<p>>` call inside it and that will work fine, as long as the `<<include>>` call itself is not inside another `<<p>>`.
+**Notice:** `<<include>>` (or similar which pulls content from another passage) does NOT work inside the macro container at the moment. The macro will wrap the entirety of the included content, and block elements inside the included content will result in empty `<p>` blocks. But <<include>>`ing a passage with a `<<p>>` call inside it will work just fine, as long as the `<<include>>` call itself is not inside another `<<p>>`.
 
 &nbsp;    
 
