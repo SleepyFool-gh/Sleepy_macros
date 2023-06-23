@@ -8,7 +8,9 @@ A container macro that attempts to automatically wrap any unprocessed raw text e
 Blocks of text enclosed by the `<<p>>` macro are individually wrapped in `<p>` elements. Pre-wrapped lines are ignored. The `.p-macro` class gets added to each `<p>` block generated with the macro. `<br>` elements are skipped in the wrap process, but you can put them inside `<p>` blocks.
 
 By default, the macro separates `<p>` block by line break or a line indent consisting of at least 3 consecutive spaces (a tab works on most interfaces) using the RegExp `'\\n+|[ ]{3,}'`, but you can supply your own expression to act as a custom delimiter using an optional string argument. If you have `nobr` enabled, the indent or your own delimiter is required, since line breaks get removed.
-    
+
+Notice: `<<include>>` (or similar which pulls content from another passage) does NOT work INSIDE the macro at the moment. The macro will wrap the entirety of the included content, and block elements inside the included content will result in empty `<p>` blocks. But you *can* `<<include>>` a passage with a `<<p>>` call inside it and that will work fine, as long as the `<<include>>` call itself is not inside another `<<p>>`.
+
 &nbsp;    
 
 ### Usage:
@@ -24,9 +26,14 @@ By default, the macro separates `<p>` block by line break or a line indent consi
 
     <div>div block element that will also be ignored</div>
 
+    <<include 'another_passage'>> <!-- this WILL NOT work, inside <<p>> container -->
+
 <</p>>
 
+<<include 'Custom_Delimiter'>> <!-- but this WILL work, included passage has a <<p>> call -->
 
+
+:: Custom_Delimiter
 <<p '-->'>>
 
 --> p1: custom delimiter enabled
