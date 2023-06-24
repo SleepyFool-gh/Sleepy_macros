@@ -1,0 +1,39 @@
+hr.macro-divider {
+    opacity: 1;
+    margin: 1.2em auto;
+    width: 80%;
+    border-top-width: 0.1em;
+    border-top-style: solid;
+    border-top-color: white;
+}
+
+hr.macro-divider-in {
+    animation: divider-in 400ms ease-in forwards;
+}
+
+@keyframes divider-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+hr.macro-divider-out {
+    animation: divider-out 800ms ease forwards;
+}
+
+@keyframes divider-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        max-height: 0;
+        margin: 0 auto;
+    }
+}
