@@ -3,6 +3,7 @@ Macro.add('select', {
     isAsync       :   true,
     tags          :   ["alternate"],
     groupContent  :   {},
+    selectCount   :   0,
     handler() {
 
 
@@ -14,6 +15,9 @@ Macro.add('select', {
         
         let groupContent = this.self.groupContent;
         const $link     = $(document.createElement('a'));
+
+        const linkId    = this.self.selectCount;
+        this.self.selectCount++;
         
         // if more than 1 argument, assign groups
         const groups = this.args.length > 1  ?  this.args[1].split(' ')  :  ['default'];
@@ -48,6 +52,7 @@ Macro.add('select', {
             $link
                     .addClass(`select-${g}`)
                     .attr(`data-select-${g}-n`,linkNum)
+            
         }
         
         // displays link text
@@ -57,6 +62,7 @@ Macro.add('select', {
 
         $link
                 // add appropriate classes & id
+                .attr('data-select-id',linkId)
                 .addClass(`link-internal macro-${this.name}`)
                 .ariaClick({
                     one :   true
@@ -64,29 +70,13 @@ Macro.add('select', {
                     () => {
 
 
-                        // if this link has content to replace in its 1st payload,
-                        // wiki it into a span after link
-                        if (this.payload[0].contents !== '') {
-                            const frag = document.createDocumentFragment();
-                            new Wikifier(frag, this.payload[0].contents.trim());
-                            const $insert   = $(document.createElement('span'));
-                            $insert
-                                    .append(frag)
-                                    .addClass(`macro-select-in`)
-                                    .insertAfter($link);
-                        }
-
-                        // remove this link
-                        $link.remove();
-
-
                         // for each group this link is a part of
                         for (let i = 0; i < groups.length; i++) {
                             
                             let g = groups[i];
 
-                            // search all other links in this group
-                            $(`.select-${g}`).each( function() {
+                            // search all other links in this group except this one
+                            $(`.select-${g}:not([data-select-id='${linkId}'])`).each( function() {
 
                                 // find num of this link
                                 let linkNum = $(this).attr(`data-select-${g}-n`);
@@ -105,12 +95,28 @@ Macro.add('select', {
 
                                 // remove link
                                 this.remove();
+
                             });
 
                             
                             // clear up data, delete group after operation finish
                             delete groupContent[g];
                         }
+
+                        // if this link has content to replace in its 1st payload,
+                        // wiki it into a span after link
+                        if (this.payload[0].contents !== '') {
+                            const frag = document.createDocumentFragment();
+                            new Wikifier(frag, this.payload[0].contents.trim());
+                            const $insert   = $(document.createElement('span'));
+                            $insert
+                                    .append(frag)
+                                    .addClass(`macro-select-in`)
+                                    .insertAfter($link);
+                        }
+
+                        // remove this link
+                        $link.remove();
 
 
                     }
