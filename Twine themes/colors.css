@@ -1,0 +1,161 @@
+/*
+ 
+  ██████╗ ██████╗ ██╗      ██████╗ ██████╗ ███████╗
+ ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗██╔════╝
+ ██║     ██║   ██║██║     ██║   ██║██████╔╝███████╗
+ ██║     ██║   ██║██║     ██║   ██║██╔══██╗╚════██║
+ ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║███████║
+  ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+                                                   
+*/
+/* changes colors */
+/* Is this silly? Oh yes absolutely. DOES IT WORK? :D */
+
+/* defines colors and color names */
+:root {
+    --user-color1-name: 'Blood';
+    --user-color1: #ff0800;
+
+    --user-color2-name: 'Apricot';
+    --user-color2: #ffa755;
+
+    --user-color3-name: 'Gold';
+    --user-color3: #ffd13a;
+
+    --user-color4-name: 'Lime';
+    --user-color4: #24cc2f;
+
+    --user-color5-name: 'Azure';
+    --user-color5: #658bcc;
+
+    --user-color6-name: 'Pink';
+    --user-color6: #da6099;
+
+}
+/* applies colors to passage map tags */
+.tag-stripe .color-red {
+    background: var(--user-color1) !important;
+}
+.tag-stripe .color-orange {
+    background: var(--user-color2) !important;
+}
+.tag-stripe .color-yellow {
+    background: var(--user-color3) !important;
+}
+.tag-stripe .color-green {
+    background: var(--user-color4) !important;
+}
+.tag-stripe .color-blue {
+    background: var(--user-color5) !important;
+}
+.tag-stripe .color-purple {
+    background: var(--user-color6) !important;
+}
+
+/* applies color to tag buttons in passage window */
+.tag-button.color-red    .menu-button>.icon-button,
+.tag-button.color-orange .menu-button>.icon-button,
+.tag-button.color-yellow .menu-button>.icon-button,
+.tag-button.color-green  .menu-button>.icon-button,
+.tag-button.color-blue   .menu-button>.icon-button,
+.tag-button.color-purple .menu-button>.icon-button {
+    border-color: transparent;
+    transition: filter 0.2s;
+    filter: brightness(0.9);
+    color: white;
+}
+    .tag-button .menu-button>.icon-button:hover {
+        filter: brightness(1.1);
+    }
+    .tag-button.color-red    .menu-button>.icon-button .icon,
+    .tag-button.color-orange .menu-button>.icon-button .icon,
+    .tag-button.color-yellow .menu-button>.icon-button .icon,
+    .tag-button.color-green  .menu-button>.icon-button .icon,
+    .tag-button.color-blue   .menu-button>.icon-button .icon,
+    .tag-button.color-purple .menu-button>.icon-button .icon {
+        filter: saturate(0.8) brightness(0.75);
+    }
+.tag-button.color-red .menu-button>.icon-button,
+.tag-button.color-red .menu-button>.icon-button:hover {
+    background-color: var(--user-color1);
+}
+    .tag-button.color-red .menu-button>.icon-button .icon {
+        color: var(--user-color1);
+    }
+.tag-button.color-orange .menu-button>.icon-button,
+.tag-button.color-orange .menu-button>.icon-button:hover {
+    background-color: var(--user-color2);
+}
+    .tag-button.color-orange .menu-button>.icon-button .icon {
+        color: var(--user-color2);
+    }
+.tag-button.color-yellow .menu-button>.icon-button,
+.tag-button.color-yellow .menu-button>.icon-button:hover {
+    background-color: var(--user-color3);
+}
+    .tag-button.color-yellow .menu-button>.icon-button .icon {
+        color: var(--user-color3);
+    }
+.tag-button.color-green .menu-button>.icon-button,
+.tag-button.color-green .menu-button>.icon-button:hover {
+    background-color: var(--user-color4);
+}
+    .tag-button.color-green .menu-button>.icon-button .icon {
+        color: var(--user-color4);
+    }
+.tag-button.color-blue .menu-button>.icon-button,
+.tag-button.color-blue .menu-button>.icon-button:hover {
+    background-color: var(--user-color5);
+}
+    .tag-button.color-blue .menu-button>.icon-button .icon {
+        color: var(--user-color5);
+    }
+.tag-button.color-purple .menu-button>.icon-button,
+.tag-button.color-purple .menu-button>.icon-button:hover {
+    background-color: var(--user-color6);
+}
+    .tag-button.color-purple .menu-button>.icon-button .icon {
+        color: var(--user-color6);
+    }
+
+/* BEWARE: THE FOLLOWING IS EXTRA SILLY */
+/* hides original items and keeps functionality */
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7) {
+    color: #242424;
+    transition: color 0.2s;
+}
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7):hover {
+    color: #414141;
+}
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7)::after {
+    position: absolute;
+    left: 2.25em;
+    color: #b3b3b3;
+}
+/* creates check mark */
+.tag-button .button-bar button[aria-checked='true']::before {
+    content: "✓";
+    position: absolute;
+    color: white;
+    z-index: 2;
+    left: 0.9em;
+}
+/* new names */
+.tag-button .button-bar button:nth-child(2)::after {
+    content: var(--user-color1-name);
+}
+.tag-button .button-bar button:nth-child(3)::after {
+    content: var(--user-color2-name);
+}
+.tag-button .button-bar button:nth-child(4)::after {
+    content: var(--user-color3-name);
+}
+.tag-button .button-bar button:nth-child(5)::after {
+    content: var(--user-color4-name);
+}
+.tag-button .button-bar button:nth-child(6)::after {
+    content: var(--user-color5-name);
+}
+.tag-button .button-bar button:nth-child(7)::after {
+    content: var(--user-color6-name);
+}
