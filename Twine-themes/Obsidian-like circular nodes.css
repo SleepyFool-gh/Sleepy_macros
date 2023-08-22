@@ -104,6 +104,7 @@ body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .ca
         text-align: center;
         align-self: center;
         z-index: 2;
+        text-shadow: 0 0 0.2em #010b16, 0 0 0.2em#010b16, 0 0 1em #010b16, 0 0 1em #010b16;
         bottom: -1.25em;
         font-size: 1.25em;
     }
@@ -112,19 +113,8 @@ body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .ca
             bottom: -1.25em;
             font-size: 2em;
         }
-        /* a bit of styling to make name more readable */
-        body[data-app-theme='dark'] .passage-map .passage-card .card > h2::before {
-            background: #010b16;
-            height: 100%;
-            width: calc(100% + 0.5em);
-            position: absolute;
-            content: '';
-            z-index: -1;
-            left: -0.25em;
-            opacity: 0.5;
-        }
     /* brings selected and hovered passage cards up in stack */
-    body[data-app-theme='dark'] .passage-map.compact-passage-cards.selected .passage-card,
+    body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card.selected,
     body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card:hover {
         z-index: 40;
     }
@@ -144,4 +134,5 @@ body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .ca
         opacity: 0.8;
         font-size: 1.5em;
         color: white;
+        overflow: auto;
     }
