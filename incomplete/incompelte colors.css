@@ -1,0 +1,231 @@
+/*
+ 
+  ██████╗ ██████╗ ██╗      ██████╗ ██████╗ ███████╗
+ ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗██╔════╝
+ ██║     ██║   ██║██║     ██║   ██║██████╔╝███████╗
+ ██║     ██║   ██║██║     ██║   ██║██╔══██╗╚════██║
+ ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║███████║
+  ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+                                                   
+*/
+/* Warning: This is silly. (But it works :D) */
+
+/* defines colors and color names */
+:root {
+
+    /* new light mode colors */
+    --user-light-color1-name: 'light1';
+    --user-light-color1: #ff0800;
+
+    --user-light-color2-name: 'light2';
+    --user-light-color2: #ffa755;
+
+    --user-light-color3-name: 'light3';
+    --user-light-color3: #ffd13a;
+
+    --user-light-color4-name: 'light4';
+    --user-light-color4: #24cc2f;
+
+    --user-light-color5-name: 'light5';
+    --user-light-color5: #658bcc;
+
+    --user-light-color6-name: 'light6';
+    --user-light-color6: #da6099;
+
+    /* new dark mode colors */
+    --user-dark-color1-name: 'dark1';
+    --user-dark-color1: #ff0800;
+
+    --user-dark-color2-name: 'dark2';
+    --user-dark-color2: #ffa755;
+
+    --user-dark-color3-name: 'dark3';
+    --user-dark-color3: #ffd13a;
+
+    --user-dark-color4-name: 'dark4';
+    --user-dark-color4: #24cc2f;
+
+    --user-dark-color5-name: 'dark5';
+    --user-dark-color5: #658bcc;
+
+    --user-dark-color6-name: 'dark6';
+    --user-dark-color6: #da6099;
+
+}
+
+/* applies colors to passage map tags */
+/* LIGHT */
+body[data-app-theme='light'] .tag-stripe .color-red {
+    background: var(--user-light-color1) !important;
+}
+body[data-app-theme='light'] .tag-stripe .color-orange {
+    background: var(--user-light-color2) !important;
+}
+body[data-app-theme='light'] .tag-stripe .color-yellow {
+    background: var(--user-light-color3) !important;
+}
+body[data-app-theme='light'] .tag-stripe .color-green {
+    background: var(--user-light-color4) !important;
+}
+body[data-app-theme='light'] .tag-stripe .color-blue {
+    background: var(--user-light-color5) !important;
+}
+body[data-app-theme='light'] .tag-stripe .color-purple {
+    background: var(--user-light-color6) !important;
+}
+/* DARK */
+body[data-app-theme='dark'] .tag-stripe .color-red {
+    background: var(--user-dark-color1) !important;
+}
+body[data-app-theme='dark'] .tag-stripe .color-orange {
+    background: var(--user-dark-color2) !important;
+}
+body[data-app-theme='dark'] .tag-stripe .color-yellow {
+    background: var(--user-dark-color3) !important;
+}
+body[data-app-theme='dark'] .tag-stripe .color-green {
+    background: var(--user-dark-color4) !important;
+}
+body[data-app-theme='dark'] .tag-stripe .color-blue {
+    background: var(--user-dark-color5) !important;
+}
+body[data-app-theme='dark'] .tag-stripe .color-purple {
+    background: var(--user-dark-color6) !important;
+}
+
+/* applies color to tag buttons in passage window */
+/* makes border color transparent and adds color transition */
+/* .tag-button[class*='color-']:not(.color-none):not(.color-undefined) .menu-button>.icon-button {
+    border-color: transparent;
+    filter: brightness(1);
+    transition: filter 0.2s;
+} */
+/* makes text color stand out */
+/* body[data-app-theme='light'] .tag-button[class*='color-']:not(.color-none):not(.color-undefined) .menu-button>.icon-button {
+    color: black;
+}
+body[data-app-theme='dark'] .tag-button[class*='color-']:not(.color-none):not(.color-undefined) .menu-button>.icon-button {
+    color: white;
+} */
+    /* on hover, light mode darkens, dark mode lightens */
+    /* body[data-app-theme='light'].tag-button .menu-button>.icon-button:hover {
+        filter: brightness(0.8);
+    }
+    body[data-app-theme='dark'].tag-button .menu-button>.icon-button:hover {
+        filter: brightness(1.2);
+    }
+    .tag-button[class*='color-']:not(.color-none):not(.color-undefined) .menu-button>.icon-button .icon {
+        filter: saturate(0.8) brightness(0.75);
+    }
+
+
+body[data-app-theme='dark'] .tag-button.color-red .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-red .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color1);
+}
+    .tag-button.color-red .menu-button>.icon-button .icon {
+        color: var(--user-dark-color1);
+    }
+body[data-app-theme='dark'] .tag-button.color-orange .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-orange .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color2);
+}
+    .tag-button.color-orange .menu-button>.icon-button .icon {
+        color: var(--user-dark-color2);
+    }
+body[data-app-theme='dark'] .tag-button.color-yellow .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-yellow .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color3);
+}
+    .tag-button.color-yellow .menu-button>.icon-button .icon {
+        color: var(--user-dark-color3);
+    }
+body[data-app-theme='dark'] .tag-button.color-green .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-green .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color4);
+}
+    .tag-button.color-green .menu-button>.icon-button .icon {
+        color: var(--user-dark-color4);
+    }
+body[data-app-theme='dark'] .tag-button.color-blue .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-blue .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color5);
+}
+    .tag-button.color-blue .menu-button>.icon-button .icon {
+        color: var(--user-dark-color5);
+    }
+body[data-app-theme='dark'] .tag-button.color-purple .menu-button>.icon-button,
+body[data-app-theme='dark'] .tag-button.color-purple .menu-button>.icon-button:hover {
+    background-color: var(--user-dark-color6);
+}
+    .tag-button.color-purple .menu-button>.icon-button .icon {
+        color: var(--user-dark-color6);
+    } */
+
+
+
+/* BEWARE: THE FOLLOWING IS EXTRA SILLY */
+
+/* hides original words */
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7) {
+    color: transparent;
+}
+.card-button-card[aria-label='Add Tag'] .card-content :nth-child(3) .text-select-control select > option:nth-child(n+2) {
+    color: transparent !important;
+}
+/* reshow checkmark */
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7) span {
+    color: var(--dark-gray);
+}
+/* give new names appropriate color */
+.card-button-card[aria-label='Add Tag'] .card-content :nth-child(3) .text-select-control::before {
+    color: var(--dark-gray) !important;
+}
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7)::after {
+    color: var(--dark-gray);
+}
+
+
+/* new names */
+.tag-button .button-bar button:nth-child(n+2):nth-child(-n+7)::after {
+    position: absolute;
+    left: 2.25em;
+}
+/* LIGHT */
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(2)::after {
+    content: var(--user-light-color1-name);
+}
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(3)::after {
+    content: var(--user-light-color2-name);
+}
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(4)::after {
+    content: var(--user-light-color3-name);
+}
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(5)::after {
+    content: var(--user-light-color4-name);
+}
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(6)::after {
+    content: var(--user-light-color5-name);
+}
+body[data-app-theme='light'] .tag-button .button-bar button:nth-child(7)::after {
+    content: var(--user-light-color6-name);
+}
+/* DARK */
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(2)::after {
+    content: var(--user-dark-color1-name);
+}
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(3)::after {
+    content: var(--user-dark-color2-name);
+}
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(4)::after {
+    content: var(--user-dark-color3-name);
+}
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(5)::after {
+    content: var(--user-dark-color4-name);
+}
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(6)::after {
+    content: var(--user-dark-color5-name);
+}
+body[data-app-theme='dark'] .tag-button .button-bar button:nth-child(7)::after {
+    content: var(--user-dark-color6-name);
+}

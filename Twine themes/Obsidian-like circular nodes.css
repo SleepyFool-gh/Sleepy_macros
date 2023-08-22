@@ -59,7 +59,7 @@ body[data-app-theme='dark'] .passage-map .passage-card.selected::before {
                                             
 */
 /* transforms passage squares into circles */
-body[data-app-theme='dark'] .passage-map .passage-card .card {
+body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .card {
     border-radius: 50% !important;
     padding: 0 !important;
     overflow: initial;
@@ -67,7 +67,7 @@ body[data-app-theme='dark'] .passage-map .passage-card .card {
     border: none;
 }
     /* makes tag color tag up entire height and width of passage circle */
-    body[data-app-theme='dark'] .passage-map .passage-card .tag-stripe {
+    body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .tag-stripe {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -75,12 +75,12 @@ body[data-app-theme='dark'] .passage-map .passage-card .card {
         background: #3a3f43;
     }
         /* hides uncolored tags from circular node */
-        body[data-app-theme='dark'] .passage-map .passage-card .tag-stripe span.color-undefined,
-        body[data-app-theme='dark'] .passage-map .passage-card .tag-stripe span.color-none {
+        body[data-app-theme='dark'] .passage-map.compact-passage-cards  .passage-card .tag-stripe span.color-undefined,
+        body[data-app-theme='dark'] .passage-map.compact-passage-cards  .passage-card .tag-stripe span.color-none {
             display: none;
         }
         /* just styling */
-        body[data-app-theme='dark'] .tag-stripe::before {
+        body[data-app-theme='dark'] .passage-map.compact-passage-cards .tag-stripe::before {
             content: '';
             height: 100%;
             width: 100%;
@@ -92,21 +92,56 @@ body[data-app-theme='dark'] .passage-map .passage-card .card {
             left: 0;
             pointer-events: none;
         }
-        body[data-app-theme='dark'] .passage-map .passage-card .tag-stripe span {
-            height: 100%;
-            margin: 0 !important;
-        }
+            body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .tag-stripe span {
+                height: 100%;
+                margin: 0 !important;
+            }
         
     /* makes passage name appear under circular node */
     body[data-app-theme='dark'] .passage-map .passage-card .card > h2 {
         position: absolute;
-        bottom: -1.75em;
         width: max-content;
-        font-size: 2em;
         text-align: center;
         align-self: center;
         z-index: 2;
+        bottom: -1.25em;
+        font-size: 1.25em;
     }
-    body[data-app-theme='dark'] .passage-map .card-content {
-        /* display: none; */
+        body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card .card > h2 {
+            pointer-events: none;
+            bottom: -1.25em;
+            font-size: 2em;
+        }
+        /* a bit of styling to make name more readable */
+        body[data-app-theme='dark'] .passage-map .passage-card .card > h2::before {
+            background: #010b16;
+            height: 100%;
+            width: calc(100% + 0.5em);
+            position: absolute;
+            content: '';
+            z-index: -1;
+            left: -0.25em;
+            opacity: 0.5;
+        }
+    /* brings selected and hovered passage cards up in stack */
+    body[data-app-theme='dark'] .passage-map.compact-passage-cards.selected .passage-card,
+    body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card:hover {
+        z-index: 40;
+    }
+    /* shows node content on hover */
+    body[data-app-theme='dark'] .passage-map.compact-passage-cards .passage-card:hover .card-content {
+        display: block;
+        position: absolute;
+        z-index: 40;
+        top: 65%;
+        left: 65%;
+        width: 18em;
+        max-height: 12em;
+        background: rgb(0 0 0);
+        border: 2px solid white;
+        border-radius: 0 0.5em 0.5em;
+        padding: 0 0.4em;
+        opacity: 0.8;
+        font-size: 1.5em;
+        color: white;
     }
