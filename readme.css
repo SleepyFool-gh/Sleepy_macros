@@ -1,0 +1,10 @@
+.markdown-body {
+    color: white;
+    padding: 2rem;
+    border: 1px solid #ffffff1a;
+    border-radius: 1rem;
+    background: #8080800f;
+}
+.markdown-body a {
+    color: #65adff;
+}
