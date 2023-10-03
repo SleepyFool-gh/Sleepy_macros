@@ -10,4 +10,4 @@ Aside from the first section, each effect is incompatible with another effect in
 
 <b>CAUTION:</b> CSS effects and text animations are often better when used <em>sparingly</em>.
 
-See the [demo page](https://sleepyfool-gh.github.io/Sleepy-macros/)
+See the [demo page](./css-pack.html)
