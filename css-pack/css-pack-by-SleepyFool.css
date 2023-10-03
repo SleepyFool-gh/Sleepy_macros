@@ -1,0 +1,839 @@
+/*
+ ████  █████ █████  ███  █   █ █     █████  ████
+ █   █ █     █     █   █ █   █ █       █   █
+ █   █ ███   ███   █████ █   █ █       █    ███
+ █   █ █     █     █   █ █   █ █       █       █
+ ████  █████ █     █   █  ███  █████   █   ████
+ SECTION:
+*/
+:root {
+
+    /* lettering */
+    --tw-default-expand: 0.1em;
+    --tw-default-condense: -0.08em;
+
+    --tw-default-drop-cap-size: 3.5em;
+    --tw-default-drop-cap-margin: 0.2em 0.2em 0 0.1em;
+    --tw-default-drop-cap-font: serif;
+
+
+    /* underline & strike */
+    --tw-default-line-color: white;
+    --tw-default-line-width: 0.1em;
+
+
+    /* filters */
+    --tw-default-glow-color: currentColor;
+    --tw-default-smear-color: currentColor;
+
+    --tw-default-blur: 0.05em;
+    --tw-default-blurrier: 0.1em;
+
+
+    /* text-shadows */
+    --tw-default-outline-color: black;
+    --tw-default-outline-width: 1.5px;
+
+    --tw-default-shadow-color: currentColor;
+
+    --tw-default-emboss-color: color-mix(in hsl, currentColor, black 20%);
+
+
+
+    /* animations */
+    --tw-default-blink-time: 2s;
+    --tw-default-fade-in-out-time: 2.5s;
+
+    --tw-default-rumble-time: 0.1s;
+    --tw-default-rumble-height: 0.14em;
+    
+    --tw-default-shudder-time: 0.1s;
+    --tw-default-shudder-width: 0.12em;
+
+    --tw-default-sway-time: 5s;
+    --tw-default-sway-width: 0.5em;
+
+    --tw-default-buoy-time: 5s;
+    --tw-default-buoy-height: 0.4em;
+
+    --tw-default-fidget-time: 7s;
+    --tw-default-fidget-dist: 0.2em;
+
+    --tw-default-spin-time: 5s;
+
+    --tw-default-glitch-L: 0.015em;
+    --tw-default-glitch-L-time: 5s;
+    --tw-default-glitch-L-time2: 2.5s;
+    --tw-default-glitch-L-color: color-mix(in srgb, currentColor, magenta 20%);
+    --tw-default-glitch-R: 0.025em;
+    --tw-default-glitch-R-time: 4s;
+    --tw-default-glitch-R-time2: 2.75s;
+    --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
+
+    --tw-default-swing-time: 4s;
+    --tw-default-swing-angle: 10deg;
+
+    --tw-default-bounce-time: 1s;
+    --tw-default-bounce-height: 1.25em;
+
+    --tw-default-slide-time: 2s;
+
+    --tw-default-wave-time: 2.5s;
+    --tw-default-wave-angle: 10deg;
+}
+
+/*
+ ████  ███  ████ ████  █      ███  █   █
+ █   █  █  █     █   █ █     █   █  █ █
+ █   █  █   ███  ████  █     █████   █
+ █   █  █      █ █     █     █   █   █
+ ████  ███ ████  █     █████ █   █   █
+ SECTION:
+*/
+/* Harlowe import */
+*[tw-none],
+.tw-none {
+    display: none;
+}
+/* original */
+*[tw-invisible],
+.tw-invisible {
+    visibility: hidden;
+}
+
+
+/*
+ █████  ████  █    █ █████
+ █     █    █ ██   █   █
+ ███   █    █ █ █  █   █
+ █     █    █ █  █ █   █
+ █      ████  █   ██   █
+ SECTION:
+*/
+/* Harlowe import */
+*[tw-bold],
+.tw-bold {
+    font-weight: bold;
+}
+*[tw-italic],
+.tw-italic {
+    font-style: italic;
+}
+
+/* Harlowe import */
+*[tw-superscript],
+.tw-superscript,
+*[tw-subscript],
+.tw-subscript {
+    font-size: .8em;
+}
+    *[tw-superscript],
+    .tw-superscript {
+        vertical-align: super;
+    }
+    *[tw-subscript],
+    .tw-subscript {
+        vertical-align: sub;
+    }
+
+/* Harlowe import */
+*[tw-expand],
+.tw-expand {
+    letter-spacing: var(--tw-expand, var(--tw-default-expand));
+}
+*[tw-condense],
+.tw-condense {
+    letter-spacing: var(--tw-condense, var(--tw-default-condense));
+}
+
+/* original */
+.tw-drop-cap::first-letter {
+    font-size: var(--tw-drop-cap-size, var(--tw-default-drop-cap-size));
+    float: left;
+    margin: var(--tw-drop-cap-margin, var(--tw-default-drop-cap-margin));
+    font-family: var(--tw-drop-cap-font, var(--tw-default-drop-cap-font));
+}
+
+
+/*
+ ████  █████  ████  ████  ████   ███  █████ ███  ████  █    █
+ █   █ █     █     █    █ █   █ █   █   █    █  █    █ ██   █
+ █   █ ███   █     █    █ ████  █████   █    █  █    █ █ █  █
+ █   █ █     █     █    █ █   █ █   █   █    █  █    █ █  █ █
+ ████  █████  ████  ████  █   █ █   █   █   ███  ████  █   ██
+ SECTION:
+*/
+/* Harlowe import */
+*[tw-underline],
+.tw-underline,
+*[tw-underline-dashed],
+.tw-underline-dashed,
+*[tw-underline-dotted],
+.tw-underline-dotted,
+*[tw-underline-double],
+.tw-underline-double,
+*[tw-underline-wavy],
+.tw-underline-wavy,
+*[tw-strike],
+.tw-strike,
+*[tw-strike-dashed],
+.tw-strike-dashed,
+*[tw-strike-dotted],
+.tw-strike-dotted,
+*[tw-strike-double],
+.tw-strike-double,
+*[tw-strike-wavy],
+.tw-strike-wavy {
+    text-decoration-color: var(--tw-line-color, var(--tw-default-line-color));
+    text-decoration-thickness: var(--tw-line-width, var(--tw-default-line-width));
+}
+    /* underline */
+    *[tw-underline],
+    .tw-underline,
+    *[tw-underline-dashed],
+    .tw-underline-dashed,
+    *[tw-underline-dotted],
+    .tw-underline-dotted,
+    *[tw-underline-double],
+    .tw-underline-double,
+    *[tw-underline-wavy],
+    .tw-underline-wavy {
+        text-decoration-line: underline;
+    }
+        *[tw-underline],
+        .tw-underline {
+            text-decoration-style: solid;
+        }
+        *[tw-underline-dashed],
+        .tw-underline-dashed {
+            text-decoration-style: dashed;
+        }
+        *[tw-underline-dotted],
+        .tw-underline-dotted {
+            text-decoration-style: dotted;
+        }
+        *[tw-underline-double],
+        .tw-underline-double {
+            text-decoration-style: double;
+        }
+        *[tw-underline-wavy],
+        .tw-underline-wavy {
+            text-decoration-style: wavy;
+        }
+    /* strike */
+    *[tw-strike],
+    .tw-strike,
+    *[tw-strike-dashed],
+    .tw-strike-dashed,
+    *[tw-strike-dotted],
+    .tw-strike-dotted,
+    *[tw-strike-double],
+    .tw-strike-double,
+    *[tw-strike-wavy],
+    .tw-strike-wavy {
+        text-decoration-line: line-through;
+    }
+            *[tw-strike],
+            .tw-strike {
+                text-decoration-style: solid;
+            }
+            *[tw-strike-dashed],
+            .tw-strike-dashed {
+                text-decoration-style: dashed;
+            }
+            *[tw-strike-dotted],
+            .tw-strike-dotted {
+                text-decoration-style: dotted;
+            }
+            *[tw-strike-double],
+            .tw-strike-double {
+                text-decoration-style: double;
+            }
+            *[tw-strike-wavy],
+            .tw-strike-wavy {
+                text-decoration-style: wavy;
+            }
+
+
+/*
+ █████ ███ █     █████ █████ ████ 
+ █      █  █       █   █     █   █
+ ███    █  █       █   ███   ████ 
+ █      █  █       █   █     █   █ 
+ █     ███ █████   █   █████ █   █
+ SECTION:
+*/
+
+/* glow */
+/* Harlowe import */
+*[tw-glow],
+.tw-glow {
+    filter: 
+        drop-shadow(0 0 1em var(--tw-glow-color, var(--tw-default-glow-color)));
+}
+*[tw-glow-weak],
+.tw-glow-weak {
+    filter: 
+        drop-shadow(0 0 0.5em var(--tw-glow-color, var(--tw-default-glow-color)));
+}
+*[tw-glow-strong],
+.tw-glow-strong {
+    filter: 
+        drop-shadow(0 0 0.5em var(--tw-glow-color, var(--tw-default-glow-color))) 
+        drop-shadow(0 0 1em var(--tw-glow-color, var(--tw-default-glow-color)));
+}
+
+/* smear */
+/* Harlowe import */
+*[tw-smear],
+.tw-smear {
+    filter:
+        drop-shadow(0 0 0.25em var(--tw-smear-color, var(--tw-default-smear-color))) 
+        drop-shadow(0 0 0.25em var(--tw-smear-color, var(--tw-default-smear-color)));
+}
+
+/* blur */
+/* Harlowe import */
+*[tw-blur],
+.tw-blur {
+    filter: blur(var(--tw-blur, var(--tw-default-blur)));
+}
+*[tw-blurrier],
+.tw-blurrier {
+    filter: blur(var(--tw-blur, var(--tw-default-blurrier)));
+}
+
+
+
+/*
+  ████  █   █ █████ █     ███ █    █ █████
+ █    █ █   █   █   █      █  ██   █ █
+ █    █ █   █   █   █      █  █ █  █ ███
+ █    █ █   █   █   █      █  █  █ █ █
+  ████   ███    █   █████ ███ █   ██ █████
+ SECTION:
+*/
+/* Harlowe import */
+*[tw-outline],
+.tw-outline {
+    --__outline_R: var(--tw-outline-width, var(--tw-default-outline-width));
+    --__outline_L: calc(-1 * var(--__outline_R));
+    --__outline_D: var(--__outline_R);
+    --__outline_U: var(--__outline_L);
+    --__outline_color:  var(--tw-outline-color, var(--tw-default-outline-color));
+    text-shadow:
+        var(--__outline_R)  0                   var(--__outline_color),
+        var(--__outline_L)  0                   var(--__outline_color),
+        0                   var(--__outline_U)  var(--__outline_color),
+        0                   var(--__outline_D)  var(--__outline_color),
+        var(--__outline_R)  var(--__outline_U)  var(--__outline_color),
+        var(--__outline_R)  var(--__outline_D)  var(--__outline_color),
+        var(--__outline_L)  var(--__outline_U)  var(--__outline_color),
+        var(--__outline_L)  var(--__outline_D)  var(--__outline_color);
+}
+/* Harlowe import */
+*[tw-shadow],
+.tw-shadow {
+    text-shadow: 
+        0.07em 0.07em 0.15em var(--tw-shadow-color, var(--tw-default-shadow-color));
+}
+/* Harlowe import */
+*[tw-emboss],
+.tw-emboss {
+    text-shadow: 
+        0.05em 0.05em 0em var(--tw-emboss-color, var(--tw-default-emboss-color));
+}
+
+
+/*
+ █████ ████   ███  █    █  ████ █████  ████  ████  █    █
+   █   █   █ █   █ ██   █ █     █     █    █ █   █ ██  ██
+   █   ████  █████ █ █  █  ███  ███   █    █ ████  █ ██ █
+   █   █   █ █   █ █  █ █     █ █     █    █ █   █ █    █
+   █   █   █ █   █ █   ██ ████  █      ████  █   █ █    █
+ SECTION:
+*/
+*[tw-mirror],
+.tw-mirror,
+*[tw-upside-down],
+.tw-upside-down,
+*[tw-tall],
+.tw-tall,
+*[tw-flat],
+.tw-flat,
+*[tw-180],
+.tw-180 {
+    display: inline-block;
+    transform-origin: center;
+}
+    /* Harlowe import */
+    .tw-mirror {
+        transform: scaleX(-1);
+    }
+    .tw-upside-down {
+        transform: scaleY(-1);
+    }
+    .tw-tall {
+        transform: scaleY(1.5);
+    }
+    .tw-flat {
+        transform: scaleY(0.5);
+    }
+    /* original */
+    .tw-180 {
+        transform: rotate(180deg);
+    }
+
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██
+ SECTION:
+*/
+/* Harlowe import */
+*[tw-blink],
+.tw-blink {
+    animation: tw-blink var(--tw-blink-time, var(--tw-default-blink-time)) steps(1,end) infinite;
+}
+    @keyframes tw-blink {
+        0%, 100% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 0;
+        }
+    }
+/* Harlowe import */
+*[tw-fade-in-out],
+.tw-fade-in-out {
+    animation: tw-fade-in-out var(--tw-fade-in-out-time, var(--tw-default-fade-in-out-time)) infinite;
+}
+    @keyframes tw-fade-in-out {
+        0%, 100% {
+            opacity: 1;
+        }
+        60% {
+            opacity: 0;
+        }
+    }
+/* Harlowe import */
+*[tw-rumble],
+.tw-rumble {
+    position: relative;
+    animation: tw-rumble var(--tw-rumble-time, var(--tw-default-rumble-time)) infinite;
+}
+    @keyframes tw-rumble {
+        0%, 100% {
+            top: calc(-1 * var(--tw-rumble-height, var(--tw-default-rumble-height)) / 2);
+        }
+        50% {
+            top: calc(var(--tw-rumble-height, var(--tw-default-rumble-height)) / 2);
+        }
+    }
+/* Harlowe import */
+*[tw-shudder],
+.tw-shudder {
+    position: relative;
+    animation: tw-shudder var(--tw-shudder-time, var(--tw-default-shudder-time)) infinite;
+}
+    @keyframes tw-shudder {
+        0%, 100% {
+            left: calc(-1 * var(--tw-shudder-width, var(--tw-default-shudder-width)) / 2);
+        }
+        50% {
+            left: calc(var(--tw-shudder-width, var(--tw-default-shudder-width)) / 2);
+        }
+    }
+/* Harlowe import */
+*[tw-sway],
+.tw-sway {
+    position: relative;
+    animation: tw-sway var(--tw-sway-time, var(--tw-default-sway-time)) infinite;
+}
+    @keyframes tw-sway {
+        0%, 100% {
+            left: calc(-1 * var(--tw-sway-width, var(--tw-default-sway-width)) / 2);
+        }
+        50% {
+            left: calc(var(--tw-sway-width, var(--tw-default-sway-width)) / 2);
+        }
+    }
+/* Harlowe import */
+*[tw-buoy],
+.tw-buoy {
+    position: relative;
+    animation: tw-buoy var(--tw-buoy-time, var(--tw-default-buoy-time)) infinite;
+}
+    @keyframes tw-buoy {
+        0%, 100% {
+            top: calc(-1 * var(--tw-buoy-height, var(--tw-default-buoy-height)) / 2);
+        }
+        50% {
+            top: calc(var(--tw-buoy-height, var(--tw-default-buoy-height)) / 2);
+        }
+    }
+/* Harlowe import */
+*[tw-fidget],
+.tw-fidget {
+    position: relative;
+    animation: tw-fidget var(--tw-fidget-time, var(--tw-default-fidget-time)) infinite;
+    --__fidget: var(--tw-fidget-dist, var(--tw-default-fidget-dist));
+}
+    @keyframes tw-fidget {
+        0%, 20%, 21%, 60%, 63%, 64%, 100% {
+            top: 0em;
+            left: 0em;
+        }
+        20.5% {
+            left: calc(-1 * var(--__fidget));
+        }
+        61% {
+            top: calc(-1 * var(--__fidget) / 2);
+        }
+        62.5% {
+            top: calc(var(--__fidget) / 2);
+        }
+        63.5% {
+            left: var(--__fidget);
+        }
+    }
+/* original */
+*[tw-spin],
+.tw-spin,
+*[tw-spin-x],
+.tw-spin-x,
+*[tw-spin-y],
+.tw-spin-y {
+    display: inline-block;
+    transform-origin: center;
+    animation-duration: var(--tw-spin-time, var(--tw-default-spin-time));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite
+}
+    *[tw-spin],
+    .tw-spin {
+        animation-name: tw-spin;
+    }
+        @keyframes tw-spin {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    *[tw-spin-x],
+    .tw-spin-x {
+        animation-name: tw-spin-x;
+    }
+        @keyframes tw-spin-x {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(360deg);
+            }
+        }
+    *[tw-spin-y],
+    .tw-spin-y {
+        animation-name: tw-spin-y;
+    }
+        @keyframes tw-spin-y {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+/* original */
+*[tw-glitch],
+.tw-glitch,
+*[tw-glitch-more],
+.tw-glitch-more {
+    position: relative;
+    padding-left: var(--__L);
+    padding-right: var(--__R);
+    --__L: var(--tw-glitch-L, var(--tw-default-glitch-L));
+    --__R: var(--tw-glitch-R, var(--tw-default-glitch-R));
+    --__flick: var(--tw-glitch-flick, calc(var(--__L) + var(--__R) / 2));
+}    
+    *[tw-glitch]::before,
+    .tw-glitch::before,
+    *[tw-glitch]::after,
+    .tw-glitch::after,
+    *[tw-glitch-more]::before,
+    .tw-glitch-more::before,
+    *[tw-glitch-more]::after,
+    .tw-glitch-more::after {
+        position: absolute;
+        content: attr(data-tw-glitch);
+        z-index: -1;
+        top: 0;
+        overflow: hidden;
+        line-height: 1.1;
+    }
+        *[tw-glitch]::before,
+        .tw-glitch::before,
+        *[tw-glitch]::after,
+        .tw-glitch::after {
+            animation-name: tw-glitch;
+            animation-iteration-count: infinite;
+        }
+        *[tw-glitch-more]::before,
+        .tw-glitch-more::before,
+        *[tw-glitch-more]::after,
+        .tw-glitch-more::after {
+            animation-name: tw-glitch, tw-glitch-more;
+            animation-iteration-count: infinite, infinite;
+        }
+    *[tw-glitch]::before,
+    .tw-glitch::before,
+    *[tw-glitch-more]::before,
+    .tw-glitch-more::before {
+        left: calc(-1 * var(--__L));
+        color: var(--tw-glitch-L-color, var(--tw-default-glitch-L-color));
+        animation-direction: alternate-reverse;
+    }
+        *[tw-glitch]::before,
+        .tw-glitch::before {
+            animation-duration: var(--tw-glitch-L-time, var(--tw-default-glitch-L-time));
+        }
+        *[tw-glitch-more]::before,
+        .tw-glitch-more::before {
+            animation-duration: 
+                var(--tw-glitch-L-time, var(--tw-default-glitch-L-time)),
+                var(--tw-glitch-L-time2, var(--tw-default-glitch-L-time2));
+        }
+    *[tw-glitch]::after,
+    .tw-glitch::after,
+    *[tw-glitch-more]::after,
+    .tw-glitch-more::after {
+        left: var(--__R);
+        color: var(--tw-glitch-R-color, var(--tw-default-glitch-R-color));
+        animation-direction: alternate;
+    }
+        *[tw-glitch]::after,
+        .tw-glitch::after {
+            animation-duration: var(--tw-glitch-R-time, var(--tw-default-glitch-R-time));
+        }
+        *[tw-glitch-more]::after,
+        .tw-glitch-more::after {
+            animation-duration: 
+                var(--tw-glitch-R-time, var(--tw-default-glitch-R-time)),
+                var(--tw-glitch-R-time2, var(--tw-default-glitch-R-time2));
+        }
+        @keyframes tw-glitch {
+            72%, 81%, 86% {
+                top: 0em;
+                opacity: 1;
+            } 
+            83% {
+                top: calc(-1 * var(--__flick) * 2);
+                opacity: 0.05;
+            } 
+            76% {
+                top: calc(-1 * var(--__flick) / 3);
+                opacity: 0.05;
+            }
+            0%, 60% {
+                --y1:0%;
+                --y2:5%;
+                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+            }
+            35%, 75% {
+                --y1:90%;
+                --y2:100%;
+                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+            }
+            50%, 90% {
+                --y1:20%;
+                --y2:50%;
+                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+            }
+            45%, 85% {
+                --y1:70%;
+                --y2:75%;
+                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+            }
+            20%, 80% {
+                --y1:0%;
+                --y2:100%;
+                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+            }
+        }
+        @keyframes tw-glitch-more {
+            0%,0.5%,1.5%,59.5%,60.5%,69.5%,70.5%,100% {
+                transform:rotateX(0) skewX(0);
+            }
+            1%,60% {
+                transform:rotateX(30deg) skewX(78deg) scale(1.2);
+            }
+            70% {
+                transform:rotateX(20deg) skewX(-10deg) scale(1.1) translate(0,-0.25em);
+            }
+        }
+/* original */
+*[tw-swing],
+.tw-swing {
+    display: inline-block;
+    transform-origin: top center;
+    animation: tw-swing var(--tw-swing-time, var(--tw-default-swing-time)) infinite ease-in-out;
+}
+    @keyframes tw-swing {
+        0%, 2%, 100% {
+            transform: 
+                rotate(calc(-1 * var(--tw-swing-angle, var(--tw-default-swing-angle))));
+        }
+        50%, 52% {
+            transform: 
+                rotate(var(--tw-swing-angle, var(--tw-default-swing-angle)));
+        }
+    }
+/* original */
+*[tw-bounce],
+.tw-bounce {
+    position: relative;
+    display: inline-block;
+    animation: tw-bounce var(--tw-bounce-time, var(--tw-default-bounce-time)) linear infinite;
+    --__height: var(--tw-bounce-height, var(--tw-default-bounce-height));
+}
+    @keyframes tw-bounce {
+        0%, 100% {
+            top: calc(-1 * var(--__height));
+        }
+        0.5%, 99.5% {
+            top: calc(-1 * var(--__height) * 0.9999);
+        }
+        1%, 99% {
+            top: calc(-1 * var(--__height) * 0.9996);
+        }
+        1.5625%, 98.4375% {
+            top: calc(-1 * var(--__height) * 0.99902344);
+        }
+        3.125%, 96.875% {
+            top: calc(-1 * var(--__height) * 0.99609375);
+        }
+        6.25%, 93.75% {
+            top: calc(-1 * var(--__height) * 0.984375); 
+        }
+        12.5%, 87.5% {
+            top: calc(-1 * var(--__height) * 0.9375); 
+        }
+        18.75%, 81.25% {
+            top: calc(-1 * var(--__height) * 0.859375); 
+        }
+        25%, 75% {
+            top: calc(-1 * var(--__height) * 0.75); 
+        }
+        31.25%, 68.75% {
+            top: calc(-1 * var(--__height) * 0.609375); 
+        }
+        37.5%, 62.5% {
+            top: calc(-1 * var(--__height) * 0.4375); 
+        }
+        43.75%, 56.25% {
+            top: calc(-1 * var(--__height) * 0.234375); 
+        }
+        50% {
+            top: 0em;
+        }
+    }
+/* original */
+*[tw-slide-down-disappear],
+.tw-slide-down-disappear,
+*[tw-slide-up-disappear],
+.tw-slide-up-disappear,
+*[tw-slide-left-disappear],
+.tw-slide-left-disappear,
+*[tw-slide-right-disappear],
+.tw-slide-right-disappear {
+    position: relative;
+    display: inline-block;
+    animation-duration: var(--tw-slide-time,var(--tw-default-slide-time));
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+    *[tw-slide-down-disappear],
+    .tw-slide-down-disappear {
+        animation-name: tw-slide-down-disappear;
+    }
+        @keyframes tw-slide-down-disappear {
+            0% {
+                transform: translateY(0%);
+            }
+            2% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            100% {
+                transform: translateY(100%);
+                clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+            }
+        }
+    *[tw-slide-up-disappear],
+    .tw-slide-up-disappear {
+        animation-name: tw-slide-up-disappear;
+    }
+        @keyframes tw-slide-up-disappear {
+            0% {
+                transform: translateY(0%);
+            }
+            2% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            100% {
+                transform: translateY(-100%);
+                clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+            }
+        }
+    *[tw-slide-left-disappear],
+    .tw-slide-left-disappear {
+        animation-name: tw-slide-left-disappear;
+    }
+        @keyframes tw-slide-left-disappear {
+            0% {
+                transform: translateX(0%);
+            }
+            2% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            100% {
+                transform: translateX(-100%);
+                clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+            }
+        }
+    *[tw-slide-right-disappear],
+    .tw-slide-right-disappear {
+        animation-name: tw-slide-right-disappear;
+    }
+        @keyframes tw-slide-right-disappear {
+            0% {
+                transform: translateX(0%);
+            }
+            2% {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            100% {
+                transform: translateX(100%);
+                clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+            }
+        }
+/* original */
+*[tw-wave],
+.tw-wave {
+    display: inline-block;
+    transform-origin: bottom center;
+    animation: tw-wave var(--tw-wave-time, var(--tw-default-wave-time)) infinite ease-in-out;
+}
+    @keyframes tw-wave {
+        0%, 100% {
+            transform: skew(var(--tw-wave-angle, var(--tw-default-wave-angle)));
+        }
+        50% {
+            transform: skew(calc(-1 * var(--tw-wave-angle, var(--tw-default-wave-angle))));
+        }
+    }
+

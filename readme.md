@@ -12,6 +12,7 @@ A soon-to-be-filled library of macros of dubious value
 ### Other Things:
 
   - [Twine desktop app themes](./Twine-themes) - `user.css` customization options for <b>Twine desktop 2.7</b>
+  - [CSS pack](./css-pack) - a `CSS` pack created to imitate Harlowe's quick `(text-style:)`, should work for any `HTML`
   
 &nbsp;
 
