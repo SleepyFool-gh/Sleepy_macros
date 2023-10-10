@@ -60,6 +60,7 @@
     --tw-default-fidget-dist: 0.2em;
 
     --tw-default-spin-time: 5s;
+    --tw-default-spin-angle: 360deg;
 
     --tw-default-glitch-L: 0.015em;
     --tw-default-glitch-L-time: 5s;
@@ -69,6 +70,7 @@
     --tw-default-glitch-R-time: 4s;
     --tw-default-glitch-R-time2: 2.75s;
     --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
+    --tw-default-glitch-delay: 0s;
 
     --tw-default-swing-time: 4s;
     --tw-default-swing-angle: 10deg;
@@ -522,7 +524,7 @@
                 transform: rotateZ(0deg);
             }
             100% {
-                transform: rotateZ(360deg);
+                transform: rotateZ(var(--tw-spin-angle, var(--tw-default-spin-angle)));
             }
         }
     *[tw-spin-x],
@@ -534,7 +536,7 @@
                 transform: rotateX(0deg);
             }
             100% {
-                transform: rotateX(360deg);
+                transform: rotateX(var(--tw-spin-angle, var(--tw-default-spin-angle)));
             }
         }
     *[tw-spin-y],
@@ -546,7 +548,7 @@
                 transform: rotateY(0deg);
             }
             100% {
-                transform: rotateY(360deg);
+                transform: rotateY(var(--tw-spin-angle, var(--tw-default-spin-angle)));
             }
         }
 /* original */
@@ -582,6 +584,7 @@
         .tw-glitch::after {
             animation-name: tw-glitch;
             animation-iteration-count: infinite;
+            animation-delay: var(--tw-glitch-delay, var(--tw-default-glitch-delay));
         }
         *[tw-glitch-more]::before,
         .tw-glitch-more::before,
@@ -589,6 +592,9 @@
         .tw-glitch-more::after {
             animation-name: tw-glitch, tw-glitch-more;
             animation-iteration-count: infinite, infinite;
+            animation-delay: 
+                var(--tw-glitch-delay, var(--tw-default-glitch-delay)),
+                var(--tw-glitch-delay, var(--tw-default-glitch-delay));
         }
     *[tw-glitch]::before,
     .tw-glitch::before,
@@ -693,6 +699,24 @@
                 rotate(var(--tw-swing-angle, var(--tw-default-swing-angle)));
         }
     }
+/* *[tw-burn],
+.tw-burn {
+    animation: tw-burn 1s infinite;
+}
+    @keyframes tw-burn {
+        0%, 50%, 100% {
+            text-shadow: -0.5em -0.2em 0.4em red
+        }
+        30% {
+            text-shadow: -0.25em -0.2em 0.3em orangered
+        }
+        60% {
+            text-shadow: -0.1em -0.2em 0.5em red
+        }
+        80% {
+            text-shadow: -0.25em -0.3em 0.2em orangered
+        }
+    } */
 /* original */
 *[tw-bounce],
 .tw-bounce {
@@ -701,6 +725,47 @@
     animation: tw-bounce var(--tw-bounce-time, var(--tw-default-bounce-time)) linear infinite;
     --__height: var(--tw-bounce-height, var(--tw-default-bounce-height));
 }
+    /* @keyframes tw-bounce {
+        0%, 100% {
+            top: calc(-1 * var(--__height) * (1 - pow(0 * 2, 2)));
+        }
+        0.5%, 99.5% {
+            top: calc(-1 * var(--__height) * (1 - pow(.005 * 2, 2)));
+        }
+        1%, 99% {
+            top: calc(-1 * var(--__height) * (1 - pow(.01 * 2, 2)));
+        }
+        1.5625%, 98.4375% {
+            top: calc(-1 * var(--__height) * (1 - pow(.015625 * 2, 2)));
+        }
+        3.125%, 96.875% {
+            top: calc(-1 * var(--__height) * (1 - pow(.03125 * 2, 2)));
+        }
+        6.25%, 93.75% {
+            top: calc(-1 * var(--__height) * (1 - pow(.0625 * 2, 2))); 
+        }
+        12.5%, 87.5% {
+            top: calc(-1 * var(--__height) * (1 - pow(.125 * 2, 2))); 
+        }
+        18.75%, 81.25% {
+            top: calc(-1 * var(--__height) * (1 - pow(.1875 * 2, 2))); 
+        }
+        25%, 75% {
+            top: calc(-1 * var(--__height) * (1 - pow(.25 * 2, 2))); 
+        }
+        31.25%, 68.75% {
+            top: calc(-1 * var(--__height) * (1 - pow(.3125 * 2, 2))); 
+        }
+        37.5%, 62.5% {
+            top: calc(-1 * var(--__height) * (1 - pow(.375 * 2, 2))); 
+        }
+        43.75%, 56.25% {
+            top: calc(-1 * var(--__height) * (1 - pow(.4375 * 2, 2))); 
+        }
+        50% {
+            top: 0;
+        }
+    } */
     @keyframes tw-bounce {
         0%, 100% {
             top: calc(-1 * var(--__height));
