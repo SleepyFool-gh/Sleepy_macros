@@ -1,5 +1,5 @@
 # Twine SugarCube macros & other things
-# by SleepyFool
+## by SleepyFool
 
 A soon-to-be-filled library of macros of dubious value
 
