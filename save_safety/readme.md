@@ -4,7 +4,7 @@ A failsafe feature which adds two checkboxes to the native SugarCube 2.37 Save A
 
 <table>
     <tr>
-        <td><img src="./before.png"></td>
-        <td><img src="./after.png"></td>
+        <td style="border-color:transparent"><img src="./before.jpg"></td>
+        <td style="border-color:transparent"><img src="./after.jpg"></td>
     </tr>
 </table>
