@@ -1,7 +1,6 @@
-# Twine SugarCube macros & other things
-## by SleepyFool
+# SleepyFool's Twine SugarCube macros & other things
 
-A soon-to-be-filled library of macros of dubious value
+A motley library of author tools with dubious value
 
 ### Macros:
 
