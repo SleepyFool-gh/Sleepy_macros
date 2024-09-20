@@ -22,4 +22,4 @@ ___
 #### WIP:
   - map navigation system
 
-<img src='./incomplete/reddit_icon.png'>
+
