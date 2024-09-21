@@ -1,10 +1,10 @@
 (function() {
 
-// disable delete all saves button, add checkbox to allow / disallow deleting saves
+// init flags, save / clear disabled
 let deleteAny_disabled = true;
 let deleteAll_disabled = true;
 
-// add feature when opening save dialog
+// when opening dialog
 $(document).on(':dialogopening', function() {
 
     // if opening saves dialog
@@ -35,10 +35,6 @@ const create_checkboxes = function() {
     $label_any.wiki("<span class='title'>Enable Delete</span><input type='checkbox' class='deleteAny'>").appendTo($div);
     $label_all.wiki("<span class='title'>Enable Clear</span><input type='checkbox' class='deleteAll'>").appendTo($div);
     $div.insertAfter($('#saves-list'));
-
-    // set checkbox state
-    $('input.deleteAny').prop('checked', ! deleteAny_disabled);
-    $('input.deleteAll').prop('checked', ! deleteAll_disabled);
 };
 
 // checkbox functionality
@@ -50,19 +46,20 @@ const checkbox_fn = function(ev) {
         $(document).off('click.save_safety');
         $(document).off('keypress.save_safety');
     }
+    // main behavior
     else {
         // in case save menu content updated, re-add checkboxes & re-set states
-        set_states();
         if (! $('.save_safety').length) {
             create_checkboxes();
+            set_states();
         }
-        // deleteAny functionality
+        // deleteAny behavior
         if ($(ev.target).hasClass('deleteAny')) {
             deleteAny_disabled = ! deleteAny_disabled;
             set_states();
 
         }
-        // deleteAll functionality
+        // deleteAll behavior
         else if ($(ev.target).hasClass('deleteAll')) {
             deleteAll_disabled = ! deleteAll_disabled;
             set_states();
@@ -70,7 +67,7 @@ const checkbox_fn = function(ev) {
     }
 };
 
-// set proper state for checkboxes & delete buttons
+// set proper states for checkboxes & delete buttons
 const set_states = function() {
     $('input.deleteAll').prop('checked', ! deleteAll_disabled);
     $('input.deleteAny').prop('checked', ! deleteAny_disabled);
