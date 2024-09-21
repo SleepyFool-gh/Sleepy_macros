@@ -1,4 +1,4 @@
-# SleepyFool's Twine SugarCube macros & other things
+# SleepyFool's macros & other things
 
 A motley library of author tools with dubious value
 
