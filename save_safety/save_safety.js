@@ -1,10 +1,14 @@
 (function() {
 
-// init flags, save / clear disabled
+// init flags
 let deleteAny_disabled = true;
 let deleteAll_disabled = true;
 
-// when opening dialog
+// text next to checkboxes
+const deleteAny_text = "Enable Delete";
+const deleteAll_text = "Enable Clear";
+
+// when opening dialog...
 $(document).on(':dialogopening', function() {
 
     // if opening saves dialog
@@ -13,7 +17,7 @@ $(document).on(':dialogopening', function() {
         create_checkboxes();
         set_states();
 
-        // attach checkbox functionality
+        // attach checkbox functionality; when any click or keypress...
         setTimeout( function() {
             $(document).on('click.save_safety', (ev) => checkbox_fn(ev) );
             $(document).on('keypress.save_safety', (ev) => checkbox_fn(ev) );
@@ -25,16 +29,16 @@ $(document).on(':dialogopening', function() {
 // create checkboxes
 const create_checkboxes = function() {
     // create checkbox container
-    const $div = $(document.createElement('div')).addClass('save_safety');
+    const $container = $(document.createElement('div')).addClass('save_safety');
 
     // create checkboxes
     const $label_any = $(document.createElement('label')).addClass('deleteAny');
     const $label_all = $(document.createElement('label')).addClass('deleteAll');
 
     // add checkboxes to menu
-    $label_any.wiki("<span class='title'>Enable Delete</span><input type='checkbox' class='deleteAny'>").appendTo($div);
-    $label_all.wiki("<span class='title'>Enable Clear</span><input type='checkbox' class='deleteAll'>").appendTo($div);
-    $div.insertAfter($('#saves-list'));
+    $label_any.wiki(`<span class='title'>${deleteAny_text}</span><input type='checkbox' class='deleteAny'>`).appendTo($container);
+    $label_all.wiki(`<span class='title'>${deleteAll_text}</span><input type='checkbox' class='deleteAll'>`).appendTo($container);
+    $container.insertAfter($('#saves-list'));
 };
 
 // checkbox functionality
