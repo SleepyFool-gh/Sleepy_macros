@@ -1,51 +1,31 @@
-Macro.add('newhr', {
-    handler() {
+Macro.add('divider', {
+    handler: function() {
 
+        // check if animation flag provided
+        const transition = this.args.includes('t8n') || this.args.includes('transition');
         
-        // if no arguments, return error
-        if (typeof this.args[0] !== 'undefined' && ! [true,false].includes(this.args[0])) {
-            return this.error('<<newhr>> only accepts true or false!');
-        }
+        // hide old dividers, trigger transition out animation
+        $('.macro-divider')
+            .addClass(   
+                transition
+                    ? 'macro-divider-hidden macro-divider-out'
+                    : 'macro-divider-hidden'
+            );
 
-        this.args[0] ??= false;
-        
+        // create new divider, append to output
+        const $hr = $(document.createElement('hr'))
+        $hr
+            .addClass(
+                transition
+                    ? 'macro-divider macro-divider-in'
+                    : 'macro-divider'
+            )
+            .appendTo(this.output);
 
-        if (this.args[0]) {
-
-            $('hr.macro-newhr').animate({
-                opacity: 0,
-                'max-height': 0,
-                marginTop: 0,
-                marginBottom: 0
-            },500);
-
-            const $hr   = $(document.createElement('hr'));
-            $hr
-                .css({opacity: 0})
-                .addClass('macro-newhr')
-                .appendTo(this.output)
-                .animate({opacity: 1});
-
-            setTimeout( function() {
-                // $('hr.macro-oldhr').remove();
-                $hr.addClass('macro-oldhr');
-            }, 510);
-            
-        }
-        else {
-            $('hr.macro-oldhr').css({
-                opacity: 0,
-                'max-height': 0,
-                marginTop: 0,
-                marginBottom: 0
-            });
-
-            const $hr   = $(document.createElement('hr'));
-            $hr
-                .addClass('macro-newhr macro-oldhr')
-                .appendTo(this.output);
-
-        }
+        // trigger transition in animation
+        setTimeout( function() {
+            $('.macro-divider').removeClass('macro-divider-in');
+        }, 40)
 
     }
 });

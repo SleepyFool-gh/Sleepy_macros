@@ -1,39 +1,34 @@
 hr.macro-divider {
     opacity: 1;
     margin: 1.2em auto;
+    max-height: fit-content;
+    border-width: 0.1em;
+    
     width: 80%;
-    border-top-width: 0.1em;
     border-top-style: solid;
     border-top-color: white;
+
+    /* transition properties, refer to for durations */
+    transition-property: opacity, max-height, margin, border-width;
+
+    /* transition in durations */
+    transition-duration: 600ms, 0ms, 0ms, 0ms;
 }
 
+/* transition in start state */
 hr.macro-divider-in {
-    animation: divider-in 400ms ease-in forwards;
+    opacity: 0;
 }
 
-@keyframes divider-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+/* hidden state */
+hr.macro-divider-hidden {
+    opacity: 0;
+    max-height: 0;
+    margin: 0 auto;
+    border-width: 0em;
 }
 
 hr.macro-divider-out {
-    animation: divider-out 800ms ease forwards;
-}
-
-@keyframes divider-out {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-        max-height: 0;
-        margin: 0 auto;
-    }
+    /* transition out durations */
+    transition-duration: 400ms, 800ms, 800ms, 800ms;
 }
