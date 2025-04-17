@@ -165,6 +165,8 @@ class ArgObj {
         for (const k of keys_flags) {
             this[k] ??= false;
         }
+        // delete #data
+        delete this["#data"];
     }
     // parse flags
     #parse_flag(i) {
