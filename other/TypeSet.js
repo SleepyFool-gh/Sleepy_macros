@@ -210,5 +210,3 @@ class TypeSet {
         return false
     }
 }
-
-window.TypeSet = TypeSet;
