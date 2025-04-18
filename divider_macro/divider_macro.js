@@ -1,6 +1,5 @@
 Macro.add('divider', {
     handler: function() {
-
         // check if animation flag provided
         const transition = this.args.includes('t8n') || this.args.includes('transition');
         
@@ -11,7 +10,6 @@ Macro.add('divider', {
                     ? 'macro-divider-hidden macro-divider-out'
                     : 'macro-divider-hidden'
             );
-
         // create new divider, append to output
         const $hr = $(document.createElement('hr'))
         $hr
@@ -25,7 +23,6 @@ Macro.add('divider', {
         // trigger transition in animation
         setTimeout( function() {
             $('.macro-divider').removeClass('macro-divider-in');
-        }, 40)
-
+        }, Engine.DOM_DELAY)
     }
 });
