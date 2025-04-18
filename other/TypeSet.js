@@ -65,7 +65,7 @@ class TypeSet {
     }
 
     //////////////////////////////////////////////////
-    // add to TypeSet
+    // add to TypeSet, takes array, object, or string
     add(val) {
         // given array, break it up
         if (TypeSet.id(val) === 'array') {
@@ -81,7 +81,7 @@ class TypeSet {
         }
         // ERROR: input not string or object or array
         else {
-            console.error(`TypeSet - invalid input "${val}", must be 'string' or 'object' or 'array'`);
+            console.error(`TypeSet - invalid input "${val}", must be a string, a generic object, or an array of one of those`);
         }
     }
 
@@ -98,7 +98,7 @@ class TypeSet {
             this.#push(t, kind);
         }
     }
-    // add type to TypeSet from object
+    // validate  object structure, parse
     #parse_obj(obj) {
         for (const key in obj) {
             const val = obj[key];

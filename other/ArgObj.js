@@ -5,40 +5,29 @@
 // █   █ █   █  ███   ████  ████   ███
 // SECTION: ArgObj
 // DESCRIPTION:
-    // Converts macro arguments array to an argument object based off a provided template. Requires TypeSet to work properly. If argument names are not specified, it will assign the argument value to the first template argument that accepts the type of unnamed argument value that isn't already filled.
-// EXAMPLES:
+// Converts an array of arguments into argument object based off a provided template. Requires TypeSet to work properly. If the value of an array element is the name of a key, it will assume the next element is that key's value. If no key is provided, it will try go through the template and assign the element to the first key it finds that accepts that element's type. Prefilled generic objects will be parsed for keys in the template and assign them to the output. [[markup]] will be parsed for passage name and link text.
 //
+// EXAMPLE:
 //      const template = {
-//          transition: {           // sample flag, place before everything else
-//              type: "flag",
+//          transition: {           // flag, set to true if found, else false
+//              flag: true,
 //          },
-//          linkText: {
-//              required: true,     // whether argument is required
-//              type: "string",     // acceptable TypeSet types
-//              alias: "text",      // other acceptable names for argument
+//          npc: {
+//              type: "string",     // will be used to create a TypeSet for checking
+//                                      // must be a string, array of strings, or
+//                                      // or {any: 'string', exact: 4}
+//              alias: "char",      // other acceptable names for the key
+//                                      // must be a string or array of strings
+//          },
+//          linkText: {             // [[markup]] use the keys "linkText" and "passage"
+//              alias: "text",
 //          },
 //          passage: {
-//              type: "string",
 //          },
 //      },
+//      const argObj    = new ArgObj("xlink", template, args_in);
 //
-//      const args_in1  = ["passage","start","click to begin"];
-//      const argObj1   = new ArgObj({
-//          id       : argObj1,
-//          args_in  : args_in1,
-//          template : template,
-//      });
-//          --> {passage: "start", linkText: "click to begin"};
-//
-//      const args_in2  = ["continue","transition"];
-//      const argObj2   = new ArgObj(this, {
-//          id       : argObj2,
-//          args_in  : args_in2,
-//          template : template
-//      });
-//          --> {linkText: "continue", transition: "transition"};
-//          note: convert transition flag to boolean via !!
-//
+//////////////////////////////////////////////////
 class ArgObj {
 
     /**
