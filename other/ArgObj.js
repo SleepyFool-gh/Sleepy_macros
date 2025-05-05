@@ -147,7 +147,6 @@ class ArgObj {
                 console.error(`${id} - ArgObj failed to parse arguments,  at"${arg_this}"`);
                 console.error(error);
             }
-            console.log(clone(this));
         }
         // populate leftover flags with false
         const keys_flags = keys.filter( (k) => template[k].flag );
@@ -282,14 +281,12 @@ class ArgObj {
                 (! Object.keys(this).includes(k)) &&    // remove already written keys
                 (! template[k].flag)                    // remove flags
             );
-            console.log(keys_left);
             // ERROR: no unwritten keys, unknown arg,
             if (! keys_left.length) {
                 throw new Error(`${id} - ArgObj failed to identify key in lazy parser at val "${val_this}", no unwritten template keys left; FAILED`)
             }
             // iterate through leftover keys, find first that matches type
             for (const k of keys_left) {
-                console.log(k);
                 // key accepts anything
                 if (! template[k].type) {
                     // write value, i increments by 1
