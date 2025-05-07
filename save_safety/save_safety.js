@@ -5,35 +5,13 @@
 //     █ █   █  █ █  █         █ █   █ █     █       █     █
 // ████  █   █   █   █████ ████  █   █ █     █████   █     █
 // DESC: saveSafety system adds two checkboxes that disable / enable the buttons to delete or clear saves
-const enableDelete = {
-    any: false,
-    all: false,
-}
-$(document).on(':dialogopening', function() {
-    // if opening saves dialog
-    if ($('#ui-dialog').hasClass('saves')) {
-        // when opening, add checkboxes & set states
-        saveSafety.add_checkboxes();
-        saveSafety.set_states();
-        // add listener to re-add checkboxes after every click if missing
-        $('#ui-dialog').ariaClick( 
-            {
-                namespace: 'saveSafety',
-            },
-            function() {
-                if ($('#saveSafety').length === 0) {
-                    saveSafety.add_checkboxes();
-                    saveSafety.set_states();
-                }
-            }
-        );
-        // remove said click listener when dialog closes
-        $(document).on(':dialogclosed', function() {
-            $('#ui-dialog').off('.saveSafety');
-        });
-    }
-});
 const saveSafety = {
+    // options
+    options: {
+        delete_any_enabled_by_default: false,
+        delete_all_enabled_by_default: false,
+        reset_on_close: true,
+    },
     // set states for buttons
     set_states: function() {
         // delete buttons
@@ -74,4 +52,38 @@ const saveSafety = {
         $container.find('.deleteAll').prop('checked', enableDelete.all);
     }
 };
+// state tracker
+const enableDelete = {
+    any: saveSafety.options.delete_any_enabled_by_default,
+    all: saveSafety.options.delete_all_enabled_by_default,
+};
+// listener
+$(document).on(':dialogopening', function() {
+    // if opening saves dialog
+    if ($('#ui-dialog').hasClass('saves')) {
+        // when opening, add checkboxes & set states
+        saveSafety.add_checkboxes();
+        saveSafety.set_states();
+        // add listener to re-add checkboxes after every click if missing
+        $('#ui-dialog').ariaClick( 
+            {
+                namespace: 'saveSafety',
+            },
+            function() {
+                if ($('#saveSafety').length === 0) {
+                    saveSafety.add_checkboxes();
+                    saveSafety.set_states();
+                }
+            }
+        );
+        // remove said click listener when dialog closes
+        $(document).on(':dialogclosed', function() {
+            $('#ui-dialog').off('.saveSafety');
+            if (saveSafety.options.reset_on_close) {
+                enableDelete.any = saveSafety.options.delete_any_enabled_by_default;
+                enableDelete.all = saveSafety.options.delete_all_enabled_by_default;
+            }
+        });
+    }
+});
 })();
