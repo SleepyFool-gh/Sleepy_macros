@@ -1,4 +1,12 @@
-.save_safety {
+/*
+  ████  ███  █   █ █████  ████  ███  █████ █████ █████ █   █
+ █     █   █ █   █ █     █     █   █ █     █       █    █ █
+  ███  █████ █   █ ███    ███  █████ ███   ███     █     █
+     █ █   █  █ █  █         █ █   █ █     █       █     █
+ ████  █   █   █   █████ ████  █   █ █     █████   █     █
+ DESC: formatting for saveSafety system
+*/
+#saveSafety {
     display: flex;
     align-content: center;
     justify-content: center;
@@ -6,14 +14,12 @@
     padding: 0.5rem 0;
     user-select: none;
 }
-    .save_safety label {
+    #saveSafety label {
         cursor: pointer;
         display: flex;
+        gap: 0.5rem;
     }
-        .save_safety .title {
-            flex-grow: 1;
-            padding: 0 0.5rem 0 0;
-        }
-#ui-dialog-body.saves button {
+/* disables flashing when saves are created or deleted */
+#ui-dialog.saves button {
     transition-duration: 0s;
 }
