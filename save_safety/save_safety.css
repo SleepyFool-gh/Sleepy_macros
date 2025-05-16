@@ -20,6 +20,6 @@
         gap: 0.5rem;
     }
 /* disables flashing when saves are created or deleted */
-#ui-dialog.saves button {
+#ui-dialog-body.saves button {
     transition-duration: 0s;
 }

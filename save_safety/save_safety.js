@@ -60,7 +60,7 @@ const enableDelete = {
 // listener
 $(document).on(':dialogopening', function() {
     // if opening saves dialog
-    if ($('#ui-dialog').hasClass('saves')) {
+    if ($('#ui-dialog-body').hasClass('saves')) {
         // when opening, add checkboxes & set states
         saveSafety.add_checkboxes();
         saveSafety.set_states();
