@@ -6,18 +6,29 @@
  ████  █   █   █   █████ ████  █   █ █     █████   █     █
  DESC: formatting for saveSafety system
 */
+:root {
+    --saveSafety-padding: 0.5rem;
+    --saveSafety-width: 24rem;
+    --saveSafety-buffer: 0.5rem;
+}
 #saveSafety {
     display: flex;
     align-content: center;
     justify-content: center;
     gap: 2rem;
-    padding: 0.5rem 0;
+    padding: var(--saveSafety-padding);
     user-select: none;
+    width: var(--saveSafety-width);
 }
     #saveSafety label {
         cursor: pointer;
         display: flex;
         gap: 0.5rem;
+    }
+    /* added to prevent size flickering */
+    #ui-dialog-body.saves {
+        width: fit-content;
+        min-width: calc(var(--saveSafety-padding) * 2 + var(--saveSafety-width) + var(--saveSafety-buffer));
     }
 /* disables flashing when saves are created or deleted */
 #ui-dialog-body.saves button {
