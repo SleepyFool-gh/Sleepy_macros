@@ -318,7 +318,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     --tw-default-smear-color: currentColor;
 
     --tw-default-blur: 0.05em;
-    --tw-default-blurrier: 0.1em;
+    --tw-default-blurrier: 0.11em;
 }
 
 /* glow */
@@ -488,21 +488,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION:
 */
 
-/* defaults */
-:root {
-    /* animations */
-
-    --tw-default-glitch-L: 0.015em;
-    --tw-default-glitch-L-time: 5s;
-    --tw-default-glitch-L-time2: 2.5s;
-    --tw-default-glitch-L-color: color-mix(in srgb, currentColor, magenta 20%);
-    --tw-default-glitch-R: 0.025em;
-    --tw-default-glitch-R-time: 4s;
-    --tw-default-glitch-R-time2: 2.75s;
-    --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
-    --tw-default-glitch-delay: 0s;
-}
-
 /*
  ┬  ┬┬┌─┐┬┌┐ ┬┬  ┬┌┬┐┬ ┬
  └┐┌┘│└─┐│├┴┐││  │ │ └┬┘
@@ -620,10 +605,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 
 /*
- ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┬┌─┐
- ├─┘├┤ ├┬┘││ │ ││││
- ┴  └─┘┴└─┴└─┘─┴┘┴└─┘
- SECTION: periodic
+ ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+ ├─┤│││││││├─┤ │ ││ ││││└─┐
+ ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
+ SECTION: animations 1
 */
 
 :root {
@@ -641,8 +626,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
     --tw-default-bounce-time: 1s;
     --tw-default-bounce-height: 1.25em;
-
-    --tw-default-slide-time: 2s;
 
     --tw-default-wave-time: 2.5s;
     --tw-default-wave-angle: 10deg;
@@ -900,11 +883,25 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 
 /*
- ┌─┐┌┬┐┬  ┬┌─┐┌┐┌┌─┐┌─┐┌┬┐  ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┬┌─┐
- ├─┤ ││└┐┌┘├─┤││││  ├┤  ││  ├─┘├┤ ├┬┘││ │ ││││
- ┴ ┴─┴┘ └┘ ┴ ┴┘└┘└─┘└─┘─┴┘  ┴  └─┘┴└─┴└─┘─┴┘┴└─┘
- SECTION: advanced periodic
+ ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+ ├─┤│││││││├─┤ │ ││ ││││└─┐
+ ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
+ SECTION: animations 2
 */
+
+:root {
+    --tw-default-glitch-L: 0.015em;
+    --tw-default-glitch-L-time: 5s;
+    --tw-default-glitch-L-time2: 2.5s;
+    --tw-default-glitch-L-color: color-mix(in srgb, currentColor, magenta 20%);
+    --tw-default-glitch-R: 0.025em;
+    --tw-default-glitch-R-time: 4s;
+    --tw-default-glitch-R-time2: 2.75s;
+    --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
+    --tw-default-glitch-delay: 0s;
+
+    --tw-default-slide-time: 2s;
+}
 
 /* original */
 *[tw-glitch],
@@ -1057,14 +1054,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         }
     }
 
-
-/*
- ┌─┐┌─┐┬─┐┬ ┬┌─┐┬─┐┌┬┐┌─┐
- ├┤ │ │├┬┘│││├─┤├┬┘ ││└─┐
- └  └─┘┴└─└┴┘┴ ┴┴└──┴┘└─┘
- SECTION: forwards
-*/
-
 /* original */
 *[tw-slide-down-disappear],
 .tw-slide-down-disappear,
@@ -1076,7 +1065,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .tw-slide-right-disappear {
     position: relative;
     display: inline-block;
-    animation-duration: var(--tw-slide-time,var(--tw-default-slide-time));
+    animation-duration: var(--tw-slide-time, var(--tw-default-slide-time));
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
 }
@@ -1251,6 +1240,7 @@ code,
 #grid {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    padding-bottom: 1rem;
 }
     #grid .header {
         font-size: 2rem;
@@ -1796,7 +1786,7 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
         &lt;div class=&#39;name&#39;&gt;
             &lt;&lt;print _effect.id&gt;&gt;
         &lt;/div&gt;
-        &lt;div class=&#39;example hover&#39;&gt;
+        &lt;div class=&#39;example hover&#39; @data-effect=&#39;_effect.id&#39;&gt;
             An &lt;span class=&#39;effect&#39; @data-effect=&#39;_effect.id&#39;&gt;example&lt;/span&gt; usage&lt;br/&gt;&lt;small&gt;(hover to see)&lt;/small&gt;
         &lt;/div&gt;
         &lt;div class=&#39;origin&#39;&gt;
@@ -1806,7 +1796,7 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
             &lt;&lt;if _effect.variables&gt;&gt;
                 &lt;&lt;for _var, _value range _effect.variables&gt;&gt;
                     &lt;code&gt;_value&lt;/code&gt;
-                    &lt;input data-effect=&#39;_effect.id&#39; data-variable=&#39;_value&#39; type=&#39;text&#39;&gt;
+                    &lt;input @data-effect=&#39;_effect.id&#39; @data-variable=&#39;_value&#39; type=&#39;text&#39;&gt;
                 &lt;&lt;/for&gt;&gt;
             &lt;&lt;/if&gt;&gt;
         &lt;/div&gt;
@@ -1814,37 +1804,49 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
 
 &lt;/div&gt;
 &lt;&lt;done&gt;&gt;
-    /* run effects on hover */
-    &lt;&lt;run
-        $(&#39;.effect.hover&#39;).each(function() {
+    &lt;&lt;script&gt;&gt;
+        /* run effects on hover */
+        $(&#39;.example.hover&#39;).each(function() {
             $(this).hover(
-                () =&gt; $(this).find(&#39;.effect&#39;).addClass($(this).data(&#39;effect&#39;)),
-                () =&gt; $(this).find(&#39;.effect&#39;).removeClass($(this).data(&#39;effect&#39;))
+                () =&gt; {
+                    const $effect = $(this).find(&#39;.effect&#39;);
+                    const effect = $effect.attr(&#39;data-effect&#39;);
+                    $effect.addClass(effect);
+                },
+                () =&gt; {
+                    const $effect = $(this).find(&#39;.effect&#39;);
+                    const effect = $effect.attr(&#39;data-effect&#39;);
+                    $effect.removeClass(effect);
+                }
             );
         });
-    &gt;&gt;
-    /* set placeholders */
-    &lt;&lt;run 
+        
+        /* set placeholders */
+        const styles = window.getComputedStyle(document.documentElement);
         $(&#39;input&#39;).each(function(i, e) {
             const effect_name = $(e).attr(&#39;data-effect&#39;);
             const var_name = $(e).attr(&#39;data-variable&#39;);
             const default_var_name = var_name.replace(&#39;--tw-&#39;, &#39;--tw-default-&#39;);
-            const styles = window.getComputedStyle(document.documentElement);
             const val = styles.getPropertyValue(default_var_name).trim();
-            console.log(val);
             $(e).attr(&#39;placeholder&#39;, val);
         });
-    &gt;&gt;
-    /* make textfields update vars */
-    &lt;&lt;run 
+        /* fix blurrier */
+        $(&#39;[data-effect=&quot;tw-blurrier&quot;]&#39;).attr(&#39;placeholder&#39;, styles.getPropertyValue(&#39;--tw-default-blurrier&#39;).trim());
+
+        /* make textfields update vars */
         $(&#39;#grid&#39;).on(&#39;input&#39;, &#39;input&#39;, function(e) {
             const effect_name = $(e.target).attr(&#39;data-effect&#39;);
             const var_name = $(e.target).attr(&#39;data-variable&#39;);
             const val = $(e.target).val();
             $(`.${effect_name}`).css(var_name, val);
             $(`[${effect_name}]`).css(var_name, val);
+
+            /* fix hover textfields */
+            if (effect_name.includes(&#39;tw-slide&#39;)) {
+                $(`.example.hover[data-effect=&#39;${effect_name}&#39;]`).css(var_name, val);
+            }
         });
-    &gt;&gt;
+    &lt;&lt;/script&gt;&gt;
 &lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="print" tags="nobr" position="350,100" size="100,100">&lt;&lt;for _i, _effect range _list&gt;&gt;
     &lt;div class=&#39;name&#39;&gt;
         &lt;&lt;print _effect.id&gt;&gt;

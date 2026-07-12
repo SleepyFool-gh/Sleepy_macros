@@ -523,7 +523,7 @@ CSS Pack by SleepyFool
         <div class='name'>
             <<print _effect.id>>
         </div>
-        <div class='example hover'>
+        <div class='example hover' @data-effect='_effect.id'>
             An <span class='effect' @data-effect='_effect.id'>example</span> usage<br/><small>(hover to see)</small>
         </div>
         <div class='origin'>
@@ -533,7 +533,7 @@ CSS Pack by SleepyFool
             <<if _effect.variables>>
                 <<for _var, _value range _effect.variables>>
                     <code>_value</code>
-                    <input data-effect='_effect.id' data-variable='_value' type='text'>
+                    <input @data-effect='_effect.id' @data-variable='_value' type='text'>
                 <</for>>
             <</if>>
         </div>
@@ -541,37 +541,49 @@ CSS Pack by SleepyFool
 
 </div>
 <<done>>
-    /* run effects on hover */
-    <<run
-        $('.effect.hover').each(function() {
+    <<script>>
+        /* run effects on hover */
+        $('.example.hover').each(function() {
             $(this).hover(
-                () => $(this).find('.effect').addClass($(this).data('effect')),
-                () => $(this).find('.effect').removeClass($(this).data('effect'))
+                () => {
+                    const $effect = $(this).find('.effect');
+                    const effect = $effect.attr('data-effect');
+                    $effect.addClass(effect);
+                },
+                () => {
+                    const $effect = $(this).find('.effect');
+                    const effect = $effect.attr('data-effect');
+                    $effect.removeClass(effect);
+                }
             );
         });
-    >>
-    /* set placeholders */
-    <<run 
+        
+        /* set placeholders */
+        const styles = window.getComputedStyle(document.documentElement);
         $('input').each(function(i, e) {
             const effect_name = $(e).attr('data-effect');
             const var_name = $(e).attr('data-variable');
             const default_var_name = var_name.replace('--tw-', '--tw-default-');
-            const styles = window.getComputedStyle(document.documentElement);
             const val = styles.getPropertyValue(default_var_name).trim();
-            console.log(val);
             $(e).attr('placeholder', val);
         });
-    >>
-    /* make textfields update vars */
-    <<run 
+        /* fix blurrier */
+        $('[data-effect="tw-blurrier"]').attr('placeholder', styles.getPropertyValue('--tw-default-blurrier').trim());
+
+        /* make textfields update vars */
         $('#grid').on('input', 'input', function(e) {
             const effect_name = $(e.target).attr('data-effect');
             const var_name = $(e.target).attr('data-variable');
             const val = $(e.target).val();
             $(`.${effect_name}`).css(var_name, val);
             $(`[${effect_name}]`).css(var_name, val);
+
+            /* fix hover textfields */
+            if (effect_name.includes('tw-slide')) {
+                $(`.example.hover[data-effect='${effect_name}']`).css(var_name, val);
+            }
         });
-    >>
+    <</script>>
 <</done>>
 
 

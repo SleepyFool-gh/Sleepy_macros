@@ -103,6 +103,7 @@ code,
 #grid {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    padding-bottom: 1rem;
 }
     #grid .header {
         font-size: 2rem;

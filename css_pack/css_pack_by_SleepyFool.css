@@ -211,7 +211,7 @@
     --tw-default-smear-color: currentColor;
 
     --tw-default-blur: 0.05em;
-    --tw-default-blurrier: 0.1em;
+    --tw-default-blurrier: 0.11em;
 }
 
 /* glow */
@@ -381,21 +381,6 @@
  SECTION:
 */
 
-/* defaults */
-:root {
-    /* animations */
-
-    --tw-default-glitch-L: 0.015em;
-    --tw-default-glitch-L-time: 5s;
-    --tw-default-glitch-L-time2: 2.5s;
-    --tw-default-glitch-L-color: color-mix(in srgb, currentColor, magenta 20%);
-    --tw-default-glitch-R: 0.025em;
-    --tw-default-glitch-R-time: 4s;
-    --tw-default-glitch-R-time2: 2.75s;
-    --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
-    --tw-default-glitch-delay: 0s;
-}
-
 /*
  ┬  ┬┬┌─┐┬┌┐ ┬┬  ┬┌┬┐┬ ┬
  └┐┌┘│└─┐│├┴┐││  │ │ └┬┘
@@ -513,10 +498,10 @@
 
 
 /*
- ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┬┌─┐
- ├─┘├┤ ├┬┘││ │ ││││
- ┴  └─┘┴└─┴└─┘─┴┘┴└─┘
- SECTION: periodic
+ ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+ ├─┤│││││││├─┤ │ ││ ││││└─┐
+ ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
+ SECTION: animations 1
 */
 
 :root {
@@ -534,8 +519,6 @@
 
     --tw-default-bounce-time: 1s;
     --tw-default-bounce-height: 1.25em;
-
-    --tw-default-slide-time: 2s;
 
     --tw-default-wave-time: 2.5s;
     --tw-default-wave-angle: 10deg;
@@ -793,11 +776,25 @@
 
 
 /*
- ┌─┐┌┬┐┬  ┬┌─┐┌┐┌┌─┐┌─┐┌┬┐  ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┬┌─┐
- ├─┤ ││└┐┌┘├─┤││││  ├┤  ││  ├─┘├┤ ├┬┘││ │ ││││
- ┴ ┴─┴┘ └┘ ┴ ┴┘└┘└─┘└─┘─┴┘  ┴  └─┘┴└─┴└─┘─┴┘┴└─┘
- SECTION: advanced periodic
+ ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+ ├─┤│││││││├─┤ │ ││ ││││└─┐
+ ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
+ SECTION: animations 2
 */
+
+:root {
+    --tw-default-glitch-L: 0.015em;
+    --tw-default-glitch-L-time: 5s;
+    --tw-default-glitch-L-time2: 2.5s;
+    --tw-default-glitch-L-color: color-mix(in srgb, currentColor, magenta 20%);
+    --tw-default-glitch-R: 0.025em;
+    --tw-default-glitch-R-time: 4s;
+    --tw-default-glitch-R-time2: 2.75s;
+    --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
+    --tw-default-glitch-delay: 0s;
+
+    --tw-default-slide-time: 2s;
+}
 
 /* original */
 *[tw-glitch],
@@ -950,14 +947,6 @@
         }
     }
 
-
-/*
- ┌─┐┌─┐┬─┐┬ ┬┌─┐┬─┐┌┬┐┌─┐
- ├┤ │ │├┬┘│││├─┤├┬┘ ││└─┐
- └  └─┘┴└─└┴┘┴ ┴┴└──┴┘└─┘
- SECTION: forwards
-*/
-
 /* original */
 *[tw-slide-down-disappear],
 .tw-slide-down-disappear,
@@ -969,7 +958,7 @@
 .tw-slide-right-disappear {
     position: relative;
     display: inline-block;
-    animation-duration: var(--tw-slide-time,var(--tw-default-slide-time));
+    animation-duration: var(--tw-slide-time, var(--tw-default-slide-time));
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
 }
