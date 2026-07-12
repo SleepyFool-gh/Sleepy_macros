@@ -1,13 +1,7 @@
 # `CSS` Pack by SleepyFool
 
-A `CSS` pack of text manipulations, though many can also be applied to images or any other element. 
+A `CSS` pack of text manipulations, though many can also be applied to images or any other element. These effects were imported from Harlowe with the intention of being used in SugarCube, but most if not all should work in any project as it's simply CSS.
 
-Most of these effects should work by just applying the class name on the left-most column, but the `tw-glitch` and `tw-glitch-more` classes require a `data-tw-glitch` html attribute with a value equal to the content of the element. 
+Download the `css_pack_by_SleepyFool.css` file and include it in your project (either by pasting the contents into your project's stylesheet or including the file in your project's CSS folder).
 
-Some of these effects have CSS variables which can be used to alter their behavior. The stylesheet has the default values defined at the very top, which you can also change. These were created and tested on SugarCube but should work in any format.
-
-Aside from the first section, each effect is incompatible with another effect in the same section — animations may additionally be incompatible with other effects depending on what's being animated (though you can often get around this limitation by successively wrapping elements).
-
-<b>CAUTION:</b> CSS effects and text animations are often better when used <em>sparingly</em>.
-
-### See the [demo page](https://sleepyfool-gh.github.io/Sleepy_macros/css_pack/css_pack.html)
+### [See the demo page here!](https://sleepyfool-gh.github.io/Sleepy_macros/css_pack/css_pack.html)

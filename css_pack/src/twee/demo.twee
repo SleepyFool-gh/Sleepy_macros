@@ -1,0 +1,597 @@
+:: StoryData
+{
+    "ifid": "AAC579FC-CF6D-4C16-A950-41B5E2758115",
+    "format": "SugarCube",
+    "format-version": "2.36.1"
+}
+
+:: StoryTitle
+CSS Pack by SleepyFool
+
+:: StoryInterface
+<div id='passages'></div>
+
+:: Start [nobr]
+
+<div id='intro'>
+    <h1 id='title'>CSS Pack by SleepyFool</h1>
+    <p>
+        This is a CSS pack that can be used in any story format, though it was created and tested on SugarCube. Many effects were imported from Harlowe.
+    </p>
+    <h3>
+        <a href='https://github.com/SleepyFool-gh/Sleepy_macros/tree/main/css_pack'>Get the CSS Pack here!</a>
+    </h3>
+    <p>
+        Most of these effects work by simply applying the name on the left-most column as a class on the element or as an attribute, ie:
+    </p>
+    <div><code>&lt;div class='tw-blur'&gt;Blurry text!&lt;/div&gt;</code></div>
+    <div><code>&lt;div tw-blur&gt;Blurry text!&lt;/div&gt;</code></div>
+    <p>
+        The {{{tw-glitch}}} and {{{tw-glitch-more}}} effects however require a {{{data-tw-glitch}}} html attribute with a value equal to the content of the element.
+    </p>
+    <p>
+        Some of these effects have CSS variables which can be used to alter their behavior. The stylesheet has the default values defined at the very top, which you can also change.
+    </p>
+    <p>
+        Disclaimer: these CSS effects are provided as is. If they do not work, it's likely because of a clash with the existing stylesheet. <i>Generally</i>, each effect is incompatible with another effect in the same section. Animations may additionally be incompatible with other effects depending on what is being animated (though this can often be circumvented by successively wrapping elements).
+    </p>
+    <p>
+        <b>CAUTION:</b> CSS effects and text animations are often better when used <i>sparingly</i>.
+    </p>
+</div>
+
+<div id='sidebar'>
+
+    <div id='toc'>
+        <h2 class='header'>Table of Contents</h2>
+        <ul>
+            <li class='section'><a href='#intro'>Intro</a></li>
+            <li class='section'><a href='#font'>Font Styles</a></li>
+            <li class='section'><a href='#lines'>Line Decoration</a></li>
+            <li class='section'><a href='#filters'>Filters</a></li>
+            <li class='section'><a href='#shadows'>Text Shadows</a></li>
+            <li class='section'><a href='#transforms'>Transforms</a></li>
+            <li class='section'><a href='#animations-1'>Animations 1</a></li>
+            <li class='section'><a href='#animations-2'>Animations 2</a></li>
+        </ul>
+    </div>
+
+    <div id='sandbox'>
+        <h2 class='header'>Sandbox</h2>
+        <div>Input</div>
+        <textarea rows="3"></textarea>
+        <button>Run!</button>
+        <div>Output</div>
+        <div id='sandout'></div>
+    </div>
+    <<done>>
+        <<run
+            $('#sandbox button').on('click', () => $('#sandout').empty().wiki($('#sandbox textarea').val()));
+        >>
+    <</done>>
+
+</div>
+
+<div id='grid'>
+
+/*
+ █████  ████  █    █ █████      ████ █████ █   █ █     █████  ████
+ █     █    █ ██   █   █       █       █    █ █  █     █     █
+ ███   █    █ █ █  █   █        ███    █     █   █     ███    ███
+ █     █    █ █  █ █   █           █   █     █   █     █         █
+ █      ████  █   ██   █       ████    █     █   █████ █████ ████
+ SECTION: font styles
+*/
+    <div id='font' class='header'>Font Styles</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+    <<set _list to [
+        {
+            id: `tw-none`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-invisible`,
+            origin: `SleepyFool original`,
+        },
+        {
+            id: `tw-bold`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-italic`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-superscript`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-subscript`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-expand`,
+            origin: `Harlowe import`,
+            variables: [`--tw-expand`],
+        },
+        {
+            id: `tw-condense`,
+            origin: `Harlowe import`,
+            variables: [`--tw-condense`],
+        },
+    ]>>
+    <<include 'print'>>
+
+    <div class='name'>tw-drop-cap</div>
+    <div class='example'>
+        <div class='css tw-drop-cap'>
+            This is a an example sentence consisting of words which are in turn made of letters.
+        </div>
+    </div>
+    <div class='origin'>
+        SleepyFool original
+    </div>
+    <div class='variables'>
+        <code>--tw-drop-cap-size</code>
+        <input data-effect='tw-drop-cap' data-variable='--tw-drop-cap-size' type='text'>
+        <code>--tw-drop-cap-margin</code>
+        <input data-effect='tw-drop-cap' data-variable='--tw-drop-cap-margin' type='text'>
+        <code>--tw-drop-cap-font</code>
+        <input data-effect='tw-drop-cap' data-variable='--tw-drop-cap-font' type='text'>
+    </div>
+
+
+
+     
+/*
+ █     ███ █    █ █████  ████
+ █      █  ██   █ █     █
+ █      █  █ █  █ ███    ███
+ █      █  █  █ █ █         █
+ █████ ███ █   ██ █████ ████
+ SECTION: lines
+*/   
+    <div id='lines' class='header'>Lines</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+    <<set _list to [
+        {
+            id: `tw-underline`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-underline-dashed`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-underline-dotted`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-underline-double`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-underline-wavy`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-strike`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-strike-dashed`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-strike-dotted`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-strike-double`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+        {
+            id: `tw-strike-wavy`,
+            origin: `Harlowe import`,
+            variables: [`--tw-line-color`, `--tw-line-width`],
+        },
+    ]>>
+    <<include 'print'>>
+
+
+
+
+/*
+ █████ ███ █     █████ █████ ████   ████
+ █      █  █       █   █     █   █ █
+ ███    █  █       █   ███   ████   ███
+ █      █  █       █   █     █   █     █
+ █     ███ █████   █   █████ █   █ ████
+ SECTION: filters
+*/
+    <div id='filters' class='header'>Filters</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+    <<set _list to [
+        {
+            id: `tw-glow`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glow-color`],
+        },
+        {
+            id: `tw-glow-strong`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glow-color`],
+        },
+        {
+            id: `tw-smear`,
+            origin: `Harlowe import`,
+            variables: [`--tw-smear-color`],
+        },
+        {
+            id: `tw-blur`,
+            origin: `Harlowe import`,
+            variables: [`--tw-blur`],
+        },
+        {
+            id: `tw-blurrier`,
+            origin: `Harlowe import`,
+            variables: [`--tw-blur`],
+        },
+    ]>>
+    <<include 'print'>>
+
+
+/*
+  ████ █   █  ███  ████   ████  █     █  ████
+ █     █   █ █   █ █   █ █    █ █     █ █
+  ███  █████ █████ █   █ █    █ █  █  █  ███
+     █ █   █ █   █ █   █ █    █ █ █ █ █     █
+ ████  █   █ █   █ ████   ████   █   █  ████
+ SECTION: shadows
+*/
+    <div id='shadows' class='header'>Text Shadows</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+
+    <<set _list to [
+        {
+            id: `tw-outline`,
+            origin: `Harlowe import`,
+            variables: [`--tw-outline-width`, `--tw-outline-color`],
+        },
+        {
+            id: `tw-shadow`,
+            origin: `Harlowe import`,
+            variables: [`--tw-shadow-color`],
+        },
+        {
+            id: `tw-emboss`,
+            origin: `Harlowe import`,
+            variables: [`--tw-emboss-color`],
+        },
+    ]>>
+    <<include 'print'>>
+
+
+
+
+/*
+ █████ ████   ███  █    █  ████ █████  ████  ████  █    █  ████
+   █   █   █ █   █ ██   █ █     █     █    █ █   █ ██  ██ █
+   █   ████  █████ █ █  █  ███  ███   █    █ ████  █ ██ █  ███
+   █   █   █ █   █ █  █ █     █ █     █    █ █   █ █    █     █
+   █   █   █ █   █ █   ██ ████  █      ████  █   █ █    █ ████
+ SECTION: transforms
+*/
+    <div id='transforms' class='header'>Transforms</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+    <<set _list to [
+        {
+            id: `tw-mirror`,
+            origin: `Harlowe import`,
+        },
+        {
+            id: `tw-upside-down`,
+            origin: `Harlowe import`,
+            variables: [`--tw-upside-down-y`],
+
+        },
+        {
+            id: `tw-tall`,
+            origin: `Harlowe import`,
+            variables: [`--tw-tall-scale`, `--tw-tall-y`],
+        },
+        {
+            id: `tw-flat`,
+            origin: `Harlowe import`,
+            variables: [`--tw-flat-scale`, `--tw-flat-y`],
+        },
+        {
+            id: `tw-180`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-180-y`],
+        },
+    ]>>
+    <<include 'print'>>
+
+
+
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████      █
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █         ██
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       █
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █      █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████       █
+ SECTION:
+*/
+    <div id='animations-1' class='header'>Animations 1</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+    <<set _list to [
+        {
+            id: `tw-blink`,
+            origin: `Harlowe import`,
+            variables: [`--tw-blink-time`],
+        },
+        {
+            id: `tw-fade-in-out`,
+            origin: `Harlowe import`,
+            variables: [`--tw-fade-in-out-time`],
+        },
+        {
+            id: `tw-rumble`,
+            origin: `Harlowe import`,
+            variables: [`--tw-rumble-time`, `--tw-rumble-height`],
+        },
+        {
+            id: `tw-shudder`,
+            origin: `Harlowe import`,
+            variables: [`--tw-shudder-time`, `--tw-shudder-width`],
+        },
+        {
+            id: `tw-fidget`,
+            origin: `Harlowe import`,
+            variables: [`--tw-fidget-time`, `--tw-fidget-dist`],
+        },
+        {
+            id: `tw-sway`,
+            origin: `Harlowe import`,
+            variables: [`--tw-sway-time`, `--tw-sway-width`]
+        },
+        {
+            id: `tw-buoy`,
+            origin: `Harlowe import`,
+            variables: [`--tw-buoy-time`, `--tw-buoy-height`],
+        },
+        {
+            id: `tw-spin`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+        },
+        {
+            id: `tw-spin-x`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+        },
+        {
+            id: `tw-spin-y`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+        },
+        {
+            id: `tw-swing`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-swing-time`, `--tw-swing-angle`],
+        },
+        {
+            id: `tw-bounce`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-bounce-time`, `--tw-bounce-height`],
+        },
+        {
+            id: `tw-wave`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-wave-time`, `--tw-wave-angle`],
+        },
+        {
+            id: `tw-circle`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+        },
+        {
+            id: `tw-ccw-circle`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+        },
+    ]>>
+    <<include 'print'>>
+
+
+
+
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████     ████
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █             █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       ███
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █     █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████      █████
+ SECTION:
+*/
+    <div id='animations-2' class='header'>Animations 2</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
+
+    <div class='name'>tw-glitch</div>
+    <div class='example'>
+        An <span class='tw-glitch' data-tw-glitch='example'>example</span> usage
+    </div>
+    <div class='origin'>
+        SleepyFool original
+    </div>
+    <div class='variables'>
+        <code>--tw-glitch-L</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-L' type='text'>
+        <code>--tw-glitch-L-time</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-L-time' type='text'>
+        <code>--tw-glitch-L-color</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-L-color' type='text'>
+        <code>--tw-glitch-R</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-R' type='text'>
+        <code>--tw-glitch-R-time</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-R-time' type='text'>
+        <code>--tw-glitch-R-color</code>
+        <input data-effect='tw-glitch' data-variable='--tw-glitch-R-color' type='text'>
+        <code>--tw-glitch-delay</code>
+    </div>
+    
+    <div class='name'>tw-glitch-more</div>
+    <div class='example'>
+        An <span class='effect tw-glitch-more' data-tw-glitch='example'>example</span> usage
+    </div>
+    <div class='origin'>
+        SleepyFool original
+    </div>
+    <div class='variables'>
+        <code>--tw-glitch-L</code>
+        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L' type='text'>
+        <code>--tw-glitch-L-time</code>
+        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-time' type='text'>
+        <code>--tw-glitch-L-time2</code>
+        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-time2' type='text'>
+        <code>--tw-glitch-L-color</code>
+        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-color' type='text'>
+        <code>--tw-glitch-R</code>
+        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-R' type='text'>
+        <code>--tw-glitch-R-time</code>
+        <code>--tw-glitch-R-time2</code>
+        <code>--tw-glitch-R-color</code>
+        <code>--tw-glitch-delay</code>
+    </div>
+
+    <<set _list to [
+        {
+            id: `tw-slide-down-disappear`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-slide-time`],
+        },
+        {
+            id: `tw-slide-right-disappear`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-slide-time`],
+        },
+        {
+            id: `tw-slide-left-disappear`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-slide-time`],
+        },
+        {
+            id: `tw-slide-up-disappear`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-slide-time`],
+        },
+    ]>>
+    <<for _i, _effect range _list>>
+        <div class='name'>
+            <<print _effect.id>>
+        </div>
+        <div class='example hover'>
+            An <span class='effect' @data-effect='_effect.id'>example</span> usage<br/><small>(hover to see)</small>
+        </div>
+        <div class='origin'>
+            <<print _effect.origin>>
+        </div>
+        <div class='variables'>
+            <<if _effect.variables>>
+                <<for _var, _value range _effect.variables>>
+                    <code>_value</code>
+                    <input data-effect='_effect.id' data-variable='_value' type='text'>
+                <</for>>
+            <</if>>
+        </div>
+    <</for>>
+
+</div>
+<<done>>
+    /* run effects on hover */
+    <<run
+        $('.effect.hover').each(function() {
+            $(this).hover(
+                () => $(this).find('.effect').addClass($(this).data('effect')),
+                () => $(this).find('.effect').removeClass($(this).data('effect'))
+            );
+        });
+    >>
+    /* set placeholders */
+    <<run 
+        $('input').each(function(i, e) {
+            const effect_name = $(e).attr('data-effect');
+            const var_name = $(e).attr('data-variable');
+            const default_var_name = var_name.replace('--tw-', '--tw-default-');
+            const styles = window.getComputedStyle(document.documentElement);
+            const val = styles.getPropertyValue(default_var_name).trim();
+            console.log(val);
+            $(e).attr('placeholder', val);
+        });
+    >>
+    /* make textfields update vars */
+    <<run 
+        $('#grid').on('input', 'input', function(e) {
+            const effect_name = $(e.target).attr('data-effect');
+            const var_name = $(e.target).attr('data-variable');
+            const val = $(e.target).val();
+            $(`.${effect_name}`).css(var_name, val);
+            $(`[${effect_name}]`).css(var_name, val);
+        });
+    >>
+<</done>>
+
+
+:: print [nobr]
+<<for _i, _effect range _list>>
+    <div class='name'>
+        <<print _effect.id>>
+    </div>
+    <div class='example'>
+        An <span @class="'effect ' + _effect.id">example</span> usage
+    </div>
+    <div class='origin'>
+        <<print _effect.origin>>
+    </div>
+    <div class='variables'>
+        <<if _effect.variables>>
+            <<for _var, _value range _effect.variables>>
+                <code>_value</code>
+                <input @data-effect='_effect.id' @data-variable='_value' type='text'>
+            <</for>>
+        <</if>>
+    </div>
+<</for>>
