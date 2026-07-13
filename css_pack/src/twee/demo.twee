@@ -123,6 +123,11 @@ CSS Pack by SleepyFool
             origin: `Harlowe import`,
             variables: [`--tw-condense`],
         },
+        {
+            id: `tw-gradient`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-gradient-angle`, `--tw-gradient-color1`, `--tw-gradient-color2`],
+        },
     ]>>
     <<include 'print'>>
 
@@ -453,6 +458,11 @@ CSS Pack by SleepyFool
 
     <<set _list to [
         {
+            id: `tw-flashlight`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-flashlight-dimming`, `--tw-flashlight-color`, `--tw-flashlight-width`, `--tw-flashlight-sweep`, `--tw-flashlight-time`, `--tw-flashlight-direction`],
+        },
+        {
             id: `tw-burn`,
             origin: `SleepyFool original`,
             variables: [`--tw-burn-time`, `--tw-burn-color1`, `--tw-burn-color2`, `--tw-burn-color3`, `--tw-burn-x`, `--tw-burn-y`],
@@ -460,7 +470,7 @@ CSS Pack by SleepyFool
         {
             id: `tw-glitch`,
             origin: `SleepyFool original`,
-            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`, `--tw-glitch-delay`],
+            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`],
         },
         {
             id: `tw-glitch-more`,

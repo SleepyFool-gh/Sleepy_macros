@@ -43,7 +43,7 @@ code,
         height: 100svh;
         overflow: auto;
         grid-template-columns: 10rem 1fr;
-        padding: 0 0.5rem;
+        padding: 0 0.75rem 0 0.5rem;
         gap: 0.5rem;
     }
 
