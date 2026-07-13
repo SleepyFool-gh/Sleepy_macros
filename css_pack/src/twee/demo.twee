@@ -53,6 +53,7 @@ CSS Pack by SleepyFool
             <li class='section'><a href='#transforms'>Transforms</a></li>
             <li class='section'><a href='#animations-1'>Animations 1</a></li>
             <li class='section'><a href='#animations-2'>Animations 2</a></li>
+            <li class='section'><a href='#animations-3'>Animations 3</a></li>
         </ul>
     </div>
 
@@ -392,17 +393,17 @@ CSS Pack by SleepyFool
         {
             id: `tw-spin`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-spin-x`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-spin-y`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-swing`,
@@ -422,12 +423,12 @@ CSS Pack by SleepyFool
         {
             id: `tw-circle`,
             origin: `SleepyFool original`,
-            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+            variables: [`--tw-circle-radius`, `--tw-circle-time`, `--tw-circle-direction`],
         },
         {
-            id: `tw-ccw-circle`,
+            id: `tw-orbit`,
             origin: `SleepyFool original`,
-            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+            variables: [`--tw-orbit-radius`, `--tw-orbit-time`, `--tw-orbit-direction`],
         },
     ]>>
     <<include 'print'>>
@@ -450,52 +451,46 @@ CSS Pack by SleepyFool
     <div class='origin subheader'>Origin</div>
     <div class='variables subheader'>CSS Variables</div>
 
-    <div class='name'>tw-glitch</div>
-    <div class='example'>
-        An <span class='tw-glitch' data-tw-glitch='example'>example</span> usage
-    </div>
-    <div class='origin'>
-        SleepyFool original
-    </div>
-    <div class='variables'>
-        <code>--tw-glitch-L</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-L' type='text'>
-        <code>--tw-glitch-L-time</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-L-time' type='text'>
-        <code>--tw-glitch-L-color</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-L-color' type='text'>
-        <code>--tw-glitch-R</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-R' type='text'>
-        <code>--tw-glitch-R-time</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-R-time' type='text'>
-        <code>--tw-glitch-R-color</code>
-        <input data-effect='tw-glitch' data-variable='--tw-glitch-R-color' type='text'>
-        <code>--tw-glitch-delay</code>
-    </div>
-    
-    <div class='name'>tw-glitch-more</div>
-    <div class='example'>
-        An <span class='effect tw-glitch-more' data-tw-glitch='example'>example</span> usage
-    </div>
-    <div class='origin'>
-        SleepyFool original
-    </div>
-    <div class='variables'>
-        <code>--tw-glitch-L</code>
-        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L' type='text'>
-        <code>--tw-glitch-L-time</code>
-        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-time' type='text'>
-        <code>--tw-glitch-L-time2</code>
-        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-time2' type='text'>
-        <code>--tw-glitch-L-color</code>
-        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-L-color' type='text'>
-        <code>--tw-glitch-R</code>
-        <input data-effect='tw-glitch-more' data-variable='--tw-glitch-R' type='text'>
-        <code>--tw-glitch-R-time</code>
-        <code>--tw-glitch-R-time2</code>
-        <code>--tw-glitch-R-color</code>
-        <code>--tw-glitch-delay</code>
-    </div>
+    <<set _list to [
+        {
+            id: `tw-burn`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-burn-time`, `--tw-burn-color1`, `--tw-burn-color2`, `--tw-burn-color3`, `--tw-burn-x`, `--tw-burn-y`],
+        },
+        {
+            id: `tw-glitch`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`, `--tw-glitch-delay`],
+        },
+        {
+            id: `tw-glitch-more`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`, `--tw-glitch-delay`],
+        },
+    ]>>
+    <<include 'print'>>
+
+    <<done>>
+        <<script>>
+            /* add needed tw-glitch data */
+            $('.tw-glitch').attr('data-tw-glitch', 'example');
+            $('.tw-glitch-more').attr('data-tw-glitch', 'example');
+        <</script>>
+    <</done>>
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████     ████
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █             █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       ███
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █         █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████      ████
+ SECTION: animations 3
+*/
+    <div id='animations-3' class='header'>Animations 3</div>
+    <div class='name subheader'>Effect Name</div>
+    <div class='example subheader'>Example</div>
+    <div class='origin subheader'>Origin</div>
+    <div class='variables subheader'>CSS Variables</div>
 
     <<set _list to [
         {

@@ -137,16 +137,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: font
 */
 
-/* defaults */
-:root {
-    --tw-default-expand: 0.1em;
-    --tw-default-condense: -0.08em;
-
-    --tw-default-drop-cap-size: 3.5em;
-    --tw-default-drop-cap-margin: 0.2em 0.2em 0 0.1em;
-    --tw-default-drop-cap-font: serif;
-}
-
 /* Harlowe import */
 *[tw-bold],
 .tw-bold {
@@ -173,7 +163,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         vertical-align: sub;
     }
 
+    
 /* Harlowe import */
+:root {
+    --tw-default-expand: 0.1em;
+    --tw-default-condense: -0.08em;
+}
 *[tw-expand],
 .tw-expand {
     letter-spacing: var(--tw-expand, var(--tw-default-expand));
@@ -184,6 +179,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 }
 
 /* original */
+:root {
+    --tw-default-drop-cap-size: 3.5em;
+    --tw-default-drop-cap-margin: 0.2em 0.2em 0 0.1em;
+    --tw-default-drop-cap-font: serif;
+}
 .tw-drop-cap::first-letter {
     font-size: var(--tw-drop-cap-size, var(--tw-default-drop-cap-size));
     float: left;
@@ -203,14 +203,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: line decoration
 */
 
-/* defaults */
+/* Harlowe import */
 :root {
     /* underline & strike */
     --tw-default-line-color: currentColor;
     --tw-default-line-width: 0.1em;
 }
-
-/* Harlowe import */
 *[tw-underline],
 .tw-underline,
 *[tw-underline-dashed],
@@ -311,18 +309,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: filters
 */
 
-/* defaults */
-:root {
-    /* filters */
-    --tw-default-glow-color: currentColor;
-    --tw-default-smear-color: currentColor;
-
-    --tw-default-blur: 0.05em;
-    --tw-default-blurrier: 0.11em;
-}
-
-/* glow */
 /* original */
+:root {
+    --tw-default-glow-color: currentColor;
+}
 *[tw-glow],
 .tw-glow {
     filter: 
@@ -335,8 +325,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         drop-shadow(0 0 1em var(--tw-glow-color, var(--tw-default-glow-color)));
 }
 
-/* smear */
 /* Harlowe import */
+:root {
+    --tw-default-smear-color: currentColor;
+}
 *[tw-smear],
 .tw-smear {
     filter:
@@ -344,8 +336,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         drop-shadow(0 0 0.25em var(--tw-smear-color, var(--tw-default-smear-color)));
 }
 
-/* blur */
 /* Harlowe import */
+:root {
+    --tw-default-blur: 0.05em;
+    --tw-default-blurrier: 0.11em;
+}
 *[tw-blur],
 .tw-blur {
     filter: blur(var(--tw-blur, var(--tw-default-blur)));
@@ -367,18 +362,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: shadows
 */
 
-/* defaults */
+/* Harlowe import */
 :root {
-    /* text-shadows */
     --tw-default-outline-color: silver;
     --tw-default-outline-width: 1px;
-
-    --tw-default-shadow-color: currentColor;
-
-    --tw-default-emboss-color: color-mix(in hsl, currentColor, silver 20%);
 }
-
-/* Harlowe import */
 *[tw-outline],
 .tw-outline {
     --_outline_R: var(--tw-outline-width, var(--tw-default-outline-width));
@@ -398,6 +386,9 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 }
 
 /* Harlowe import */
+:root {
+    --tw-default-shadow-color: currentColor;
+}
 *[tw-shadow],
 .tw-shadow {
     text-shadow: 
@@ -405,6 +396,9 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 }
 
 /* Harlowe import */
+:root {
+    --tw-default-emboss-color: color-mix(in hsl, currentColor, silver 20%);
+}
 *[tw-emboss],
 .tw-emboss {
     text-shadow: 
@@ -423,20 +417,6 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: transforms
 */
 
-/* defaults */
-:root {
-    --tw-default-upside-down-y: -0.2em;
-
-    --tw-default-tall-scale: 1.5;
-    --tw-default-tall-y: -0.1em;
-
-    --tw-default-flat-scale: 0.6;
-    --tw-default-flat-y: 0em;
-
-    --tw-default-180-x: 0em;
-    --tw-default-180-y: -0.2em;
-}
-
 *[tw-mirror],
 .tw-mirror,
 *[tw-upside-down],
@@ -454,15 +434,29 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     .tw-mirror {
         transform: scaleX(-1);
     }
+    /* Harlowe import */
+    :root {
+        --tw-default-upside-down-y: -0.2em;
+    }
     .tw-upside-down {
         transform: 
             scaleY(-1)
-            translateY(var(--tw-180-y, var(--tw-default-180-y)));
+            translateY(var(--tw-upside-down-y, var(--tw-default-upside-down-y)));
+    }
+    /* Harlowe import */
+    :root {
+        --tw-default-tall-scale: 1.5;
+        --tw-default-tall-y: -0.1em;
     }
     .tw-tall {
         transform: 
             scaleY(var(--tw-tall-scale, var(--tw-default-tall-scale))) 
             translateY(var(--tw-tall-y, var(--tw-default-tall-y)));
+    }
+    /* Harlowe import */
+    :root {
+        --tw-default-flat-scale: 0.6;
+        --tw-default-flat-y: 0em;
     }
     .tw-flat {
         transform: 
@@ -470,6 +464,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
             translateY(var(--tw-flat-y, var(--tw-default-flat-y)));
     }
     /* original */
+    :root {
+        --tw-default-180-x: 0em;
+        --tw-default-180-y: -0.2em;
+    }
     .tw-180 {
         transform: 
             rotate(180deg)
@@ -480,12 +478,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 
 /*
-  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █
- █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █
- █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █
- █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █
- █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██
- SECTION:
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████      █
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █         ██
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       █
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █      █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████       █
+ SECTION: animations 1
 */
 
 /*
@@ -495,12 +493,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: visibility
 */
 
+/* Harlowe import */
 :root {
     --tw-default-blink-time: 2s;
-    --tw-default-fade-in-out-time: 2.5s;
 }
-
-/* Harlowe import */
 *[tw-blink],
 .tw-blink {
     animation: tw-blink var(--tw-blink-time, var(--tw-default-blink-time)) steps(1,end) infinite;
@@ -515,6 +511,9 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* Harlowe import */
+:root {
+    --tw-default-fade-in-out-time: 2.5s;
+}
 *[tw-fade-in-out],
 .tw-fade-in-out {
     animation: tw-fade-in-out var(--tw-fade-in-out-time, var(--tw-default-fade-in-out-time)) infinite;
@@ -536,18 +535,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  SECTION: shake
 */
 
+/* Harlowe import */
 :root {
     --tw-default-rumble-time: 0.1s;
     --tw-default-rumble-height: 0.14em;
-    
-    --tw-default-shudder-time: 0.1s;
-    --tw-default-shudder-width: 0.12em;
-
-    --tw-default-fidget-time: 7s;
-    --tw-default-fidget-dist: 0.2em;
 }
-
-/* Harlowe import */
 *[tw-rumble],
 .tw-rumble {
     position: relative;
@@ -563,6 +555,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* Harlowe import */
+:root {
+    --tw-default-shudder-time: 0.1s;
+    --tw-default-shudder-width: 0.12em;
+}
 *[tw-shudder],
 .tw-shudder {
     position: relative;
@@ -578,6 +574,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* Harlowe import */
+:root {
+    --tw-default-fidget-time: 7s;
+    --tw-default-fidget-dist: 0.2em;
+}
 *[tw-fidget],
 .tw-fidget {
     position: relative;
@@ -605,36 +605,17 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 
 /*
- ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
- ├─┤│││││││├─┤ │ ││ ││││└─┐
- ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
- SECTION: animations 1
+ ┌─┐┬ ┬┌─┐┬  ┬┌─┐┌─┐
+ │  └┬┘│  │  ││  └─┐
+ └─┘ ┴ └─┘┴─┘┴└─┘└─┘
+ SECTION: cyclics
 */
 
+/* Harlowe import */
 :root {
     --tw-default-sway-time: 5s;
     --tw-default-sway-width: 0.5em;
-
-    --tw-default-buoy-time: 5s;
-    --tw-default-buoy-height: 0.4em;
-
-    --tw-default-spin-time: 5s;
-    --tw-default-spin-angle: 360deg;
-
-    --tw-default-swing-time: 4s;
-    --tw-default-swing-angle: 10deg;
-
-    --tw-default-bounce-time: 1s;
-    --tw-default-bounce-height: 1.25em;
-
-    --tw-default-wave-time: 2.5s;
-    --tw-default-wave-angle: 10deg;
-
-    --tw-default-circle-radius: 0.2em;
-    --tw-default-circle-time: 2s;
 }
-
-/* Harlowe import */
 *[tw-sway],
 .tw-sway {
     position: relative;
@@ -650,6 +631,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* Harlowe import */
+:root {
+    --tw-default-buoy-time: 5s;
+    --tw-default-buoy-height: 0.4em;
+}
 *[tw-buoy],
 .tw-buoy {
     position: relative;
@@ -665,6 +650,11 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* original */
+:root {
+    --tw-default-spin-time: 5s;
+    --tw-default-spin-angle: 360deg;
+    --tw-default-spin-direction: normal;
+}
 *[tw-spin],
 .tw-spin,
 *[tw-spin-x],
@@ -675,7 +665,8 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     transform-origin: center;
     animation-duration: var(--tw-spin-time, var(--tw-default-spin-time));
     animation-timing-function: linear;
-    animation-iteration-count: infinite
+    animation-iteration-count: infinite;
+    animation-direction: var(--tw-spin-direction, var(--tw-default-spin-direction, normal));
 }
     *[tw-spin],
     .tw-spin {
@@ -715,6 +706,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         }
 
 /* original */
+:root {
+    --tw-default-swing-time: 4s;
+    --tw-default-swing-angle: 10deg;
+}
 *[tw-swing],
 .tw-swing {
     display: inline-block;
@@ -733,6 +728,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* original */
+:root {
+    --tw-default-bounce-time: 1s;
+    --tw-default-bounce-height: 1.25em;
+}
 *[tw-bounce],
 .tw-bounce {
     position: relative;
@@ -824,6 +823,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* original */
+:root {
+    --tw-default-wave-time: 2.5s;
+    --tw-default-wave-angle: 10deg;
+}
 *[tw-wave],
 .tw-wave {
     display: inline-block;
@@ -840,55 +843,52 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     }
 
 /* original */
+:root {
+    --tw-default-circle-radius: 0.2em;
+    --tw-default-circle-time: 2s;
+    --tw-default-circle-direction: normal;
+}
 *[tw-circle],
-.tw-circle,
-*[tw-ccw-circle],
-.tw-ccw-circle {
+.tw-circle {
     --_r: var(--tw-circle-radius, var(--tw-default-circle-radius));
     display: inline-block;
     animation: tw-circle var(--tw-circle-time, var(--tw-default-circle-time)) linear infinite;
+    animation-direction: var(--tw-circle-direction, var(--tw-default-circle-direction));
 }
-    *[tw-ccw-circle],
-    .tw-ccw-circle {
-        animation-direction: reverse;
+    @keyframes tw-circle {
+        0%      {  transform: rotate(0deg) translateX(var(--_r)) rotate(-0deg); }
+        100%    {  transform: rotate(360deg) translateX(var(--_r)) rotate(-360deg); }
     }
-        @keyframes tw-circle { 
-            0%        { transform: translate(calc(1.000 * var(--_r)), calc(0.000 * var(--_r))); }
-            4.17%     { transform: translate(calc(0.966 * var(--_r)), calc(0.259 * var(--_r))); }
-            8.33%     { transform: translate(calc(0.866 * var(--_r)), calc(0.500 * var(--_r))); }
-            12.5%     { transform: translate(calc(0.707 * var(--_r)), calc(0.707 * var(--_r))); }
-            16.67%    { transform: translate(calc(0.500 * var(--_r)), calc(0.866 * var(--_r))); }
-            20.83%    { transform: translate(calc(0.259 * var(--_r)), calc(0.966 * var(--_r))); }
-            25%       { transform: translate(calc(0.000 * var(--_r)), calc(1.000 * var(--_r))); }
-            29.17%    { transform: translate(calc(-0.259 * var(--_r)), calc(0.966 * var(--_r))); }
-            33.33%    { transform: translate(calc(-0.500 * var(--_r)), calc(0.866 * var(--_r))); }
-            37.5%     { transform: translate(calc(-0.707 * var(--_r)), calc(0.707 * var(--_r))); }
-            41.67%    { transform: translate(calc(-0.866 * var(--_r)), calc(0.500 * var(--_r))); }
-            45.83%    { transform: translate(calc(-0.966 * var(--_r)), calc(0.259 * var(--_r))); }
-            50%       { transform: translate(calc(-1.000 * var(--_r)), calc(0.000 * var(--_r))); }
-            54.17%    { transform: translate(calc(-0.966 * var(--_r)), calc(-0.259 * var(--_r))); }
-            58.33%    { transform: translate(calc(-0.866 * var(--_r)), calc(-0.500 * var(--_r))); }
-            62.5%     { transform: translate(calc(-0.707 * var(--_r)), calc(-0.707 * var(--_r))); }
-            66.67%    { transform: translate(calc(-0.500 * var(--_r)), calc(-0.866 * var(--_r))); }
-            70.83%    { transform: translate(calc(-0.259 * var(--_r)), calc(-0.966 * var(--_r))); }
-            75%       { transform: translate(calc(0.000 * var(--_r)), calc(-1.000 * var(--_r))); }
-            79.17%    { transform: translate(calc(0.259 * var(--_r)), calc(-0.966 * var(--_r))); }
-            83.33%    { transform: translate(calc(0.500 * var(--_r)), calc(-0.866 * var(--_r))); }
-            87.5%     { transform: translate(calc(0.707 * var(--_r)), calc(-0.707 * var(--_r))); }
-            91.67%    { transform: translate(calc(0.866 * var(--_r)), calc(-0.500 * var(--_r))); }
-            95.83%    { transform: translate(calc(0.966 * var(--_r)), calc(-0.259 * var(--_r))); }
-            100%      { transform: translate(calc(1.000 * var(--_r)), calc(0.000 * var(--_r))); }
-        }
 
+/* original */
+:root {
+    --tw-default-orbit-radius: 2em;
+    --tw-default-orbit-time: 2s;
+    --tw-default-orbit-direction: normal;
+}
+*[tw-orbit],
+.tw-orbit {
+    --_r: var(--tw-orbit-radius, var(--tw-default-orbit-radius));
+    display: inline-block;
+    animation: tw-orbit var(--tw-orbit-time, var(--tw-default-orbit-time)) linear infinite;
+    animation-direction: var(--tw-orbit-direction, var(--tw-default-orbit-direction));
+}
+    @keyframes tw-orbit {
+        0%      {  transform: rotate(0deg) translateY(calc(-1 * var(--_r))); }
+        100%    {  transform: rotate(360deg) translateY(calc(-1 * var(--_r))); }
+    }
 
 
 /*
- ┌─┐┌┐┌┬┌┬┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
- ├─┤│││││││├─┤ │ ││ ││││└─┐
- ┴ ┴┘└┘┴┴ ┴┴ ┴ ┴ ┴└─┘┘└┘└─┘
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████     ████
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █             █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       ███
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █     █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████      █████
  SECTION: animations 2
 */
 
+/* original */
 :root {
     --tw-default-glitch-L: 0.015em;
     --tw-default-glitch-L-time: 5s;
@@ -899,11 +899,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     --tw-default-glitch-R-time2: 2.75s;
     --tw-default-glitch-R-color: color-mix(in srgb, currentColor, cyan 20%);
     --tw-default-glitch-delay: 0s;
-
-    --tw-default-slide-time: 2s;
 }
-
-/* original */
 *[tw-glitch],
 .tw-glitch,
 *[tw-glitch-more],
@@ -928,7 +924,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         z-index: -1;
         top: 0;
         overflow: hidden;
-        line-height: 1.1;
+        line-height: 1.2;
     }
         *[tw-glitch]::before,
         .tw-glitch::before,
@@ -998,29 +994,29 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
                 opacity: 0.05;
             }
             0%, 60% {
-                --y1:0%;
-                --y2:5%;
-                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+                --_y1:0%;
+                --_y2:5%;
+                clip-path:polygon(0% var(--_y1),100% var(--_y1),100% var(--_y2),0% var(--_y2));
             }
             35%, 75% {
-                --y1:90%;
-                --y2:100%;
-                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+                --_y1:90%;
+                --_y2:100%;
+                clip-path:polygon(0% var(--_y1),100% var(--_y1),100% var(--_y2),0% var(--_y2));
             }
             50%, 90% {
-                --y1:20%;
-                --y2:50%;
-                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+                --_y1:20%;
+                --_y2:50%;
+                clip-path:polygon(0% var(--_y1),100% var(--_y1),100% var(--_y2),0% var(--_y2));
             }
             45%, 85% {
-                --y1:70%;
-                --y2:75%;
-                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+                --_y1:70%;
+                --_y2:75%;
+                clip-path:polygon(0% var(--_y1),100% var(--_y1),100% var(--_y2),0% var(--_y2));
             }
             20%, 80% {
-                --y1:0%;
-                --y2:100%;
-                clip-path:polygon(0% var(--y1),100% var(--y1),100% var(--y2),0% var(--y2));
+                --_y1:0%;
+                --_y2:100%;
+                clip-path:polygon(0% var(--_y1),100% var(--_y1),100% var(--_y2),0% var(--_y2));
             }
         }
         @keyframes tw-glitch-more {
@@ -1035,26 +1031,94 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
             }
         }
 
+/* original */
+:root {
+    --tw-default-burn-color1: red;
+    --tw-default-burn-color2: orangered;
+    --tw-default-burn-color3: white;
+    --tw-default-burn-x: 0.35rem;
+    --tw-default-burn-y: -0.25rem;
+    --tw-default-burn-time: 0.8s;
+}
 *[tw-burn],
 .tw-burn {
-    animation: tw-burn 1s infinite;
+    animation: tw-burn var(--tw-burn-time, var(--tw-default-burn-time)) infinite;
+    --_color1: var(--tw-burn-color1, var(--tw-default-burn-color1));
+    --_color2: var(--tw-burn-color2, var(--tw-default-burn-color2));
+    --_color3: var(--tw-burn-color3, var(--tw-default-burn-color3));
+    --_x: var(--tw-burn-x, var(--tw-default-burn-x));
+    --_y: var(--tw-burn-y, var(--tw-default-burn-y));
 }
-    @keyframes tw-burn {
-        0%, 50%, 100% {
-            text-shadow: -0.5em -0.2em 0.4em red
-        }
-        30% {
-            text-shadow: -0.25em -0.2em 0.3em orangered
-        }
-        60% {
-            text-shadow: -0.1em -0.2em 0.5em red
-        }
-        80% {
-            text-shadow: -0.25em -0.3em 0.2em orangered
-        }
+@keyframes tw-burn {
+    0%, 100% {
+        text-shadow: 
+            0 0 0.06em var(--_color3),
+            calc(0.20 * var(--_x)) calc(0.30 * var(--_y)) 0.20em var(--_color2),
+            calc(0.50 * var(--_x)) calc(0.50 * var(--_y)) 0.45em var(--_color1);
     }
+    11% {
+        text-shadow: 
+            calc(0.09 * var(--_x)) calc(-0.06 * var(--_y)) 0.11em var(--_color3),
+            calc(0.45 * var(--_x)) calc(0.20 * var(--_y)) 0.28em var(--_color2),
+            calc(0.85 * var(--_x)) calc(0.65 * var(--_y)) 0.55em var(--_color1);
+    }
+    24% {
+        text-shadow: 
+            calc(-0.07 * var(--_x)) calc(0.04 * var(--_y)) 0.08em var(--_color3),
+            calc(0.12 * var(--_x)) calc(0.55 * var(--_y)) 0.18em var(--_color2),
+            calc(0.35 * var(--_x)) calc(0.80 * var(--_y)) 0.70em var(--_color1); /* Smoke blooms out */
+    }
+    36% {
+        text-shadow: 
+            calc(0.05 * var(--_x)) calc(-0.02 * var(--_y)) 0.13em var(--_color3),
+            calc(0.60 * var(--_x)) calc(0.40 * var(--_y)) 0.32em var(--_color2),
+            calc(0.95 * var(--_x)) calc(0.45 * var(--_y)) 0.40em var(--_color1); /* Flare shoots sideways */
+    }
+    48% {
+        text-shadow: 
+            calc(-0.03 * var(--_x)) calc(-0.08 * var(--_y)) 0.07em var(--_color3),
+            calc(0.25 * var(--_x)) calc(0.65 * var(--_y)) 0.24em var(--_color2),
+            calc(0.60 * var(--_x)) calc(0.95 * var(--_y)) 0.90em var(--_color1); /* Deep vertical dispersion */
+    }
+    59% {
+        text-shadow: 
+            calc(0.08 * var(--_x)) calc(0.05 * var(--_y)) 0.10em var(--_color3),
+            calc(0.50 * var(--_x)) calc(0.15 * var(--_y)) 0.15em var(--_color2), /* Mid layer collapses down */
+            calc(0.40 * var(--_x)) calc(0.60 * var(--_y)) 0.50em var(--_color1);
+    }
+    71% {
+        text-shadow: 
+            calc(-0.08 * var(--_x)) calc(-0.04 * var(--_y)) 0.12em var(--_color3),
+            calc(0.15 * var(--_x)) calc(0.45 * var(--_y)) 0.35em var(--_color2),
+            calc(0.75 * var(--_x)) calc(0.85 * var(--_y)) 0.65em var(--_color1);
+    }
+    82% {
+        text-shadow: 
+            calc(0.02 * var(--_x)) calc(0.07 * var(--_y)) 0.05em var(--_color3),
+            calc(0.55 * var(--_x)) calc(0.70 * var(--_y)) 0.22em var(--_color2),
+            calc(1.10 * var(--_x)) calc(1.05 * var(--_y)) 1.10em var(--_color1); /* Maximum erratic stretch */
+    }
+    91% {
+        text-shadow: 
+            calc(-0.04 * var(--_x)) calc(-0.05 * var(--_y)) 0.09em var(--_color3),
+            calc(0.30 * var(--_x)) calc(0.35 * var(--_y)) 0.26em var(--_color2),
+            calc(0.55 * var(--_x)) calc(0.50 * var(--_y)) 0.38em var(--_color1); /* Quick snap back */
+    }
+}
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████     ████
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █             █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       ███
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █         █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████      ████
+ SECTION: animations 3
+*/
 
 /* original */
+:root {
+    --tw-default-slide-time: 2s;
+}
 *[tw-slide-down-disappear],
 .tw-slide-down-disappear,
 *[tw-slide-up-disappear],
@@ -1225,7 +1289,6 @@ code,
                 margin-bottom: 1rem;
             }
 
-
 /*
   ████  ████  █    █ █████ █████ █    █ █████
  █     █    █ ██   █   █   █     ██   █   █
@@ -1316,6 +1379,7 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
             &lt;li class=&#39;section&#39;&gt;&lt;a href=&#39;#transforms&#39;&gt;Transforms&lt;/a&gt;&lt;/li&gt;
             &lt;li class=&#39;section&#39;&gt;&lt;a href=&#39;#animations-1&#39;&gt;Animations 1&lt;/a&gt;&lt;/li&gt;
             &lt;li class=&#39;section&#39;&gt;&lt;a href=&#39;#animations-2&#39;&gt;Animations 2&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#39;section&#39;&gt;&lt;a href=&#39;#animations-3&#39;&gt;Animations 3&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/div&gt;
 
@@ -1655,17 +1719,17 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
         {
             id: `tw-spin`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-spin-x`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-spin-y`,
             origin: `SleepyFool original`,
-            variables: [`--tw-spin-time`, `--tw-spin-angle`],
+            variables: [`--tw-spin-time`, `--tw-spin-angle`, `--tw-spin-direction`],
         },
         {
             id: `tw-swing`,
@@ -1685,12 +1749,12 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
         {
             id: `tw-circle`,
             origin: `SleepyFool original`,
-            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+            variables: [`--tw-circle-radius`, `--tw-circle-time`, `--tw-circle-direction`],
         },
         {
-            id: `tw-ccw-circle`,
+            id: `tw-orbit`,
             origin: `SleepyFool original`,
-            variables: [`--tw-circle-radius`, `--tw-circle-time`],
+            variables: [`--tw-orbit-radius`, `--tw-orbit-time`, `--tw-orbit-direction`],
         },
     ]&gt;&gt;
     &lt;&lt;include &#39;print&#39;&gt;&gt;
@@ -1713,52 +1777,46 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
     &lt;div class=&#39;origin subheader&#39;&gt;Origin&lt;/div&gt;
     &lt;div class=&#39;variables subheader&#39;&gt;CSS Variables&lt;/div&gt;
 
-    &lt;div class=&#39;name&#39;&gt;tw-glitch&lt;/div&gt;
-    &lt;div class=&#39;example&#39;&gt;
-        An &lt;span class=&#39;tw-glitch&#39; data-tw-glitch=&#39;example&#39;&gt;example&lt;/span&gt; usage
-    &lt;/div&gt;
-    &lt;div class=&#39;origin&#39;&gt;
-        SleepyFool original
-    &lt;/div&gt;
-    &lt;div class=&#39;variables&#39;&gt;
-        &lt;code&gt;--tw-glitch-L&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-L&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-L-time&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-L-time&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-L-color&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-L-color&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-R&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-R&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-R-time&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-R-time&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-R-color&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch&#39; data-variable=&#39;--tw-glitch-R-color&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-delay&lt;/code&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#39;name&#39;&gt;tw-glitch-more&lt;/div&gt;
-    &lt;div class=&#39;example&#39;&gt;
-        An &lt;span class=&#39;effect tw-glitch-more&#39; data-tw-glitch=&#39;example&#39;&gt;example&lt;/span&gt; usage
-    &lt;/div&gt;
-    &lt;div class=&#39;origin&#39;&gt;
-        SleepyFool original
-    &lt;/div&gt;
-    &lt;div class=&#39;variables&#39;&gt;
-        &lt;code&gt;--tw-glitch-L&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch-more&#39; data-variable=&#39;--tw-glitch-L&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-L-time&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch-more&#39; data-variable=&#39;--tw-glitch-L-time&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-L-time2&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch-more&#39; data-variable=&#39;--tw-glitch-L-time2&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-L-color&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch-more&#39; data-variable=&#39;--tw-glitch-L-color&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-R&lt;/code&gt;
-        &lt;input data-effect=&#39;tw-glitch-more&#39; data-variable=&#39;--tw-glitch-R&#39; type=&#39;text&#39;&gt;
-        &lt;code&gt;--tw-glitch-R-time&lt;/code&gt;
-        &lt;code&gt;--tw-glitch-R-time2&lt;/code&gt;
-        &lt;code&gt;--tw-glitch-R-color&lt;/code&gt;
-        &lt;code&gt;--tw-glitch-delay&lt;/code&gt;
-    &lt;/div&gt;
+    &lt;&lt;set _list to [
+        {
+            id: `tw-burn`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-burn-time`, `--tw-burn-color1`, `--tw-burn-color2`, `--tw-burn-color3`, `--tw-burn-x`, `--tw-burn-y`],
+        },
+        {
+            id: `tw-glitch`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`, `--tw-glitch-delay`],
+        },
+        {
+            id: `tw-glitch-more`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-glitch-L`, `--tw-glitch-L-time`, `--tw-glitch-L-color`, `--tw-glitch-R`, `--tw-glitch-R-time`, `--tw-glitch-R-color`, `--tw-glitch-delay`],
+        },
+    ]&gt;&gt;
+    &lt;&lt;include &#39;print&#39;&gt;&gt;
+
+    &lt;&lt;done&gt;&gt;
+        &lt;&lt;script&gt;&gt;
+            /* add needed tw-glitch data */
+            $(&#39;.tw-glitch&#39;).attr(&#39;data-tw-glitch&#39;, &#39;example&#39;);
+            $(&#39;.tw-glitch-more&#39;).attr(&#39;data-tw-glitch&#39;, &#39;example&#39;);
+        &lt;&lt;/script&gt;&gt;
+    &lt;&lt;/done&gt;&gt;
+
+/*
+  ███  █    █ ███ █    █  ███  █████ ███  ████  █    █  ████     ████
+ █   █ ██   █  █  ██  ██ █   █   █    █  █    █ ██   █ █             █
+ █████ █ █  █  █  █ ██ █ █████   █    █  █    █ █ █  █  ███       ███
+ █   █ █  █ █  █  █    █ █   █   █    █  █    █ █  █ █     █         █
+ █   █ █   ██ ███ █    █ █   █   █   ███  ████  █   ██ ████      ████
+ SECTION: animations 3
+*/
+    &lt;div id=&#39;animations-3&#39; class=&#39;header&#39;&gt;Animations 3&lt;/div&gt;
+    &lt;div class=&#39;name subheader&#39;&gt;Effect Name&lt;/div&gt;
+    &lt;div class=&#39;example subheader&#39;&gt;Example&lt;/div&gt;
+    &lt;div class=&#39;origin subheader&#39;&gt;Origin&lt;/div&gt;
+    &lt;div class=&#39;variables subheader&#39;&gt;CSS Variables&lt;/div&gt;
 
     &lt;&lt;set _list to [
         {
