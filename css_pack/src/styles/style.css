@@ -46,6 +46,9 @@ code,
         padding: 0 0.75rem 0 0.5rem;
         gap: 0.5rem;
     }
+        .example  {
+            margin-left: 1rem;
+        }
 
 
 /*

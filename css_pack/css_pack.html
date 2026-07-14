@@ -1322,6 +1322,9 @@ code,
         padding: 0 0.75rem 0 0.5rem;
         gap: 0.5rem;
     }
+        .example  {
+            margin-left: 1rem;
+        }
 
 
 /*
@@ -1425,14 +1428,17 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
     &lt;p&gt;
         Most of these effects work by simply applying the name on the left-most column as a class on the element or as an attribute, ie:
     &lt;/p&gt;
-    &lt;div&gt;&lt;code&gt;&amp;lt;div class=&#39;tw-blur&#39;&amp;gt;Blurry text!&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/div&gt;
-    &lt;div&gt;&lt;code&gt;&amp;lt;div tw-blur&amp;gt;Blurry text!&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/div&gt;
+    &lt;div class=&#39;example&#39;&gt;&lt;code&gt;&amp;lt;div class=&#39;tw-blur&#39;&amp;gt;Blurry text!&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/div&gt;
+    &lt;div class=&#39;example&#39;&gt;&lt;code&gt;&amp;lt;div tw-blur&amp;gt;Blurry text!&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/div&gt;
     &lt;p&gt;
         The {{{tw-glitch}}} and {{{tw-glitch-more}}} effects however require a {{{data-tw-glitch}}} html attribute with a value equal to the content of the element.
     &lt;/p&gt;
     &lt;p&gt;
         Some of these effects have CSS variables which can be used to alter their behavior. The stylesheet has the default values defined at the very top, which you can also change.
     &lt;/p&gt;
+    &lt;pre class=&#39;example&#39;&gt;&lt;code&gt;.tw-circle {&lt;br&gt;
+    --tw-circle-time: 2s;&lt;br&gt;
+}&lt;/code&gt;&lt;/pre&gt;
     &lt;p&gt;
         Disclaimer: these CSS effects are provided as is. If they do not work, it&#39;s likely because of a clash with the existing stylesheet. &lt;i&gt;Generally&lt;/i&gt;, each effect is incompatible with another effect in the same section. Animations may additionally be incompatible with other effects depending on what is being animated (though this can often be circumvented by successively wrapping elements).
     &lt;/p&gt;

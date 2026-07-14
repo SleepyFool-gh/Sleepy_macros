@@ -24,14 +24,17 @@ CSS Pack by SleepyFool
     <p>
         Most of these effects work by simply applying the name on the left-most column as a class on the element or as an attribute, ie:
     </p>
-    <div><code>&lt;div class='tw-blur'&gt;Blurry text!&lt;/div&gt;</code></div>
-    <div><code>&lt;div tw-blur&gt;Blurry text!&lt;/div&gt;</code></div>
+    <div class='example'><code>&lt;div class='tw-blur'&gt;Blurry text!&lt;/div&gt;</code></div>
+    <div class='example'><code>&lt;div tw-blur&gt;Blurry text!&lt;/div&gt;</code></div>
     <p>
         The {{{tw-glitch}}} and {{{tw-glitch-more}}} effects however require a {{{data-tw-glitch}}} html attribute with a value equal to the content of the element.
     </p>
     <p>
         Some of these effects have CSS variables which can be used to alter their behavior. The stylesheet has the default values defined at the very top, which you can also change.
     </p>
+    <pre class='example'><code>.tw-circle {<br>
+    --tw-circle-time: 2s;<br>
+}</code></pre>
     <p>
         Disclaimer: these CSS effects are provided as is. If they do not work, it's likely because of a clash with the existing stylesheet. <i>Generally</i>, each effect is incompatible with another effect in the same section. Animations may additionally be incompatible with other effects depending on what is being animated (though this can often be circumvented by successively wrapping elements).
     </p>
