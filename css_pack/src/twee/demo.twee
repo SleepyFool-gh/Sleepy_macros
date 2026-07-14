@@ -460,7 +460,12 @@ CSS Pack by SleepyFool
         {
             id: `tw-flashlight`,
             origin: `SleepyFool original`,
-            variables: [`--tw-flashlight-dimming`, `--tw-flashlight-color`, `--tw-flashlight-width`, `--tw-flashlight-sweep`, `--tw-flashlight-time`, `--tw-flashlight-direction`],
+            variables: [`--tw-light-dimming`, `--tw-light-color`, `--tw-light-width`, `--tw-light-sweep`, `--tw-light-time`, `--tw-light-direction`],
+        },
+        {
+            id: `tw-searchlight`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-light-dimming`, `--tw-light-color`, `--tw-light-width`, `--tw-light-sweep`, `--tw-light-time`, `--tw-light-direction`, `--tw-searchlight-stop1`, `--tw-searchlight-stop2`],
         },
         {
             id: `tw-burn`,

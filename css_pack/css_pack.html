@@ -1005,6 +1005,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 *[tw-glitch-more],
 .tw-glitch-more {
     position: relative;
+    color: color-mix(in srgb, currentColor, transparent, 80%);
     padding-left: var(--_L);
     padding-right: var(--_R);
     --_L: var(--tw-glitch-L, var(--tw-default-glitch-L));
@@ -1021,10 +1022,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     .tw-glitch-more::after {
         position: absolute;
         content: attr(data-tw-glitch);
-        z-index: -1;
-        top: 0;
+        z-index: 1;
+        top: 0em;
+        line-height: 1.25;
         overflow: hidden;
-        line-height: 1.2;
     }
         *[tw-glitch]::before,
         .tw-glitch::before,
@@ -1132,33 +1133,52 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 /* original */
 :root {
-    --tw-default-flashlight-dimming: 92%;
-    --tw-default-flashlight-color: white;
-    --tw-default-flashlight-width: 15%;
-    --tw-default-flashlight-sweep: 400%;
-    --tw-default-flashlight-time: 5s;
-    --tw-default-flashlight-direction: normal;
+    --tw-default-light-dimming: 92%;
+    --tw-default-light-color: white;
+    --tw-default-light-width: 2em;
+    --tw-default-light-sweep: 400%;
+    --tw-default-light-time: 5s;
+    --tw-default-light-direction: normal;
 }
 *[tw-flashlight],
-.tw-flashlight {
-    color: color-mix(in srgb, currentColor, transparent var(--tw-flashlight-dimming, var(--tw-default-flashlight-dimming)));
+.tw-flashlight,
+*[tw-searchlight],
+.tw-searchlight {
+    color: color-mix(in srgb, currentColor, transparent var(--tw-light-dimming, var(--tw-default-light-dimming)));
     background: linear-gradient(
         90deg,
-        transparent calc(50% - (var(--tw-flashlight-width, var(--tw-default-flashlight-width)) / 2)),
-        var(--tw-flashlight-color, var(--tw-default-flashlight-color)) 50%,
-        transparent calc(50% + (var(--tw-flashlight-width, var(--tw-default-flashlight-width)) / 2))
+        transparent calc(50% - (var(--tw-light-width, var(--tw-default-light-width)) / 2)),
+        var(--tw-light-color, var(--tw-default-light-color)) 50%,
+        transparent calc(50% + (var(--tw-light-width, var(--tw-default-light-width)) / 2))
     );
-    background-size: var(--tw-flashlight-sweep, var(--tw-default-flashlight-sweep)) 100%;
+    background-size: var(--tw-light-sweep, var(--tw-default-light-sweep)) 100%;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: tw-flashlight var(--tw-flashlight-time, var(--tw-default-flashlight-time)) infinite linear;
-    animation-direction: var(--tw-flashlight-direction, var(--tw-default-flashlight-direction));
+    animation-direction: var(--tw-light-direction, var(--tw-default-light-direction));
 }
-    @keyframes tw-flashlight {
-        0%   { background-position: 100% 0; }
-        100% { background-position: 0% 0; }
+    *[tw-flashlight],
+    .tw-flashlight { 
+        animation: tw-flashlight var(--tw-light-time, var(--tw-default-light-time)) infinite linear;
     }
+        @keyframes tw-flashlight {
+            0%   { background-position: 100% 0; }
+            100% { background-position: 0% 0; }
+        }
+    :root {
+        --tw-default-searchlight-stop1: 60%;
+        --tw-default-searchlight-stop2: 40%;
+    }
+    *[tw-searchlight],
+    .tw-searchlight {
+        animation: tw-searchlight var(--tw-light-time, var(--tw-default-light-time)) infinite ease;
+    }
+        @keyframes tw-searchlight {
+            0%          { background-position: 100% 0; }
+            20%, 30%    { background-position: calc(100% - var(--tw-searchlight-stop1, var(--tw-default-searchlight-stop1))) 0; }
+            45%, 55%    { background-position: calc(100% - var(--tw-searchlight-stop2, var(--tw-default-searchlight-stop2))) 0; }
+            100%        { background-position: 0% 0; }
+        }
 
 
 /*
@@ -1841,7 +1861,12 @@ Wikifier.Parser.delete('emdash');</script><tw-passagedata pid="1" name="StoryInt
         {
             id: `tw-flashlight`,
             origin: `SleepyFool original`,
-            variables: [`--tw-flashlight-dimming`, `--tw-flashlight-color`, `--tw-flashlight-width`, `--tw-flashlight-sweep`, `--tw-flashlight-time`, `--tw-flashlight-direction`],
+            variables: [`--tw-light-dimming`, `--tw-light-color`, `--tw-light-width`, `--tw-light-sweep`, `--tw-light-time`, `--tw-light-direction`],
+        },
+        {
+            id: `tw-searchlight`,
+            origin: `SleepyFool original`,
+            variables: [`--tw-light-dimming`, `--tw-light-color`, `--tw-light-width`, `--tw-light-sweep`, `--tw-light-time`, `--tw-light-direction`, `--tw-searchlight-stop1`, `--tw-searchlight-stop2`],
         },
         {
             id: `tw-burn`,
