@@ -2,17 +2,15 @@
 
 A motley library of author tools with dubious value
 
-### SugarCube macros
+### SugarCube
 
+  - [Sleepymap library](https://sleepyfool-gh.github.io/Sleepymap/) - top-down map navigation system
   - [divider macro](./divider_macro) - creates a divider while hiding old dividers created this way
   - [p macro](./p_macro) - automatically wrap enclosed chunks of text into `<p>` elements
   - [select macro](./select_macro) - creates a link which removes all other links in its group when clicked
-
-### SugarCube accs.
-
   - [save safety](./save_safety/) - adds two checkboxes to prevent accidental deleting or clearing of saves
 
-### Twine accs.
+### Twine
 
   - [Twine desktop app themes](./Twine_themes) - `user.css` customization options for <b>Twine desktop 2.7</b>
 
@@ -25,6 +23,5 @@ A motley library of author tools with dubious value
 ___
 
 #### WIP:
-  - map navigation system
 
 
